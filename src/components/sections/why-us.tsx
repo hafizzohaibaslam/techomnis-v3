@@ -15,13 +15,16 @@ gsap.registerPlugin(ScrollTrigger, useGSAP)
 function ProfileCard({ member }: { member: (typeof teamMembers)[0] }) {
   return (
     <div className="profile ln lr lb">
-      <div className="avatar" role="img" aria-label={`Photo placeholder for ${member.name}`}>
-        {member.avatarInitial}
-      </div>
+      <img 
+        src={member.image} 
+        alt={member.name}
+        className="avatar"
+        style={{ objectFit: 'cover' }}
+      />
       <p className="nm">{member.name}</p>
       <p className="cap">{member.role}</p>
       <p className="t-reg bio">{member.bio}</p>
-      <a href="#" className="read t-reg" data-ph>
+      <a href="#contact" className="read t-reg" data-hover>
         <span className="ul">Read details</span>
       </a>
       <span className="foot psoc">
@@ -29,9 +32,10 @@ function ProfileCard({ member }: { member: (typeof teamMembers)[0] }) {
           <a
             key={index}
             href={social.url}
-            data-ph
+            target="_blank"
+            rel="noopener noreferrer"
             data-hover
-            aria-label={`${member.name} on ${social.platform === 'linkedin' ? 'LinkedIn' : 'Upwork'} (link to be added)`}
+            aria-label={`${member.name} on ${social.platform === 'linkedin' ? 'LinkedIn' : 'Upwork'}`}
           >
             {social.platform === 'linkedin' ? (
               <LinkedInIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
@@ -40,7 +44,6 @@ function ProfileCard({ member }: { member: (typeof teamMembers)[0] }) {
             )}
           </a>
         ))}
-        <span className="ph">{member.id === 'zohaib' ? 'Photo + links placeholder' : 'Placeholder'}</span>
       </span>
     </div>
   )

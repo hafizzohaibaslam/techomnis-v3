@@ -3,11 +3,9 @@ export interface CaseStudy {
   name: string
   description: string
   tags: string[]
-  gradientFrom: string
-  gradientTo: string
+  image: string
   metric: string
   metricLabel: string
-  isPlaceholder: true
 }
 
 export interface FeaturedCase {
@@ -16,63 +14,111 @@ export interface FeaturedCase {
   subtitle: string
   description: string
   tags: string[]
-  gradientFrom: string
-  gradientTo: string
+  image: string
   metrics: {
     label: string
     value: string
-    isPlaceholder: true
   }[]
 }
 
 export const featuredCase: FeaturedCase = {
-  id: 'othego',
-  name: 'Othego',
-  subtitle: 'Own product',
-  description: 'Our own RAG chatbot SaaS with Stripe subscription tiers.',
-  tags: ['AI · RAG', 'SaaS', 'Stripe'],
-  gradientFrom: '#5B6CFF',
-  gradientTo: '#C9B8FF',
+  id: 'finvera',
+  name: 'Finvera',
+  subtitle: 'FinTech Platform',
+  description: 'AI-powered financial management platform with smart analytics.',
+  tags: ['FinTech', 'AI', 'Analytics'],
+  image: '/finvera.jpg',
   metrics: [
-    { label: 'Key metric', value: 'X.X TBC', isPlaceholder: true },
-    { label: 'Result', value: 'XX%', isPlaceholder: true },
+    { label: 'User Growth', value: '340%' },
+    { label: 'Processing Time', value: '-65%' },
   ],
 }
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: 'edulog',
-    name: 'Edulog Athena V2',
-    description: 'Outcome for Edulog, to confirm.',
-    tags: ['EdTech', 'Client: Edulog'],
-    gradientFrom: '#DDF3EE',
-    gradientTo: '#6FCFB9',
-    metric: 'XX%',
-    metricLabel: 'Outcome for Edulog, to confirm.',
-    isPlaceholder: true,
+    id: 'kitahub',
+    name: 'Kitahub',
+    description: 'E-commerce platform with seamless checkout experience.',
+    tags: ['E-commerce', 'UX Design'],
+    image: '/kitahub-website.jpg',
+    metric: '2.5x',
+    metricLabel: 'Conversion rate increase',
   },
   {
-    id: 'archyr',
-    name: 'Archyr',
-    description: 'Summary from The Playbook.',
-    tags: ['Tags TBC'],
-    gradientFrom: '#1E2126',
-    gradientTo: '#3A3F47',
-    metric: 'xN',
-    metricLabel: 'Summary from The Playbook.',
-    isPlaceholder: true,
+    id: 'leaf-ai',
+    name: 'Leaf AI',
+    description: 'AI-powered agricultural insights platform.',
+    tags: ['AI', 'AgriTech'],
+    image: '/LeafAi-Web.jpg',
+    metric: '89%',
+    metricLabel: 'Prediction accuracy',
   },
   {
-    id: 'waivs',
-    name: 'Waivs.ai',
-    description: 'Summary from The Playbook.',
-    tags: ['AI', 'Tags TBC'],
-    gradientFrom: '#DDEBFF',
-    gradientTo: '#5C9DFF',
-    metric: 'XX%',
-    metricLabel: 'Summary from The Playbook.',
-    isPlaceholder: true,
+    id: 'babobot',
+    name: 'Babobot',
+    description: 'Intelligent chatbot solution for customer support.',
+    tags: ['AI', 'Chatbot', 'SaaS'],
+    image: '/Babobot.jpg',
+    metric: '70%',
+    metricLabel: 'Support ticket reduction',
   },
 ]
 
-export const totalCaseStudies = 17
+export const additionalCases: CaseStudy[] = [
+  {
+    id: 'agerlink',
+    name: 'Agerlink',
+    description: 'Healthcare connectivity platform.',
+    tags: ['Healthcare', 'Platform'],
+    image: '/Agerlink 1.jpg',
+    metric: '45%',
+    metricLabel: 'Efficiency improvement',
+  },
+  {
+    id: 'atusglobal',
+    name: 'AtusGlobal',
+    description: 'Global logistics management system.',
+    tags: ['Logistics', 'Enterprise'],
+    image: '/AtusGlobal.jpg',
+    metric: '3x',
+    metricLabel: 'Faster deliveries',
+  },
+  {
+    id: 'bell-hopt',
+    name: 'Bell Hopt',
+    description: 'Healthcare appointment management.',
+    tags: ['Healthcare', 'Booking'],
+    image: '/Bell Hopt- Web.jpg',
+    metric: '60%',
+    metricLabel: 'No-show reduction',
+  },
+  {
+    id: 'lms',
+    name: 'LMS Platform',
+    description: 'Learning management system for enterprises.',
+    tags: ['EdTech', 'Enterprise'],
+    image: '/LMS-Web.jpg',
+    metric: '85%',
+    metricLabel: 'Course completion rate',
+  },
+  {
+    id: 'ritual',
+    name: 'Ritual',
+    description: 'Wellness and habit tracking application.',
+    tags: ['Wellness', 'Mobile'],
+    image: '/Ritual- Web.jpg',
+    metric: '4.8',
+    metricLabel: 'App Store rating',
+  },
+  {
+    id: 'icard',
+    name: 'iCard',
+    description: 'Digital business card solution.',
+    tags: ['Networking', 'Mobile'],
+    image: '/icard 1.jpg',
+    metric: '50K+',
+    metricLabel: 'Active users',
+  },
+]
+
+export const totalCaseStudies = 21
