@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { LinkedInIcon, UpworkIcon, GitHubIcon } from '@/components/ui/icons'
 
 export function Footer() {
@@ -5,46 +6,49 @@ export function Footer() {
     <footer id="contact" aria-label="Contact">
       <div className="wrap" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         <div className="ft-cta">
-          <a href="mailto:hello@techomnis.com" data-hover aria-label="Let's talk: email hello@techomnis.com">
+          <Link href="/contact" data-hover aria-label="Let's talk: Start a project">
             <span className="ltx h-large ul" data-split>
               Let&apos;s talk
             </span>
             <span className="emo" aria-hidden="true">
               🤝
             </span>
-          </a>
+          </Link>
         </div>
         <div className="ft-bar">
           <div className="l t-reg">
-            <span>© 2026 TechOmnis.</span>
-            <a href="#" data-ph>
-              <span className="ul">Privacy Policy</span>
-            </a>
-            <span className="grey">
-              hello@techomnis.com <span className="ph">Confirm</span>
-            </span>
+            <span>© {new Date().getFullYear()} TechOmnis.</span>
+            <Link href="/privacy">
+              <span className="ul">Privacy</span>
+            </Link>
+            <Link href="/terms">
+              <span className="ul">Terms</span>
+            </Link>
           </div>
           <div className="social">
             <a
-              href="#"
-              data-ph
-              aria-label="TechOmnis on LinkedIn (link to be added)"
+              href="https://linkedin.com/company/techomnis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TechOmnis on LinkedIn"
               data-hover
             >
               <LinkedInIcon className="h-[1.6rem] w-[1.6rem] fill-[#222]" />
             </a>
             <a
-              href="#"
-              data-ph
-              aria-label="TechOmnis on Upwork (link to be added)"
+              href="https://www.upwork.com/agencies/techomnis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TechOmnis on Upwork"
               data-hover
             >
               <UpworkIcon className="h-[1.6rem] w-[1.6rem] fill-[#222]" />
             </a>
             <a
-              href="#"
-              data-ph
-              aria-label="TechOmnis on GitHub (link to be added)"
+              href="https://github.com/techomnis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TechOmnis on GitHub"
               data-hover
             >
               <GitHubIcon className="h-[1.6rem] w-[1.6rem] fill-[#222]" />

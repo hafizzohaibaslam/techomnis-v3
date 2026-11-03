@@ -30,6 +30,14 @@ export function ArrowRight({ className, ...props }: IconProps) {
   )
 }
 
+export function ArrowLeft({ className, ...props }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} aria-hidden="true" {...props}>
+      <path d="M20 12H4M10 18l-6-6 6-6" />
+    </svg>
+  )
+}
+
 export function HomeIcon({ className, ...props }: IconProps) {
   return (
     <svg viewBox="0 0 24 24" className={className} aria-hidden="true" {...props}>

@@ -1,11 +1,30 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
+import Link from 'next/link'
 import { HomeIcon, ArrowRight, MenuIcon } from '@/components/ui/icons'
-import { mainNavItems, sectionMappings } from '@/content/navigation'
 import { useMotion } from '@/hooks/use-motion'
 
+const navItems = [
+  { href: '/work', label: 'Work' },
+  { href: '/services', label: 'Services' },
+  { href: '/process', label: 'Process' },
+  { href: '/about', label: 'About' },
+]
+
+const sectionMappings = [
+  { selector: '#top', label: 'Home' },
+  { selector: '#work', label: 'Work' },
+  { selector: '#services', label: 'Services' },
+  { selector: '#clients', label: 'Clients' },
+  { selector: '#reviews', label: 'Reviews' },
+  { selector: '#about', label: 'About' },
+]
+
 export function Navigation() {
+  const pathname = usePathname()
+  const isHomePage = pathname === '/'
   const [activeSection, setActiveSection] = useState('Home')
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const mobBtnRef = useRef<HTMLButtonElement>(null)
@@ -13,6 +32,12 @@ export function Navigation() {
   const { motionEnabled, toggleMotion } = useMotion()
 
   useEffect(() => {
+    if (!isHomePage) {
+      const current = navItems.find((item) => pathname.startsWith(item.href))
+      setActiveSection(current?.label || 'Home')
+      return
+    }
+
     const handleScroll = () => {
       const scrollY = window.scrollY
       const viewportHeight = window.innerHeight
@@ -59,7 +84,7 @@ export function Navigation() {
       observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [isHomePage, pathname])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -98,8 +123,9 @@ export function Navigation() {
     return () => mq.removeEventListener('change', handler)
   }, [])
 
-  const handleNavClick = useCallback(
+  const handleAnchorClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (!isHomePage) return
       e.preventDefault()
       const target = document.querySelector(href)
       if (target) {
@@ -114,8 +140,10 @@ export function Navigation() {
       }
       setMobileMenuOpen(false)
     },
-    [motionEnabled]
+    [motionEnabled, isHomePage]
   )
+
+  const closeMobileMenu = () => setMobileMenuOpen(false)
 
   return (
     <>
@@ -126,51 +154,25 @@ export function Navigation() {
         role="dialog"
         aria-label="Site menu"
       >
-        <a
-          href="#top"
-          data-go="Home"
+        <Link
+          href="/"
           className={activeSection === 'Home' ? 'on' : ''}
-          onClick={(e) => handleNavClick(e, '#top')}
+          onClick={closeMobileMenu}
         >
           <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
           Home
-        </a>
-        <a
-          href="#work"
-          data-go="Work"
-          className={activeSection === 'Work' ? 'on' : ''}
-          onClick={(e) => handleNavClick(e, '#work')}
-        >
-          <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
-          Work
-        </a>
-        <a
-          href="#services"
-          data-go="Services"
-          className={activeSection === 'Services' ? 'on' : ''}
-          onClick={(e) => handleNavClick(e, '#services')}
-        >
-          <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
-          Services
-        </a>
-        <a
-          href="#process"
-          data-go="Process"
-          className={activeSection === 'Process' ? 'on' : ''}
-          onClick={(e) => handleNavClick(e, '#process')}
-        >
-          <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
-          Process
-        </a>
-        <a
-          href="#about"
-          data-go="About"
-          className={activeSection === 'About' ? 'on' : ''}
-          onClick={(e) => handleNavClick(e, '#about')}
-        >
-          <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
-          About
-        </a>
+        </Link>
+        {navItems.map((item) => (
+          <Link
+            key={item.href}
+            href={item.href}
+            className={activeSection === item.label ? 'on' : ''}
+            onClick={closeMobileMenu}
+          >
+            <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
+            {item.label}
+          </Link>
+        ))}
         <button
           type="button"
           aria-pressed={!motionEnabled}
@@ -182,31 +184,27 @@ export function Navigation() {
 
       <nav className="menu" id="menu" aria-label="Main">
         <div className="menu-c">
-          <a
-            href="#top"
+          <Link
+            href="/"
             className={`mi home ${activeSection === 'Home' ? 'on' : ''}`}
             data-hover
-            data-go="Home"
             aria-label="Home"
-            onClick={(e) => handleNavClick(e, '#top')}
           >
             <span className="bg"></span>
             <HomeIcon />
-          </a>
+          </Link>
 
           <div className="mlist">
-            {mainNavItems.map((item) => (
-              <a
+            {navItems.map((item) => (
+              <Link
                 key={item.href}
                 href={item.href}
                 className={`mi ${activeSection === item.label ? 'on' : ''}`}
                 data-hover
-                data-go={item.dataGo}
-                onClick={(e) => handleNavClick(e, item.href)}
               >
                 <span className="bg"></span>
                 {item.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -224,16 +222,14 @@ export function Navigation() {
             <span className="sr-only"> menu</span>
           </button>
 
-          <a
-            href="#contact"
+          <Link
+            href="/contact"
             className="talk"
             data-hover
-            data-go="Contact"
-            onClick={(e) => handleNavClick(e, '#contact')}
           >
             Let&apos;s talk{' '}
             <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
-          </a>
+          </Link>
         </div>
       </nav>
     </>

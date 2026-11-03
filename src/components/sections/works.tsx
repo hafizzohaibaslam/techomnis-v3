@@ -1,9 +1,13 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { featuredCase, caseStudies, totalCaseStudies } from '@/content/cases'
+import { caseStudies, type CaseStudy } from '@/content/cases'
 import { ArrowRight } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
+
+const featuredCase = caseStudies.find(c => c.isFeatured) || caseStudies[0]
+const displayCases = caseStudies.filter(c => c.id !== featuredCase.id).slice(0, 4)
+const totalCaseStudies = caseStudies.length
 
 function CaseImage({ src, alt }: { src: string; alt: string }) {
   return (
@@ -61,9 +65,11 @@ function MediaLink({
 }
 
 function FeaturedCase() {
+  const metrics = featuredCase.results.slice(0, 2)
+  
   return (
     <div className="feature ln lb">
-      <MediaLink href="#" label={`${featuredCase.name} case study`}>
+      <MediaLink href={`/work/${featuredCase.slug}`} label={`${featuredCase.name} case study`}>
         <CaseImage src={featuredCase.image} alt={featuredCase.name} />
       </MediaLink>
       <div className="feature-row">
@@ -81,10 +87,10 @@ function FeaturedCase() {
         </div>
         <div className="ov">
           <div className="desc">
-            <p className="h-sub">{featuredCase.subtitle}</p>
+            <p className="h-sub">{featuredCase.tagline}</p>
             <p className="t-reg">{featuredCase.description}</p>
           </div>
-          {featuredCase.metrics.map((metric, index) => (
+          {metrics.map((metric, index) => (
             <div key={index} className="met ln ll">
               <p className="h-sub">{metric.label}</p>
               <p className="num">
@@ -103,14 +109,15 @@ function CaseCard({
   caseStudy,
   index,
 }: {
-  caseStudy: (typeof caseStudies)[0]
+  caseStudy: CaseStudy
   index: number
 }) {
   const isRight = index % 2 === 1
+  const primaryMetric = caseStudy.results[0]
 
   return (
     <div className={`case ln lb ${isRight ? 'r' : 'lr'}`}>
-      <MediaLink href="#" label={`${caseStudy.name} case study`}>
+      <MediaLink href={`/work/${caseStudy.slug}`} label={`${caseStudy.name} case study`}>
         <CaseImage src={caseStudy.image} alt={caseStudy.name} />
       </MediaLink>
       <div className="case-meta">
@@ -118,11 +125,11 @@ function CaseCard({
           <span className="ul">{caseStudy.name}</span>
         </h3>
         <div className="case-stat">
-          <span className="num">{caseStudy.metric}</span>
-          <p className="t-reg">{caseStudy.metricLabel}</p>
+          <span className="num">{primaryMetric?.value || 'TBC'}</span>
+          <p className="t-reg">{primaryMetric?.label || 'Metrics coming soon'}</p>
         </div>
         <div className="tags">
-          {caseStudy.tags.map((tag) => (
+          {caseStudy.tags.slice(0, 3).map((tag) => (
             <span key={tag} className="tag">
               {tag}
             </span>
@@ -142,11 +149,11 @@ export function Works() {
         </h2>
         <FeaturedCase />
         <div className="g2" id="caseGrid">
-          {caseStudies.map((caseStudy, index) => (
+          {displayCases.map((caseStudy, index) => (
             <CaseCard key={caseStudy.id} caseStudy={caseStudy} index={index} />
           ))}
           <div className="case r ln lb view-more">
-            <Button href="#" isPlaceholder>
+            <Button href="/work">
               View all {totalCaseStudies} case studies
             </Button>
           </div>

@@ -1,8 +1,34 @@
-import { services, type Stage } from '@/content/services'
+import { services, type ServiceProcess } from '@/content/services'
 import { stageIcons } from '@/components/ui/icons'
 
-function StageItem({ stage }: { stage: Stage }) {
-  const IconComponent = stageIcons[stage.icon]
+const iconMapping: Record<string, keyof typeof stageIcons> = {
+  'Discovery': 'eye',
+  'Architecture': 'shield',
+  'Development': 'pencil',
+  'Launch & Scale': 'dashboard',
+  'Data Assessment': 'eye',
+  'Model Selection': 'shield',
+  'Deployment': 'dashboard',
+  'Design Review': 'eye',
+  'Setup': 'shield',
+  'Build': 'pencil',
+  'Launch': 'dashboard',
+  'Platform Strategy': 'eye',
+  'UI/UX Adaptation': 'pencil',
+  'Store Launch': 'dashboard',
+  'Audit': 'eye',
+  'Prioritize': 'shield',
+  'Stabilize': 'pencil',
+  'Improve': 'dashboard',
+  'Research': 'eye',
+  'Wireframe': 'pencil',
+  'Design': 'pencil',
+  'Handoff': 'dashboard',
+}
+
+function StageItem({ stage }: { stage: ServiceProcess }) {
+  const iconKey = iconMapping[stage.title] || 'eye'
+  const IconComponent = stageIcons[iconKey]
 
   return (
     <div className="stage">
@@ -14,18 +40,20 @@ function StageItem({ stage }: { stage: Stage }) {
 }
 
 export function Services() {
+  const displayServices = services.slice(0, 2)
+  
   return (
     <section id="services" aria-label="Services">
       <div className="wrap">
-        {services.map((service) => (
+        {displayServices.map((service) => (
           <div key={service.id} className="g2 svc-row ln lb">
             <div>
               <div className="svc-left">
-                <h2 className="h-bigup">{service.title}</h2>
+                <h2 className="h-bigup">{service.name}</h2>
                 <div className="tags">
-                  {service.tags.map((tag) => (
-                    <span key={tag} className="tag">
-                      {tag}
+                  {service.features.slice(0, 6).map((feature) => (
+                    <span key={feature.title} className="tag">
+                      {feature.title}
                     </span>
                   ))}
                 </div>
@@ -33,8 +61,8 @@ export function Services() {
             </div>
             <div className="right">
               <div className="stages">
-                {service.stages.map((stage, stageIndex) => (
-                  <StageItem key={stageIndex} stage={stage} />
+                {service.process.map((step, stepIndex) => (
+                  <StageItem key={stepIndex} stage={step} />
                 ))}
               </div>
             </div>
