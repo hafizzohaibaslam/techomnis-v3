@@ -1,6 +1,7 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
+import { usePathname } from 'next/navigation'
 import { useMotion } from '@/hooks/use-motion'
 
 const ARR = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6"/></svg>'
@@ -134,10 +135,15 @@ function hoverLoop(host: HTMLElement, tgt: SVGElement, prop: string, amp: number
 
 export function AnimationInitializer() {
   const { motionEnabled } = useMotion()
-  const initialized = useRef(false)
+  const pathname = usePathname()
   const observersRef = useRef<IntersectionObserver[]>([])
+  const cleanupRef = useRef<(() => void) | null>(null)
 
-  useEffect(() => {
+  const initAnimations = useCallback(() => {
+    // Clean up previous observers
+    observersRef.current.forEach((obs) => obs.disconnect())
+    observersRef.current = []
+
     if (!motionEnabled) {
       document.querySelectorAll('.ln, .vline, .header.hl').forEach((l) => {
         const el = l as HTMLElement
@@ -153,9 +159,6 @@ export function AnimationInitializer() {
       document.querySelectorAll('.btn').forEach((b) => b.classList.add('drawn'))
       return
     }
-
-    if (initialized.current) return
-    initialized.current = true
 
     document.querySelectorAll('[data-btn]:not([data-built])').forEach((btn) => {
       const el = btn as HTMLElement
@@ -333,12 +336,27 @@ export function AnimationInitializer() {
     // "What we build" crossfade (homepage direction section)
     initWeBuildCrossfade()
 
-    return () => {
+    cleanupRef.current = () => {
       window.removeEventListener('resize', sizePills)
       observersRef.current.forEach((obs) => obs.disconnect())
       observersRef.current = []
     }
   }, [motionEnabled])
+
+  useEffect(() => {
+    // Small delay to ensure DOM is ready after navigation
+    const timer = setTimeout(() => {
+      initAnimations()
+    }, 100)
+
+    return () => {
+      clearTimeout(timer)
+      if (cleanupRef.current) {
+        cleanupRef.current()
+        cleanupRef.current = null
+      }
+    }
+  }, [pathname, initAnimations])
 
   return null
 }
@@ -346,6 +364,7 @@ export function AnimationInitializer() {
 function animateCounter(el: HTMLElement, end: number, dec: boolean) {
   const dur = 3000
   const start = performance.now()
+  el.classList.add('counted')
   const animate = () => {
     const t = Math.min(1, (performance.now() - start) / dur)
     const v = end * E.cnt(t)

@@ -51,6 +51,10 @@ svg{display:block}
 .btn svg.pill{position:absolute;inset:0;width:100%;height:100%;z-index:-1;overflow:visible;transform-origin:50% 50%;transition:transform .3s cubic-bezier(.215,.61,.355,1)}
 .btn:hover svg.pill,.btn:focus-visible svg.pill{transform:scale(.97);transition-timing-function:cubic-bezier(.165,.84,.44,1)}
 .btn svg.pill path{fill:none;stroke:#222;stroke-width:1}
+.js-motion .ln{--e:0}
+.js-motion .vline{--e:0}
+.js-motion [data-count]{opacity:0}
+.js-motion [data-count].counted{opacity:1}
 .js-motion .btn svg.pill path{stroke-dasharray:1 1;stroke-dashoffset:1}
 .js-motion .btn.drawn svg.pill path{animation:pill 2s ease .5s forwards}
 @keyframes pill{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
