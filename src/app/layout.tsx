@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Figtree } from 'next/font/google'
 import './globals.css'
-import { MotionProvider } from '@/hooks/use-motion'
-import { AnimationInitializer } from '@/components/animation-initializer'
+import { SiteMotion } from '@/components/site-motion'
 import { TransitionOverlay } from '@/components/ui/transition'
 
 const figtree = Figtree({
@@ -115,11 +114,9 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MotionProvider>
-          <AnimationInitializer />
-          <TransitionOverlay />
-          {children}
-        </MotionProvider>
+        <SiteMotion />
+        <TransitionOverlay />
+        {children}
       </body>
     </html>
   )

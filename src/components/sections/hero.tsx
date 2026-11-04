@@ -1,13 +1,13 @@
 'use client'
 
-import { useEffect, useRef, useMemo } from 'react'
+import { useEffect, useRef, useMemo, useState } from 'react'
 import { gsap } from 'gsap'
 import { useGSAP } from '@gsap/react'
 import { radarAxes, radarData, radarAnimationTarget } from '@/content/stats'
-import { useMotion } from '@/hooks/use-motion'
 import { Header } from '@/components/layout/header'
 
 gsap.registerPlugin(useGSAP)
+
 
 const CX = 200
 const CY = 168
@@ -25,7 +25,7 @@ function getPoints(values: number[]): string {
 }
 
 function RadarChart() {
-  const { motionEnabled } = useMotion()
+  const [motionEnabled, setMotionEnabled] = useState(true)
   const mvpRef = useRef<SVGPolygonElement>(null)
   const fullRef = useRef<SVGPolygonElement>(null)
   const currentMvp = useRef([...radarData.mvp])
@@ -57,6 +57,11 @@ function RadarChart() {
   }
 
   useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let saved: string | null = null
+    try { saved = localStorage.getItem('to-motion') } catch {}
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMotionEnabled(saved ? saved === 'on' : !reduce)
     updatePolygons()
   }, [])
 

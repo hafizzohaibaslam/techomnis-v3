@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useEffect, useRef, useMemo } from 'react'
+import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { HomeIcon, ArrowRight, MenuIcon } from '@/components/ui/icons'
-import { useMotion } from '@/hooks/use-motion'
+
 
 const navItems = [
   { href: '/work', label: 'Work' },
@@ -38,7 +38,22 @@ export function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const mobBtnRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
-  const { motionEnabled, toggleMotion } = useMotion()
+  const [motionEnabled, setMotionEnabled] = useState(true)
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let saved: string | null = null
+    try { saved = localStorage.getItem('to-motion') } catch {}
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMotionEnabled(saved ? saved === 'on' : !reduce)
+  }, [])
+
+  const toggleMotion = useCallback(() => {
+    const newValue = !motionEnabled
+    setMotionEnabled(newValue)
+    try { localStorage.setItem('to-motion', newValue ? 'on' : 'off') } catch {}
+    if (newValue) location.reload()
+  }, [motionEnabled])
 
   useEffect(() => {
     if (!isHomePage) {

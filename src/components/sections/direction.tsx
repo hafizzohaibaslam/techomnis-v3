@@ -1,63 +1,7 @@
-'use client'
-
-import { useEffect, useRef, useState } from 'react'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
-import { directionTitles, directionItems } from '@/content/navigation'
+import { directionTitles } from '@/content/navigation'
 import { Button } from '@/components/ui/button'
-import { useMotion } from '@/hooks/use-motion'
-
-gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 export function Direction() {
-  const { motionEnabled } = useMotion()
-  const [currentTitle, setCurrentTitle] = useState(0)
-  const wordsRef = useRef<(HTMLSpanElement | null)[]>([])
-
-  useGSAP(() => {
-    if (typeof window === 'undefined') return
-    if (window.matchMedia('(max-width: 1023px)').matches) return
-    if (!motionEnabled) return
-
-    const triggers: ScrollTrigger[] = []
-
-    directionItems.forEach((item) => {
-      const cell = document.querySelector(`[data-dir="${item.group}"]`)
-      if (!cell) return
-
-      const trigger = ScrollTrigger.create({
-        trigger: cell,
-        start: 'top 55%',
-        end: 'bottom 55%',
-        onToggle: (self) => {
-          if (self.isActive) {
-            setCurrentTitle(item.group)
-          }
-        },
-      })
-      triggers.push(trigger)
-    })
-
-    return () => {
-      triggers.forEach((t) => t.kill())
-    }
-  }, { dependencies: [motionEnabled] })
-
-  useEffect(() => {
-    if (!motionEnabled) return
-
-    wordsRef.current.forEach((word, index) => {
-      if (!word) return
-      if (index === currentTitle) {
-        gsap.to(word, { yPercent: 0, duration: 0.6, ease: 'power3.inOut' })
-      } else {
-        const direction = index < currentTitle ? -110 : 110
-        gsap.to(word, { yPercent: direction, duration: 0.6, ease: 'power3.inOut' })
-      }
-    })
-  }, [currentTitle, motionEnabled])
-
   return (
     <section className="direction" aria-label="What we build">
       <div className="wrap">
@@ -67,13 +11,7 @@ export function Direction() {
             <div className="dir-title">
               <h2 className="tw h-large" id="dirTw">
                 {directionTitles.map((title, index) => (
-                  <span
-                    key={index}
-                    className="w"
-                    ref={(el) => { wordsRef.current[index] = el }}
-                    aria-hidden={index !== 0}
-                    style={index !== 0 ? { transform: 'translateY(110%)' } : undefined}
-                  >
+                  <span key={index} className="w" aria-hidden={index !== 0}>
                     {title}
                   </span>
                 ))}

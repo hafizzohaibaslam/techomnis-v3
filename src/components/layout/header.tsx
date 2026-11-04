@@ -1,11 +1,30 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import { LogoMark } from '@/components/ui/icons'
-import { useMotion } from '@/hooks/use-motion'
 
 function MotionToggle() {
-  const { motionEnabled, toggleMotion } = useMotion()
+  const [motionEnabled, setMotionEnabled] = useState(true)
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    let saved: string | null = null
+    try { saved = localStorage.getItem('to-motion') } catch {}
+    /* eslint-disable react-hooks/set-state-in-effect */
+    setMotionEnabled(saved ? saved === 'on' : !reduce)
+    setMounted(true)
+    /* eslint-enable react-hooks/set-state-in-effect */
+  }, [])
+
+  const toggleMotion = useCallback(() => {
+    const newValue = !motionEnabled
+    setMotionEnabled(newValue)
+    try { localStorage.setItem('to-motion', newValue ? 'on' : 'off') } catch {}
+    if (newValue) location.reload()
+  }, [motionEnabled])
+
+  if (!mounted) return null
 
   return (
     <button

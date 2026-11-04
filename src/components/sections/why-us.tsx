@@ -1,17 +1,8 @@
-'use client'
-
-import { useRef } from 'react'
 import Link from 'next/link'
-import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
 import { teamMembers, type TeamMember } from '@/content/team'
 import { counterStats, awardStats } from '@/content/stats'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
-import { useMotion } from '@/hooks/use-motion'
-
-gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 function ProfileCard({ member }: { member: TeamMember }) {
   return (
@@ -72,45 +63,6 @@ function ProfileCard({ member }: { member: TeamMember }) {
 }
 
 function CounterCell({ stat, index }: { stat: (typeof counterStats)[0]; index: number }) {
-  const countRef = useRef<HTMLSpanElement>(null)
-  const { motionEnabled } = useMotion()
-
-  useGSAP(
-    () => {
-      if (!countRef.current || !motionEnabled) {
-        if (countRef.current) {
-          countRef.current.textContent = stat.decimal
-            ? stat.value.toFixed(stat.decimal)
-            : String(stat.value)
-        }
-        return
-      }
-
-      const el = countRef.current
-      const obj = { v: 0 }
-
-      ScrollTrigger.create({
-        trigger: el,
-        start: 'top 85%',
-        once: true,
-        onEnter: () => {
-          gsap.to(obj, {
-            v: stat.value,
-            duration: 3,
-            ease: 'power2.out',
-            onUpdate: () => {
-              el.textContent = stat.decimal ? obj.v.toFixed(stat.decimal) : String(Math.round(obj.v))
-            },
-            onComplete: () => {
-              el.textContent = stat.decimal ? stat.value.toFixed(stat.decimal) : String(stat.value)
-            },
-          })
-        },
-      })
-    },
-    { dependencies: [motionEnabled] }
-  )
-
   const borderClass = index < 3 ? 'ln lr lb' : 'ln lb'
 
   return (
@@ -118,7 +70,7 @@ function CounterCell({ stat, index }: { stat: (typeof counterStats)[0]; index: n
       <div className="in">
         <p className="num">
           {stat.prefix}
-          <span ref={countRef} data-count={stat.value} data-dec={stat.decimal ? '1' : undefined}>
+          <span data-count={stat.value} data-dec={stat.decimal ? '1' : undefined}>
             {stat.decimal ? '0.0' : '0'}
           </span>
           {stat.suffix}

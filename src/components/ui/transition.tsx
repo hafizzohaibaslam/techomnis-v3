@@ -2,7 +2,6 @@
 
 import { useEffect, useState, useCallback, useRef } from 'react'
 import { usePathname, useRouter } from 'next/navigation'
-import { useMotion } from '@/hooks/use-motion'
 
 const ROUTE_LABELS: Record<string, string> = {
   '/': 'Home',
@@ -26,8 +25,16 @@ function getLabelForPath(path: string): string {
   return ROUTE_LABELS[path] || 'TechOmnis'
 }
 
+function getMotionEnabled(): boolean {
+  if (typeof window === 'undefined') return true
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  let saved: string | null = null
+  try { saved = localStorage.getItem('to-motion') } catch {}
+  return saved ? saved === 'on' : !reduce
+}
+
 export function TransitionOverlay() {
-  const { motionEnabled } = useMotion()
+  const [motionEnabled, setMotionEnabled] = useState(true)
   const pathname = usePathname()
   const router = useRouter()
   const [label, setLabel] = useState(() => getLabelForPath(pathname))
@@ -35,6 +42,11 @@ export function TransitionOverlay() {
   const [isArriving, setIsArriving] = useState(false)
   const pendingNavRef = useRef<string | null>(null)
   const initializedRef = useRef(false)
+
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMotionEnabled(getMotionEnabled())
+  }, [])
 
   useEffect(() => {
     if (!initializedRef.current) {
