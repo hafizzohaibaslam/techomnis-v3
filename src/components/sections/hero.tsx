@@ -1,20 +1,15 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import lottie, { AnimationItem } from 'lottie-web'
 import { Header } from '@/components/layout/header'
 
 function RadarLottie() {
   const containerRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<AnimationItem | null>(null)
-  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
-    setIsClient(true)
-  }, [])
-
-  useEffect(() => {
-    if (!isClient || !containerRef.current) return
+    if (!containerRef.current) return
 
     animationRef.current = lottie.loadAnimation({
       container: containerRef.current,
@@ -33,9 +28,7 @@ function RadarLottie() {
         animationRef.current = null
       }
     }
-  }, [isClient])
-
-  if (!isClient) return <div className="radar-lottie" />
+  }, [])
 
   return <div ref={containerRef} className="radar-lottie" />
 }
