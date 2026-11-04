@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState, useCallback } from 'react'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { LogoMark } from '@/components/ui/icons'
 
 function MotionToggle() {
@@ -98,8 +98,9 @@ function Clock() {
 export function InnerHeader() {
   return (
     <header className="header hl">
-      <Link
+      <TransitionLink
         href="/"
+        label="Home"
         className="logo"
         data-hover
         data-go="Home"
@@ -117,7 +118,7 @@ export function InnerHeader() {
           <br />
           engineering
         </span>
-      </Link>
+      </TransitionLink>
       <div className="hctl">
         <MotionToggle />
         <Clock />

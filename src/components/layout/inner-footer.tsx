@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { LinkedInIcon, UpworkIcon, GitHubIcon } from '@/components/ui/icons'
 
 export function InnerFooter() {
@@ -9,8 +9,9 @@ export function InnerFooter() {
         style={{ flex: 1, display: 'flex', flexDirection: 'column' }}
       >
         <div className="ft-cta">
-          <Link
+          <TransitionLink
             href="/contact"
+            label="Contact"
             data-hover
             data-go="Contact"
             aria-label="Let's talk: open the contact page"
@@ -21,14 +22,14 @@ export function InnerFooter() {
             <span className="emo" aria-hidden="true">
               🤝
             </span>
-          </Link>
+          </TransitionLink>
         </div>
         <div className="ft-bar">
           <div className="l t-reg">
             <span>© 2026 TechOmnis.</span>
-            <Link href="/privacy" data-go="Privacy">
+            <TransitionLink href="/privacy" label="Privacy" data-go="Privacy">
               <span className="ul">Privacy Policy</span>
-            </Link>
+            </TransitionLink>
             <span className="grey">
               hello@techomnis.com <span className="ph">Confirm</span>
             </span>

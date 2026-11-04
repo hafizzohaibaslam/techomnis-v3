@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { LinkedInIcon, UpworkIcon, GitHubIcon } from '@/components/ui/icons'
 
 export function Footer() {
@@ -6,24 +6,24 @@ export function Footer() {
     <footer id="contact" aria-label="Contact">
       <div className="wrap" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
         <div className="ft-cta">
-          <Link href="/contact" data-hover aria-label="Let's talk: Start a project">
+          <TransitionLink href="/contact" label="Contact" data-hover aria-label="Let's talk: Start a project">
             <span className="ltx h-large ul" data-split>
               Let&apos;s talk
             </span>
             <span className="emo" aria-hidden="true">
               🤝
             </span>
-          </Link>
+          </TransitionLink>
         </div>
         <div className="ft-bar">
           <div className="l t-reg">
             <span>© {new Date().getFullYear()} TechOmnis.</span>
-            <Link href="/privacy">
+            <TransitionLink href="/privacy" label="Privacy">
               <span className="ul">Privacy</span>
-            </Link>
-            <Link href="/terms">
+            </TransitionLink>
+            <TransitionLink href="/terms" label="Terms">
               <span className="ul">Terms</span>
-            </Link>
+            </TransitionLink>
           </div>
           <div className="social">
             <a

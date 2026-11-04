@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { HomeIcon, ArrowRight, MenuIcon } from '@/components/ui/icons'
 
 const navItems = [
@@ -87,19 +87,21 @@ export function InnerNavigation() {
         role="dialog"
         aria-label="Site menu"
       >
-        <Link
+        <TransitionLink
           href="/"
+          label="Home"
           className={activeLabel === 'Home' ? 'on' : ''}
           onClick={closeMobileMenu}
           data-go="Home"
         >
           <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
           Home
-        </Link>
+        </TransitionLink>
         {navItems.map((item) => (
-          <Link
+          <TransitionLink
             key={item.href}
             href={item.href}
+            label={item.label}
             className={activeLabel === item.label ? 'on' : ''}
             aria-current={activeLabel === item.label ? 'page' : undefined}
             onClick={closeMobileMenu}
@@ -107,7 +109,7 @@ export function InnerNavigation() {
           >
             <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
             {item.label}
-          </Link>
+          </TransitionLink>
         ))}
         <button type="button" aria-pressed={!motionEnabled} onClick={toggleMotion}>
           Reduce motion
@@ -116,8 +118,9 @@ export function InnerNavigation() {
 
       <nav className="menu" id="menu" aria-label="Main">
         <div className="menu-c">
-          <Link
+          <TransitionLink
             href="/"
+            label="Home"
             className={`mi home ${activeLabel === 'Home' ? 'on' : ''}`}
             data-hover
             data-go="Home"
@@ -125,13 +128,14 @@ export function InnerNavigation() {
           >
             <span className="bg"></span>
             <HomeIcon />
-          </Link>
+          </TransitionLink>
 
           <div className="mlist">
             {navItems.map((item) => (
-              <Link
+              <TransitionLink
                 key={item.href}
                 href={item.href}
+                label={item.label}
                 className={`mi ${activeLabel === item.label ? 'on' : ''}`}
                 aria-current={activeLabel === item.label ? 'page' : undefined}
                 data-hover
@@ -139,7 +143,7 @@ export function InnerNavigation() {
               >
                 <span className="bg"></span>
                 {item.label}
-              </Link>
+              </TransitionLink>
             ))}
           </div>
 
@@ -157,10 +161,10 @@ export function InnerNavigation() {
             <span className="sr"> menu</span>
           </button>
 
-          <Link href="/contact" className="talk" data-hover data-go="Contact">
+          <TransitionLink href="/contact" label="Contact" className="talk" data-hover data-go="Contact">
             Let&apos;s talk{' '}
             <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
-          </Link>
+          </TransitionLink>
         </div>
       </nav>
     </>

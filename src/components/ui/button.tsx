@@ -1,14 +1,43 @@
 'use client'
 
-import { useRef, useEffect, type ComponentProps } from 'react'
+import { useRef, useEffect, type ComponentProps, type ReactNode } from 'react'
 import { cn } from '@/lib/utils'
 import { ArrowRight } from './icons'
+import { TransitionLink } from './transition-link'
 
-interface ButtonProps extends ComponentProps<'a'> {
+interface ButtonProps {
+  children: ReactNode
+  className?: string
   isPlaceholder?: boolean
+  href?: string
+  label?: string
 }
 
-export function Button({ children, className, isPlaceholder, ...props }: ButtonProps) {
+function ButtonInner({ 
+  children,
+  isPlaceholder,
+  rectRef 
+}: { 
+  children: ReactNode
+  isPlaceholder?: boolean
+  rectRef: React.RefObject<SVGRectElement | null>
+}) {
+  return (
+    <>
+      <svg className="pill" aria-hidden="true">
+        <rect ref={rectRef} x="0.5" y="0.5" />
+      </svg>
+      <span className="lbl">{children}</span>
+      {isPlaceholder && <span className="ph">Placeholder</span>}
+      <span className="arw" aria-hidden="true">
+        <ArrowRight className="h-full w-full fill-none stroke-current stroke-[1.6]" />
+        <ArrowRight className="h-full w-full fill-none stroke-current stroke-[1.6]" />
+      </span>
+    </>
+  )
+}
+
+export function Button({ children, className, isPlaceholder, href, label, ...props }: ButtonProps & Omit<ComponentProps<'a'>, 'href'>) {
   const buttonRef = useRef<HTMLAnchorElement>(null)
   const rectRef = useRef<SVGRectElement>(null)
 
@@ -42,23 +71,38 @@ export function Button({ children, className, isPlaceholder, ...props }: ButtonP
     return () => window.removeEventListener('resize', updateSize)
   }, [])
 
+  const isInternal = href && href.startsWith('/') && !href.startsWith('//')
+  
+  if (isInternal && href) {
+    return (
+      <TransitionLink
+        ref={buttonRef}
+        href={href}
+        label={label}
+        className={cn('btn', className)}
+        data-hover
+        data-btn
+        {...props}
+      >
+        <ButtonInner isPlaceholder={isPlaceholder} rectRef={rectRef}>
+          {children}
+        </ButtonInner>
+      </TransitionLink>
+    )
+  }
+
   return (
     <a
       ref={buttonRef}
+      href={href}
       className={cn('btn', className)}
       data-hover
       data-btn
       {...props}
     >
-      <svg className="pill" aria-hidden="true">
-        <rect ref={rectRef} x="0.5" y="0.5" />
-      </svg>
-      <span className="lbl">{children}</span>
-      {isPlaceholder && <span className="ph">Placeholder</span>}
-      <span className="arw" aria-hidden="true">
-        <ArrowRight className="h-full w-full fill-none stroke-current stroke-[1.6]" />
-        <ArrowRight className="h-full w-full fill-none stroke-current stroke-[1.6]" />
-      </span>
+      <ButtonInner isPlaceholder={isPlaceholder} rectRef={rectRef}>
+        {children}
+      </ButtonInner>
     </a>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { cases, type CaseStudy } from '@/content/cases'
 import { ArrowRight } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
@@ -151,15 +151,16 @@ function MediaLink({
     )
   }
 
+  const caseLabel = label.replace(' case study', '')
   return (
-    <Link href={href} className="media" data-media aria-label={label}>
+    <TransitionLink href={href} label={caseLabel} className="media" data-media aria-label={label}>
       {children}
       <div className="dark"></div>
       <span ref={moreRef} className="more" aria-hidden="true">
         Read more <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
       </span>
       <span className="ph phtag">Product shot placeholder</span>
-    </Link>
+    </TransitionLink>
   )
 }
 

@@ -250,7 +250,6 @@ export function SiteMotion() {
 
   const cleanup = useCallback(() => {
     ScrollTrigger.getAll().forEach((st) => st.kill())
-    gsap.globalTimeline.clear()
     if (lenisRef.current) {
       lenisRef.current.destroy()
       lenisRef.current = null

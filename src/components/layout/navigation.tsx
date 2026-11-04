@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, useMemo, useCallback } from 'react'
 import { usePathname } from 'next/navigation'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { HomeIcon, ArrowRight, MenuIcon } from '@/components/ui/icons'
 
 
@@ -157,24 +157,26 @@ export function Navigation() {
         role="dialog"
         aria-label="Site menu"
       >
-        <Link
+        <TransitionLink
           href="/"
+          label="Home"
           className={activeSection === 'Home' ? 'on' : ''}
           onClick={closeMobileMenu}
         >
           <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
           Home
-        </Link>
+        </TransitionLink>
         {navItems.map((item) => (
-          <Link
+          <TransitionLink
             key={item.href}
             href={item.href}
+            label={item.label}
             className={activeSection === item.label ? 'on' : ''}
             onClick={closeMobileMenu}
           >
             <ArrowRight className="h-[5.13rem] w-[5.13rem] fill-none stroke-white stroke-[1.6]" />
             {item.label}
-          </Link>
+          </TransitionLink>
         ))}
         <button
           type="button"
@@ -187,27 +189,29 @@ export function Navigation() {
 
       <nav className="menu" id="menu" aria-label="Main">
         <div className="menu-c">
-          <Link
+          <TransitionLink
             href="/"
+            label="Home"
             className={`mi home ${activeSection === 'Home' ? 'on' : ''}`}
             data-hover
             aria-label="Home"
           >
             <span className="bg"></span>
             <HomeIcon />
-          </Link>
+          </TransitionLink>
 
           <div className="mlist">
             {navItems.map((item) => (
-              <Link
+              <TransitionLink
                 key={item.href}
                 href={item.href}
+                label={item.label}
                 className={`mi ${activeSection === item.label ? 'on' : ''}`}
                 data-hover
               >
                 <span className="bg"></span>
                 {item.label}
-              </Link>
+              </TransitionLink>
             ))}
           </div>
 
@@ -225,14 +229,15 @@ export function Navigation() {
             <span className="sr-only"> menu</span>
           </button>
 
-          <Link
+          <TransitionLink
             href="/contact"
+            label="Contact"
             className="talk"
             data-hover
           >
             Let&apos;s talk{' '}
             <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
-          </Link>
+          </TransitionLink>
         </div>
       </nav>
     </>
