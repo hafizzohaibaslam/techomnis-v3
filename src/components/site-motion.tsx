@@ -58,6 +58,11 @@ const $$ = (s: string) => [...document.querySelectorAll(s)]
 const rem = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
 const isMob = () => window.matchMedia('(max-width:1023px)').matches
 
+const ss = {
+  get: (k: string) => { try { return sessionStorage.getItem(k) } catch { return null } },
+  set: (k: string, v: string) => { try { sessionStorage.setItem(k, v) } catch {} }
+}
+
 function pillD(w: number, h: number) {
   const r = Math.max(1, h / 2 - 0.5), x0 = 0.5, y0 = 0.5, x1 = w - 0.5, y1 = h - 0.5, c = h / 2
   return `M${x0},${c}A${r},${r} 0 0 1 ${(x0 + r).toFixed(1)},${y0}L${(x1 - r).toFixed(1)},${y0}A${r},${r} 0 0 1 ${x1.toFixed(1)},${c}A${r},${r} 0 0 1 ${(x1 - r).toFixed(1)},${y1.toFixed(1)}L${(x0 + r).toFixed(1)},${y1.toFixed(1)}A${r},${r} 0 0 1 ${x0},${c}Z`
@@ -274,6 +279,46 @@ export function SiteMotion() {
     
     root.classList.add('js-motion')
     
+    const IS_HOME = !!$('#caseGrid') || pathname === '/'
+    const visited = ss.get('to-visited') === 'true'
+    const page = $('#page') as HTMLElement | null
+    const lcount = $('#lcount') as HTMLElement | null
+    const menu = $('#menu') as HTMLElement | null
+    
+    if (IS_HOME && !visited && page && lcount && !root.classList.contains('to-arrive')) {
+      const mob = isMob()
+      root.classList.add('loading')
+      if (lenisRef.current) lenisRef.current.stop()
+      if (menu) menu.style.opacity = '0'
+      lcount.style.display = 'block'
+      
+      const r = rem()
+      gsap.set(page, { scale: 0.8, y: mob ? 150 : 80, borderRadius: mob ? '6rem' : '2.4rem', overflow: 'hidden', height: '100vh', transformOrigin: '50% 50%' })
+      
+      const o = { v: 0 }
+      const tl = gsap.timeline({
+        onComplete: () => {
+          root.classList.remove('loading')
+          gsap.set(page, { clearProps: 'all' })
+          lcount.style.display = 'none'
+          if (lenisRef.current) lenisRef.current.start()
+          if (menu) gsap.to(menu, { opacity: 1, duration: 0.5 })
+          ss.set('to-visited', 'true')
+          ScrollTrigger.refresh()
+        }
+      })
+      tl.to(page, { y: 0, duration: 0.9, ease: 'circ.out' }, 0.2)
+        .to(o, { v: 100, duration: 2, ease: 'power1.out', onUpdate: () => { lcount.textContent = Math.round(o.v) + '%' } }, 0.7)
+        .addLabel('fin')
+        .to(lcount, { filter: `blur(${(mob ? 1.5 : 0.7) * r}px)`, duration: 0.5, ease: 'circ.out' }, mob ? 'fin+=0.2' : 'fin+=0.1')
+        .to(lcount, { opacity: 0, duration: mob ? 0.4 : 0.5, ease: 'circ.out' }, mob ? 'fin+=0.4' : 'fin+=0.3')
+        .to(page, { scale: 1, y: 0, borderRadius: 0, duration: 1, ease: 'power4.out' }, 'fin+=0.1')
+      
+      return
+    }
+    
+    if (!IS_HOME) ss.set('to-visited', 'true')
+    
     $$('.ln').forEach((l) => {
       const el = l as HTMLElement
       el.style.setProperty('--e', '0')
@@ -405,7 +450,7 @@ export function SiteMotion() {
     } else {
       root.classList.remove('to-arrive')
     }
-  }, [])
+  }, [pathname])
 
   useEffect(() => {
     let resizeTimer: ReturnType<typeof setTimeout>
