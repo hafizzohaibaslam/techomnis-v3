@@ -244,6 +244,8 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
 /* UXIS footer: the 7px underline is static (no hover wipe); it fades in 1.4 s after the footer enters, then the hands */
 .ft-cta .ltx.ul::after{display:none}
 .ft-cta a:hover .ltx.ul::before,.ft-cta a:focus-visible .ltx.ul::before{transform:none;transition:none}
+.ft-cta .emo{font-size:4.9rem;line-height:6.67rem;display:block;transition:transform .6s cubic-bezier(.34,1.56,.64,1)}
+.ft-cta a:hover .emo{transform:rotate(-12deg) scale(1.1)}
 .js-motion .ft-cta .ltx.ul::before,.js-motion .ft-cta .emo{opacity:0}
 .js-motion .ft-cta.ft-on .ltx.ul::before{opacity:1;transition:opacity .5s linear 1.4s}
 .js-motion .ft-cta.ft-on .emo{opacity:1;transition:opacity .5s linear 1.9s}
