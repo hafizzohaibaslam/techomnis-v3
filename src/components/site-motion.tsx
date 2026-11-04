@@ -285,6 +285,86 @@ export function SiteMotion() {
     const lcount = $('#lcount') as HTMLElement | null
     const menu = $('#menu') as HTMLElement | null
     
+    const setupScrollAnimations = () => {
+      $$('.ln').forEach((l) => {
+        const el = l as HTMLElement
+        el.style.setProperty('--e', '0')
+        const L = Math.max(el.offsetWidth, el.offsetHeight)
+        ScrollTrigger.create({ trigger: el, start: 'top bottom', once: true, onEnter: () => draw3(el, lineDur(L), E.css, 0) })
+      })
+      
+      $$('.vline').forEach((v) => {
+        const el = v as HTMLElement
+        el.style.setProperty('--e', '0')
+        ScrollTrigger.create({ trigger: el.parentElement, start: 'top bottom', once: true, onEnter: () => draw3(el, lineDur(el.offsetHeight), E.css, 0) })
+      })
+      
+      $$('.header.hl').forEach((h) => draw3(h as HTMLElement, 4, E.css, 0, '--h'))
+      
+      $$('.hx .hl').forEach((b) => gsap.fromTo(b, { scaleX: 0, transformOrigin: '0 0' }, { scaleX: 1, duration: 2, ease: (t: number) => E.hero(t), delay: 1 }))
+      $$('.hx .vl').forEach((b) => gsap.fromTo(b, { scaleY: 0, transformOrigin: '0 0' }, { scaleY: 1, duration: 2, ease: (t: number) => E.hero(t), delay: 1 }))
+      
+      const pio = new IntersectionObserver((es) => es.forEach((en) => {
+        if (en.isIntersecting) { en.target.classList.add('drawn'); pio.unobserve(en.target) }
+      }))
+      $$('.btn').forEach((b) => pio.observe(b))
+      
+      $$('.ft-cta').forEach((f) => {
+        ScrollTrigger.create({ trigger: f.closest('footer') || f, start: 'top bottom', once: true, onEnter: () => f.classList.add('ft-on') })
+      })
+      
+      const cio = new IntersectionObserver((es) => es.forEach((en) => {
+        if (!en.isIntersecting) return
+        const c = en.target as HTMLElement
+        cio.unobserve(c)
+        const end = +c.dataset.count!, dec = !!c.dataset.dec, o = { v: 0 }
+        gsap.to(o, {
+          v: end, duration: 3, ease: (t: number) => E.cnt(t),
+          onUpdate: () => c.textContent = dec ? o.v.toFixed(1) : String(Math.round(o.v)),
+          onComplete: () => c.textContent = dec ? end.toFixed(1) : String(end)
+        })
+      }))
+      $$('[data-count]').forEach((c) => { (c as HTMLElement).textContent = (c as HTMLElement).dataset.dec ? '0.0' : '0'; cio.observe(c) })
+      
+      $$('.media .art').forEach((a) => {
+        const art = a as HTMLElement
+        const sc = [...art.querySelectorAll('.scr')] as HTMLElement[]
+        if (!sc.length) return
+        const m = art.closest('.media')
+        const tl = gsap.timeline({ scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: 0.9 } })
+        if (m?.closest('.feature')) {
+          const X = [-7, 7, -7]
+          sc.forEach((s, k) => tl.fromTo(s, { xPercent: 0 }, { xPercent: X[k % 3], duration: 85, ease: (t: number) => k % 3 === 2 ? E.drift3(t) : E.drift(t) }, 0))
+          tl.to({}, { duration: 15 }, 85)
+        } else {
+          const Y = [[6.8, -6.8], [-3, 3], [6.5, -1]]
+          sc.forEach((s, k) => {
+            const [y0, y1] = Y[k % 3]
+            tl.fromTo(s, { yPercent: y0 }, { yPercent: y1, duration: 100, ease: (t: number) => k % 3 === 2 ? E.drift3(t) : E.drift(t) }, 0)
+          })
+        }
+      })
+      
+      const tw = $('#dirTw') as HTMLElement | null
+      if (tw) {
+        const ws = $$('#dirTw .w') as HTMLElement[]
+        tw.classList.add('scrub')
+        ws.forEach((w) => w.style.transform = '')
+        gsap.set(ws, { opacity: 0, scale: 0.8, transformOrigin: '50% 50%' })
+        const r = (v: number) => () => v * rem()
+        const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.direction', start: 'top bottom', end: 'bottom top', scrub: 0.5, invalidateOnRefresh: true } })
+        tl.fromTo(ws[0], { opacity: 1, scale: 1 }, { opacity: 1, scale: 1, duration: 55 }, 0)
+          .to(ws[0], { opacity: 0, scale: 0.8, y: r(-3), duration: 25 }, 55)
+          .fromTo(ws[1], { opacity: 0, scale: 0.8, y: r(3) }, { opacity: 1, scale: 1, y: 0, duration: 25 }, 35)
+          .to(ws[1], { opacity: 1, scale: 1, duration: 30 }, 60)
+          .to(ws[1], { opacity: 0, scale: 0.8, y: r(-3), duration: 25 }, 90)
+          .fromTo(ws[2], { opacity: 0, scale: 0.8, y: r(3) }, { opacity: 1, scale: 1, y: 0, duration: 25 }, 75)
+          .to(ws[2], { opacity: 1, scale: 1, duration: 40 }, 100)
+      }
+      
+      if (document.fonts) document.fonts.ready.then(() => { sizePills(); ScrollTrigger.refresh() })
+    }
+    
     if (IS_HOME && !visited && page && lcount && !root.classList.contains('to-arrive')) {
       const mob = isMob()
       root.classList.add('loading')
@@ -304,6 +384,7 @@ export function SiteMotion() {
           if (lenisRef.current) lenisRef.current.start()
           if (menu) gsap.to(menu, { opacity: 1, duration: 0.5 })
           ss.set('to-visited', 'true')
+          setupScrollAnimations()
           ScrollTrigger.refresh()
         }
       })
@@ -318,65 +399,7 @@ export function SiteMotion() {
     }
     
     if (!IS_HOME) ss.set('to-visited', 'true')
-    
-    $$('.ln').forEach((l) => {
-      const el = l as HTMLElement
-      el.style.setProperty('--e', '0')
-      const L = Math.max(el.offsetWidth, el.offsetHeight)
-      ScrollTrigger.create({ trigger: el, start: 'top bottom', once: true, onEnter: () => draw3(el, lineDur(L), E.css, 0) })
-    })
-    
-    $$('.vline').forEach((v) => {
-      const el = v as HTMLElement
-      el.style.setProperty('--e', '0')
-      ScrollTrigger.create({ trigger: el.parentElement, start: 'top bottom', once: true, onEnter: () => draw3(el, lineDur(el.offsetHeight), E.css, 0) })
-    })
-    
-    $$('.header.hl').forEach((h) => draw3(h as HTMLElement, 4, E.css, 0, '--h'))
-    
-    $$('.hx .hl').forEach((b) => gsap.fromTo(b, { scaleX: 0, transformOrigin: '0 0' }, { scaleX: 1, duration: 2, ease: (t: number) => E.hero(t), delay: 1 }))
-    $$('.hx .vl').forEach((b) => gsap.fromTo(b, { scaleY: 0, transformOrigin: '0 0' }, { scaleY: 1, duration: 2, ease: (t: number) => E.hero(t), delay: 1 }))
-    
-    const pio = new IntersectionObserver((es) => es.forEach((en) => {
-      if (en.isIntersecting) { en.target.classList.add('drawn'); pio.unobserve(en.target) }
-    }))
-    $$('.btn').forEach((b) => pio.observe(b))
-    
-    $$('.ft-cta').forEach((f) => {
-      ScrollTrigger.create({ trigger: f.closest('footer') || f, start: 'top bottom', once: true, onEnter: () => f.classList.add('ft-on') })
-    })
-    
-    const cio = new IntersectionObserver((es) => es.forEach((en) => {
-      if (!en.isIntersecting) return
-      const c = en.target as HTMLElement
-      cio.unobserve(c)
-      const end = +c.dataset.count!, dec = !!c.dataset.dec, o = { v: 0 }
-      gsap.to(o, {
-        v: end, duration: 3, ease: (t: number) => E.cnt(t),
-        onUpdate: () => c.textContent = dec ? o.v.toFixed(1) : String(Math.round(o.v)),
-        onComplete: () => c.textContent = dec ? end.toFixed(1) : String(end)
-      })
-    }))
-    $$('[data-count]').forEach((c) => { (c as HTMLElement).textContent = (c as HTMLElement).dataset.dec ? '0.0' : '0'; cio.observe(c) })
-    
-    $$('.media .art').forEach((a) => {
-      const art = a as HTMLElement
-      const sc = [...art.querySelectorAll('.scr')] as HTMLElement[]
-      if (!sc.length) return
-      const m = art.closest('.media')
-      const tl = gsap.timeline({ scrollTrigger: { trigger: m, start: 'top bottom', end: 'bottom top', scrub: 0.9 } })
-      if (m?.closest('.feature')) {
-        const X = [-7, 7, -7]
-        sc.forEach((s, k) => tl.fromTo(s, { xPercent: 0 }, { xPercent: X[k % 3], duration: 85, ease: (t: number) => k % 3 === 2 ? E.drift3(t) : E.drift(t) }, 0))
-        tl.to({}, { duration: 15 }, 85)
-      } else {
-        const Y = [[6.8, -6.8], [-3, 3], [6.5, -1]]
-        sc.forEach((s, k) => {
-          const v = Y[k % 3]
-          tl.fromTo(s, { y: () => v[0] * 0.5 * rem() }, { y: () => v[1] * 0.5 * rem(), duration: 100, ease: (t: number) => E.drift(t) }, 0)
-        })
-      }
-    })
+    setupScrollAnimations()
     
     const pins = $$('.pin') as HTMLElement[]
     if (pins.length) {
@@ -413,20 +436,6 @@ export function SiteMotion() {
       const L = circle.getTotalLength ? circle.getTotalLength() : 200
       gsap.fromTo(circle, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 2, ease: (t: number) => E.css(t), delay: 0.5 })
     })
-    
-    const tw = $('#dirTw') as HTMLElement | null
-    if (tw && !isMob()) {
-      const ws = $$('#dirTw .w') as HTMLElement[]
-      tw.classList.add('scrub')
-      ws.forEach((w) => w.style.transform = '')
-      gsap.set(ws, { opacity: 0, scale: 0.8, transformOrigin: '50% 50%' })
-      const r = (v: number) => () => v * rem()
-      const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.direction', start: 'top bottom', end: 'bottom top', scrub: 0.5, invalidateOnRefresh: true } })
-      tl.fromTo(tw, { y: r(9) }, { y: r(9), duration: 10 }, 0).to(tw, { y: 0, duration: 10 }, 10).to(tw, { y: r(-15), duration: 12 }, 51).to(tw, { y: r(-32), duration: 11.5 }, 63)
-        .to(ws[0], { opacity: 1, scale: 1, duration: 10 }, 10).to(ws[0], { opacity: 0, scale: 0.8, duration: 4 }, 51)
-        .to(ws[1], { opacity: 1, scale: 1, duration: 13 }, 50).to(ws[1], { opacity: 0, scale: 0.8, duration: 7 }, 63)
-        .to(ws[2], { opacity: 1, scale: 1, duration: 8.5 }, 66).to({}, { duration: 25.5 }, 74.5)
-    }
     
     initSliders()
     bindHovers()
