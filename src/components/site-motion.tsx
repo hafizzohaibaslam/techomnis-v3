@@ -250,6 +250,48 @@ export function SiteMotion() {
 
   const cleanup = useCallback(() => {
     ScrollTrigger.getAll().forEach((st) => st.kill())
+    
+    $$('.ln,.vline,.header.hl').forEach((el) => {
+      const h = el as HTMLElement
+      delete h.dataset.lineDrawn
+      ;['--s', '--e', '--hs', '--he'].forEach((k) => h.style.removeProperty(k))
+    })
+    
+    $$('[data-count]').forEach((c) => {
+      const el = c as HTMLElement
+      el.textContent = el.dataset.dec ? '0.0' : '0'
+    })
+    
+    $$('.btn').forEach((b) => b.classList.remove('drawn'))
+    $$('.ft-cta').forEach((f) => f.classList.remove('ft-on'))
+    
+    $$('[data-drawn]').forEach((s) => {
+      const svg = s as HTMLElement
+      delete svg.dataset.drawn
+      ;[...svg.querySelectorAll('path,line,polyline,polygon,circle,ellipse,rect,text,.loopdot')].forEach((p) => {
+        const el = p as HTMLElement
+        el.style.strokeDasharray = ''
+        el.style.strokeDashoffset = ''
+        el.style.opacity = ''
+      })
+    })
+    
+    $$('.pin,.dia-fade').forEach((c) => { (c as HTMLElement).style.opacity = '' })
+    $$('.media .scr').forEach((c) => { (c as HTMLElement).style.translate = '' })
+    
+    $$('#dirTw .w').forEach((w) => {
+      const el = w as HTMLElement
+      el.style.transform = ''
+      el.style.opacity = ''
+    })
+    
+    $$('.qslide').forEach((s, k) => {
+      const el = s as HTMLElement
+      el.style.transform = ''
+      el.style.visibility = ''
+      el.classList.toggle('on', k === 0)
+    })
+    
     if (lenisRef.current) {
       lenisRef.current.destroy()
       lenisRef.current = null
@@ -407,49 +449,51 @@ export function SiteMotion() {
       return
     }
     
-    if (!IS_HOME) ss.set('to-visited', 'true')
-    setupScrollAnimations()
-    
-    const pins = $$('.pin') as HTMLElement[]
-    if (pins.length) {
-      gsap.set(pins, { opacity: 0 })
-      ScrollTrigger.create({ trigger: pins[0].parentElement, start: 'top bottom', once: true, onEnter: () => pins.forEach((p, k) => gsap.to(p, { opacity: 1, duration: 0.3, ease: 'circ.out', delay: 0.3 * (k + 1) })) })
-    }
-    
-    $$('svg.dia,svg.venn,svg.darrow,.loop,.appr svg').forEach((svg) => {
-      const parts = [...svg.querySelectorAll('path,line,polyline,polygon,circle,ellipse,rect,text,.loopdot')]
-      if (!parts.length) return
-      const strokes: [Element, number][] = [], fades: Element[] = []
-      parts.forEach((p) => {
-        if (p.closest('defs,clipPath,mask')) return
-        const cs = getComputedStyle(p)
-        const st = cs.stroke && cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0
-        const geom = p as SVGGeometryElement
-        if (st && geom.getTotalLength && cs.strokeDasharray === 'none' && (cs.fill === 'none' || cs.fillOpacity === '0' || cs.fill === 'transparent')) {
-          let L = 0; try { L = geom.getTotalLength() } catch {}
-          if (L > 0) { strokes.push([p, L]); return }
-        }
-        fades.push(p)
+    const setupAllAnimations = () => {
+      if (!IS_HOME) ss.set('to-visited', 'true')
+      setupScrollAnimations()
+      
+      const pins = $$('.pin') as HTMLElement[]
+      if (pins.length) {
+        gsap.set(pins, { opacity: 0 })
+        ScrollTrigger.create({ trigger: pins[0].parentElement, start: 'top bottom', once: true, onEnter: () => pins.forEach((p, k) => gsap.to(p, { opacity: 1, duration: 0.3, ease: 'circ.out', delay: 0.3 * (k + 1) })) })
+      }
+      
+      $$('svg.dia,svg.venn,svg.darrow,.loop,.appr svg').forEach((svg) => {
+        const parts = [...svg.querySelectorAll('path,line,polyline,polygon,circle,ellipse,rect,text,.loopdot')]
+        if (!parts.length) return
+        const strokes: [Element, number][] = [], fades: Element[] = []
+        parts.forEach((p) => {
+          if (p.closest('defs,clipPath,mask')) return
+          const cs = getComputedStyle(p)
+          const st = cs.stroke && cs.stroke !== 'none' && parseFloat(cs.strokeWidth) > 0
+          const geom = p as SVGGeometryElement
+          if (st && geom.getTotalLength && cs.strokeDasharray === 'none' && (cs.fill === 'none' || cs.fillOpacity === '0' || cs.fill === 'transparent')) {
+            let L = 0; try { L = geom.getTotalLength() } catch {}
+            if (L > 0) { strokes.push([p, L]); return }
+          }
+          fades.push(p)
+        })
+        ;(svg as HTMLElement).dataset.drawn = '1'
+        strokes.forEach(([p, L]) => { const el = p as HTMLElement; el.style.strokeDasharray = String(L); el.style.strokeDashoffset = String(L) })
+        fades.forEach((p) => { (p as HTMLElement).style.opacity = '0' })
+        ScrollTrigger.create({ trigger: svg, start: 'top 90%', once: true, onEnter: () => {
+          strokes.forEach(([p], k) => gsap.to(p, { strokeDashoffset: 0, duration: 1.6, ease: 'power1.inOut', delay: Math.min(0.8, k * 0.08), onComplete: () => { const el = p as HTMLElement; el.style.strokeDasharray = ''; el.style.strokeDashoffset = '' } }))
+          if (fades.length) gsap.to(fades, { opacity: 1, duration: 0.5, ease: 'none', delay: strokes.length ? 1.4 : 0, stagger: { amount: Math.min(0.6, fades.length * 0.05) } })
+        }})
       })
-      ;(svg as HTMLElement).dataset.drawn = '1'
-      strokes.forEach(([p, L]) => { const el = p as HTMLElement; el.style.strokeDasharray = String(L); el.style.strokeDashoffset = String(L) })
-      fades.forEach((p) => { (p as HTMLElement).style.opacity = '0' })
-      ScrollTrigger.create({ trigger: svg, start: 'top 90%', once: true, onEnter: () => {
-        strokes.forEach(([p], k) => gsap.to(p, { strokeDashoffset: 0, duration: 1.6, ease: 'power1.inOut', delay: Math.min(0.8, k * 0.08), onComplete: () => { const el = p as HTMLElement; el.style.strokeDasharray = ''; el.style.strokeDashoffset = '' } }))
-        if (fades.length) gsap.to(fades, { opacity: 1, duration: 0.5, ease: 'none', delay: strokes.length ? 1.4 : 0, stagger: { amount: Math.min(0.6, fades.length * 0.05) } })
-      }})
-    })
-    
-    $$('.rnd circle').forEach((c) => {
-      const circle = c as SVGCircleElement
-      const L = circle.getTotalLength ? circle.getTotalLength() : 200
-      gsap.fromTo(circle, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 2, ease: (t: number) => E.css(t), delay: 0.5 })
-    })
-    
-    initSliders()
-    bindHovers()
-    
-    if (document.fonts) document.fonts.ready.then(() => { sizePills(); ScrollTrigger.refresh() })
+      
+      $$('.rnd circle').forEach((c) => {
+        const circle = c as SVGCircleElement
+        const L = circle.getTotalLength ? circle.getTotalLength() : 200
+        gsap.fromTo(circle, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 2, ease: (t: number) => E.css(t), delay: 0.5 })
+      })
+      
+      initSliders()
+      bindHovers()
+      
+      if (document.fonts) document.fonts.ready.then(() => { sizePills(); ScrollTrigger.refresh() })
+    }
     
     const trans = $('#trans') as HTMLElement | null
     const trw = $('#trans .trw') as HTMLElement | null
@@ -464,9 +508,14 @@ export function SiteMotion() {
       root.classList.remove('to-arrive')
       gsap.to(transT, { y: -pH, duration: 0.7, delay: 0.7, ease: (t: number) => E.tIn(t) })
       gsap.to(trans, { yPercent: -100, duration: 0.8, delay: 0.9, ease: (t: number) => E.tOut(t) })
-      gsap.to(trw, { yPercent: 100, duration: 0.8, delay: 0.9, ease: (t: number) => E.tOut(t), onComplete: () => { gsap.set(trans, { display: 'none', visibility: 'hidden' }) } })
+      gsap.to(trw, { yPercent: 100, duration: 0.8, delay: 0.9, ease: (t: number) => E.tOut(t), onComplete: () => { 
+        gsap.set(trans, { display: 'none', visibility: 'hidden' })
+        setupAllAnimations()
+        ScrollTrigger.refresh()
+      } })
     } else {
       root.classList.remove('to-arrive')
+      setupAllAnimations()
     }
   }, [pathname])
 
