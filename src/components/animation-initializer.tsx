@@ -236,26 +236,8 @@ export function AnimationInitializer() {
     document.querySelectorAll('.btn').forEach((btn) => btnObserver.observe(btn))
     observersRef.current.push(btnObserver)
 
-    const counterObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target as HTMLElement
-            const end = parseFloat(el.dataset.count || '0')
-            const dec = !!el.dataset.dec
-            animateCounter(el, end, dec)
-            counterObserver.unobserve(el)
-          }
-        })
-      },
-      { threshold: 0 }
-    )
-    document.querySelectorAll('[data-count]').forEach((el) => {
-      const htmlEl = el as HTMLElement
-      htmlEl.textContent = htmlEl.dataset.dec ? '0.0' : '0'
-      counterObserver.observe(el)
-    })
-    observersRef.current.push(counterObserver)
+    // Note: Counter animations are handled by individual components using GSAP ScrollTrigger
+    // (WhyUs component handles homepage counters, inner page footers handle their own)
 
     const ftObserver = new IntersectionObserver(
       (entries) => {
@@ -361,19 +343,7 @@ export function AnimationInitializer() {
   return null
 }
 
-function animateCounter(el: HTMLElement, end: number, dec: boolean) {
-  const dur = 3000
-  const start = performance.now()
-  el.classList.add('counted')
-  const animate = () => {
-    const t = Math.min(1, (performance.now() - start) / dur)
-    const v = end * E.cnt(t)
-    el.textContent = dec ? v.toFixed(1) : Math.round(v).toString()
-    if (t < 1) requestAnimationFrame(animate)
-    else el.textContent = dec ? end.toFixed(1) : end.toString()
-  }
-  requestAnimationFrame(animate)
-}
+// Counter animations are handled by GSAP in individual components (WhyUs, etc.)
 
 function animateDiagram(svg: SVGElement) {
   const paths = svg.querySelectorAll('path, line, polyline, polygon, circle, ellipse')
