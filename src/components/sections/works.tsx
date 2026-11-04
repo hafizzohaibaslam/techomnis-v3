@@ -1,26 +1,66 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
-import { caseStudies, type CaseStudy } from '@/content/cases'
+import Link from 'next/link'
+import { cases, type CaseStudy } from '@/content/cases'
 import { ArrowRight } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
 
-const featuredCase = caseStudies.find(c => c.isFeatured) || caseStudies[0]
-const displayCases = caseStudies.filter(c => c.id !== featuredCase.id).slice(0, 4)
-const totalCaseStudies = caseStudies.length
+const featuredCase = cases[0]
+const displayCases = cases.slice(1, 5)
+const totalCaseStudies = cases.length
 
-function CaseImage({ src, alt }: { src: string; alt: string }) {
+function CaseArt({ gradient, rotation = -5 }: { gradient: [string, string]; rotation?: number }) {
+  const gradientStyle = `linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`
   return (
-    <img
-      src={src}
-      alt={alt}
-      className="art"
-      style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-      }}
-    />
+    <div className="art" style={{ background: gradientStyle }}>
+      <div
+        className="scr"
+        style={{
+          left: '10%',
+          top: '18%',
+          width: '46%',
+          height: '88%',
+          transform: `rotate(${rotation}deg)`,
+        }}
+      >
+        <i style={{ top: '16%' }}></i>
+        <i style={{ top: '24%', right: '40%' }}></i>
+        <b
+          style={{
+            left: '8%',
+            right: '8%',
+            top: '36%',
+            height: '36%',
+            background: gradient[1],
+            opacity: 0.55,
+          }}
+        ></b>
+      </div>
+      <div
+        className="scr"
+        style={{
+          left: '52%',
+          top: '28%',
+          width: '38%',
+          height: '80%',
+          transform: `rotate(${rotation}deg)`,
+        }}
+      >
+        <i style={{ top: '18%' }}></i>
+        <b
+          style={{
+            left: '8%',
+            width: '38%',
+            top: '30%',
+            height: '24%',
+            background: gradient[1],
+          }}
+        ></b>
+        <i style={{ top: '64%' }}></i>
+        <i style={{ top: '72%', right: '30%' }}></i>
+      </div>
+    </div>
   )
 }
 
@@ -28,10 +68,12 @@ function MediaLink({
   href,
   label,
   children,
+  hasPage,
 }: {
   href: string
   label: string
   children: React.ReactNode
+  hasPage: boolean
 }) {
   const moreRef = useRef<HTMLSpanElement>(null)
 
@@ -52,25 +94,40 @@ function MediaLink({
     return () => mediaEl.removeEventListener('mousemove', handleMouseMove as EventListener)
   }, [])
 
+  if (!hasPage) {
+    return (
+      <div className="media" data-media data-ph aria-label={label}>
+        {children}
+        <div className="dark"></div>
+        <span ref={moreRef} className="more" aria-hidden="true">
+          Coming soon
+        </span>
+        <span className="ph phtag">Product shot placeholder</span>
+      </div>
+    )
+  }
+
   return (
-    <a href={href} className="media" data-media aria-label={label}>
+    <Link href={href} className="media" data-media aria-label={label}>
       {children}
       <div className="dark"></div>
       <span ref={moreRef} className="more" aria-hidden="true">
-        Read more{' '}
-        <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
+        Read more <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
       </span>
-    </a>
+      <span className="ph phtag">Product shot placeholder</span>
+    </Link>
   )
 }
 
 function FeaturedCase() {
-  const metrics = featuredCase.results.slice(0, 2)
-  
   return (
     <div className="feature ln lb">
-      <MediaLink href={`/work/${featuredCase.slug}`} label={`${featuredCase.name} case study`}>
-        <CaseImage src={featuredCase.image} alt={featuredCase.name} />
+      <MediaLink
+        href={featuredCase.hasPage ? `/work/${featuredCase.slug}` : '#'}
+        label={`${featuredCase.name} case study`}
+        hasPage={featuredCase.hasPage}
+      >
+        <CaseArt gradient={featuredCase.gradient} rotation={featuredCase.rotation} />
       </MediaLink>
       <div className="feature-row">
         <div className="nm">
@@ -87,18 +144,18 @@ function FeaturedCase() {
         </div>
         <div className="ov">
           <div className="desc">
-            <p className="h-sub">{featuredCase.tagline}</p>
+            <p className="h-sub">{featuredCase.category}</p>
             <p className="t-reg">{featuredCase.description}</p>
           </div>
-          {metrics.map((metric, index) => (
-            <div key={index} className="met ln ll">
-              <p className="h-sub">{metric.label}</p>
+          {featuredCase.metric && (
+            <div className="met ln ll">
+              <p className="h-sub">{featuredCase.metric.label}</p>
               <p className="num">
-                {metric.value.split(' ')[0]}{' '}
-                {metric.value.split(' ')[1] && <small>{metric.value.split(' ')[1]}</small>}
+                {featuredCase.metric.value}
+                {featuredCase.metric.placeholder && <span className="ph"> Placeholder</span>}
               </p>
             </div>
-          ))}
+          )}
         </div>
       </div>
     </div>
@@ -113,21 +170,29 @@ function CaseCard({
   index: number
 }) {
   const isRight = index % 2 === 1
-  const primaryMetric = caseStudy.results[0]
 
   return (
     <div className={`case ln lb ${isRight ? 'r' : 'lr'}`}>
-      <MediaLink href={`/work/${caseStudy.slug}`} label={`${caseStudy.name} case study`}>
-        <CaseImage src={caseStudy.image} alt={caseStudy.name} />
+      <MediaLink
+        href={caseStudy.hasPage ? `/work/${caseStudy.slug}` : '#'}
+        label={`${caseStudy.name} case study`}
+        hasPage={caseStudy.hasPage}
+      >
+        <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
       </MediaLink>
       <div className="case-meta">
         <h3 className="h-small">
           <span className="ul">{caseStudy.name}</span>
         </h3>
-        <div className="case-stat">
-          <span className="num">{primaryMetric?.value || 'TBC'}</span>
-          <p className="t-reg">{primaryMetric?.label || 'Metrics coming soon'}</p>
-        </div>
+        {caseStudy.metric && (
+          <div className="case-stat">
+            <span className="num">{caseStudy.metric.value}</span>
+            <p className="t-reg">
+              {caseStudy.metric.label}
+              {caseStudy.metric.placeholder && <span className="ph"> Placeholder</span>}
+            </p>
+          </div>
+        )}
         <div className="tags">
           {caseStudy.tags.slice(0, 3).map((tag) => (
             <span key={tag} className="tag">
@@ -150,12 +215,10 @@ export function Works() {
         <FeaturedCase />
         <div className="g2" id="caseGrid">
           {displayCases.map((caseStudy, index) => (
-            <CaseCard key={caseStudy.id} caseStudy={caseStudy} index={index} />
+            <CaseCard key={caseStudy.slug} caseStudy={caseStudy} index={index} />
           ))}
           <div className="case r ln lb view-more">
-            <Button href="/work">
-              View all {totalCaseStudies} case studies
-            </Button>
+            <Button href="/work">View all {totalCaseStudies} case studies</Button>
           </div>
         </div>
       </div>

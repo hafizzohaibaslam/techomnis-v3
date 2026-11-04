@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef, useCallback } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
 import { HomeIcon, ArrowRight, MenuIcon } from '@/components/ui/icons'
@@ -25,7 +25,16 @@ const sectionMappings = [
 export function Navigation() {
   const pathname = usePathname()
   const isHomePage = pathname === '/'
-  const [activeSection, setActiveSection] = useState('Home')
+  
+  const initialSection = useMemo(() => {
+    if (!isHomePage) {
+      const current = navItems.find((item) => pathname.startsWith(item.href))
+      return current?.label || 'Home'
+    }
+    return 'Home'
+  }, [pathname, isHomePage])
+  
+  const [activeSection, setActiveSection] = useState(initialSection)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const mobBtnRef = useRef<HTMLButtonElement>(null)
   const panelRef = useRef<HTMLDivElement>(null)
@@ -33,8 +42,7 @@ export function Navigation() {
 
   useEffect(() => {
     if (!isHomePage) {
-      const current = navItems.find((item) => pathname.startsWith(item.href))
-      setActiveSection(current?.label || 'Home')
+      requestAnimationFrame(() => setActiveSection(initialSection))
       return
     }
 
@@ -84,7 +92,7 @@ export function Navigation() {
       observer.disconnect()
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [isHomePage, pathname])
+  }, [isHomePage, pathname, initialSection])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -122,26 +130,6 @@ export function Navigation() {
     mq.addEventListener('change', handler)
     return () => mq.removeEventListener('change', handler)
   }, [])
-
-  const handleAnchorClick = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-      if (!isHomePage) return
-      e.preventDefault()
-      const target = document.querySelector(href)
-      if (target) {
-        target.scrollIntoView({ behavior: motionEnabled ? 'smooth' : 'auto' })
-        if (href === '#contact') {
-          const ctaLink = target.querySelector('.ft-cta a')
-          if (ctaLink) (ctaLink as HTMLElement).focus({ preventScroll: true })
-        } else {
-          ;(target as HTMLElement).setAttribute('tabindex', '-1')
-          ;(target as HTMLElement).focus({ preventScroll: true })
-        }
-      }
-      setMobileMenuOpen(false)
-    },
-    [motionEnabled, isHomePage]
-  )
 
   const closeMobileMenu = () => setMobileMenuOpen(false)
 

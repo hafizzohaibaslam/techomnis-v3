@@ -1,24 +1,25 @@
 import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { LogoMark } from '@/components/ui/icons'
 
 export default function NotFound() {
   return (
-    <main className="page not-found" id="top">
-      <div className="wrap">
-        <div className="not-found-content center">
-          <span className="not-found-code h-large">404</span>
-          <h1 className="h-medium">Page not found</h1>
-          <p className="t-reg grey">
-            The page you're looking for doesn't exist or has been moved.
+    <div className="page" id="page">
+      <main id="main">
+        <section className="e404" aria-label="Page not found">
+          <h1 className="dg" aria-label="404, page not found">
+            <span aria-hidden="true">4</span>
+            <LogoMark className="inline h-[1em] w-[1em]" />
+            <span aria-hidden="true">4</span>
+          </h1>
+          <p className="t-reg">
+            The page you are looking for does not exist or has been moved. Let&apos;s get you back
+            on track.
           </p>
-          <div className="not-found-actions">
-            <Button href="/">Go home</Button>
-            <Link href="/contact" className="t-reg ul">
-              Contact us
-            </Link>
-          </div>
-        </div>
-      </div>
-    </main>
+          <Link href="/" className="bbtn bk" data-hover data-bbtn data-go="Home">
+            Back to homepage
+          </Link>
+        </section>
+      </main>
+    </div>
   )
 }

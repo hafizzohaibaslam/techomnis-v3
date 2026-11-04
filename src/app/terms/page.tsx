@@ -1,92 +1,98 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | TechOmnis',
-  description: 'TechOmnis Terms of Service - The terms and conditions for using our services.',
+  title: 'Terms of Service · TechOmnis',
+  description: 'Terms and conditions for using the TechOmnis website and services.',
 }
 
 export default function TermsPage() {
   return (
-    <main className="page" id="top">
-      <div className="wrap">
-        <header className="legal-header">
-          <span className="eyebrow">Legal</span>
-          <h1 className="h-large">Terms of Service</h1>
-          <p className="t-small grey">Last updated: November 2024</p>
-        </header>
-
-        <div className="legal-content">
-          <div className="placeholder-legal-notice">
-            <span className="ph">This is placeholder legal copy. Please replace with actual terms of service before launch.</span>
+    <div className="page" id="page">
+      <main id="main">
+        <Link
+          href="/"
+          className="closeb"
+          data-back
+          data-go="Home"
+          data-hover
+          aria-label="Close and go to the homepage"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2 2l12 12M14 2L2 14" fill="none" />
+          </svg>
+        </Link>
+        <section className="policy" aria-label="Terms of service">
+          <div className="pol">
+            <div className="blk">
+              <h1>Terms of Service</h1>
+              <p>
+                <span className="ph">Placeholder text, needs legal review before launch</span>
+              </p>
+              <p>
+                Last updated: <span className="ph">Date TBC</span>
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Agreement to terms</h2>
+              <p>
+                By accessing or using the TechOmnis website, you agree to be bound by these Terms
+                of Service. If you disagree with any part of the terms, you may not access the
+                website.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Services</h2>
+              <p>
+                TechOmnis provides product engineering services including MVP rescue, full product
+                builds and AI/LLM features. Specific terms for each engagement are defined in
+                individual project agreements.
+              </p>
+              <ul>
+                <li>MVP rescue and code audit</li>
+                <li>Full product engineering</li>
+                <li>AI and LLM features</li>
+              </ul>
+            </div>
+            <div className="blk">
+              <h2>Intellectual property</h2>
+              <p>
+                Unless otherwise agreed in writing, all intellectual property created during a
+                project belongs to the client upon full payment. TechOmnis retains the right to
+                use general knowledge and techniques learned during the engagement.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Limitation of liability</h2>
+              <p>
+                TechOmnis shall not be liable for any indirect, incidental, special, consequential
+                or punitive damages resulting from your use of or inability to use the service.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Governing law</h2>
+              <p>
+                These terms shall be governed by and construed in accordance with the laws of
+                Pakistan, without regard to its conflict of law provisions.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Changes to terms</h2>
+              <p>
+                We reserve the right to modify or replace these terms at any time. We will provide
+                notice of any changes by posting the new terms on this page.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Contact</h2>
+              <p>Questions about these terms can be sent to hello@techomnis.com.</p>
+              <p>
+                <span className="ph">Confirm address</span>
+              </p>
+            </div>
           </div>
-
-          <section className="legal-section">
-            <h2 className="h-sub">1. Acceptance of Terms</h2>
-            <p className="t-reg">
-              By accessing and using the TechOmnis website and services, you accept and agree to be bound by 
-              the terms and provisions of this agreement.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">2. Services</h2>
-            <p className="t-reg">
-              TechOmnis provides product engineering, software development, and related consulting services. 
-              Specific terms for individual projects will be outlined in separate service agreements.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">3. Intellectual Property</h2>
-            <p className="t-reg">
-              Unless otherwise specified in a project agreement, all intellectual property rights for work 
-              created by TechOmnis will be assigned to the client upon full payment.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">4. Confidentiality</h2>
-            <p className="t-reg">
-              TechOmnis agrees to maintain the confidentiality of all client information and proprietary 
-              materials shared during the course of any engagement.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">5. Limitation of Liability</h2>
-            <p className="t-reg">
-              TechOmnis shall not be liable for any indirect, incidental, special, consequential, or punitive 
-              damages resulting from your use of our services.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">6. Termination</h2>
-            <p className="t-reg">
-              Either party may terminate a service agreement with written notice as specified in the 
-              individual project contract.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">7. Governing Law</h2>
-            <p className="t-reg">
-              These terms shall be governed by and construed in accordance with applicable laws.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">8. Contact</h2>
-            <p className="t-reg">
-              For questions about these terms, contact us at{' '}
-              <a href="mailto:hello@techomnis.com" className="ul">
-                hello@techomnis.com
-              </a>
-              <span className="ph" style={{ marginLeft: '0.5rem' }}>Email placeholder</span>
-            </p>
-          </section>
-        </div>
-      </div>
-    </main>
+        </section>
+      </main>
+    </div>
   )
 }

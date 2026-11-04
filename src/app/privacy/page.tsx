@@ -1,85 +1,96 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | TechOmnis',
-  description: 'TechOmnis Privacy Policy - How we collect, use, and protect your information.',
+  title: 'Privacy Policy · TechOmnis',
+  description: 'How TechOmnis handles personal data sent through this website.',
 }
 
 export default function PrivacyPage() {
   return (
-    <main className="page" id="top">
-      <div className="wrap">
-        <header className="legal-header">
-          <span className="eyebrow">Legal</span>
-          <h1 className="h-large">Privacy Policy</h1>
-          <p className="t-small grey">Last updated: November 2024</p>
-        </header>
-
-        <div className="legal-content">
-          <div className="placeholder-legal-notice">
-            <span className="ph">This is placeholder legal copy. Please replace with actual privacy policy before launch.</span>
+    <div className="page" id="page">
+      <main id="main">
+        <Link
+          href="/"
+          className="closeb"
+          data-back
+          data-go="Home"
+          data-hover
+          aria-label="Close and go to the homepage"
+        >
+          <svg viewBox="0 0 16 16" aria-hidden="true">
+            <path d="M2 2l12 12M14 2L2 14" fill="none" />
+          </svg>
+        </Link>
+        <section className="policy" aria-label="Privacy policy">
+          <div className="pol">
+            <div className="blk">
+              <h1>Privacy Policy</h1>
+              <p>
+                <span className="ph">Placeholder text, needs legal review before launch</span>
+              </p>
+              <p>
+                Last updated: <span className="ph">Date TBC</span>
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Who we are</h2>
+              <p>
+                TechOmnis is a product engineering team founded in Lahore in 2024. This policy
+                explains what personal data we collect through this website and how we use it.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>What we collect</h2>
+              <p>
+                When you contact us we collect the details you send, such as your name, email
+                address and project details. We may also collect basic usage data, such as pages
+                visited and device type.
+              </p>
+              <ul>
+                <li>Name and email address</li>
+                <li>Project details you choose to share</li>
+                <li>Basic, anonymous usage data</li>
+              </ul>
+            </div>
+            <div className="blk">
+              <h2>How we use it</h2>
+              <p>
+                We use your details to reply to you, to prepare proposals and to deliver the work
+                you ask for. We do not sell your personal data.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Cookies</h2>
+              <p>
+                This site may use cookies for basic functionality and anonymous analytics. You can
+                block cookies in your browser settings.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>How long we keep it</h2>
+              <p>
+                We keep enquiry data only as long as needed to answer you and to meet legal and
+                accounting duties.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Your rights</h2>
+              <p>
+                You can ask to see, correct or delete the personal data we hold about you. Contact
+                us and we will reply as soon as we can.
+              </p>
+            </div>
+            <div className="blk">
+              <h2>Contact</h2>
+              <p>Questions about this policy can be sent to hello@techomnis.com.</p>
+              <p>
+                <span className="ph">Confirm address</span>
+              </p>
+            </div>
           </div>
-
-          <section className="legal-section">
-            <h2 className="h-sub">1. Information We Collect</h2>
-            <p className="t-reg">
-              We collect information you provide directly to us, such as when you fill out a contact form, 
-              request a quote, or communicate with us via email.
-            </p>
-            <p className="t-reg">
-              This may include your name, email address, company name, phone number, and any other 
-              information you choose to provide.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">2. How We Use Your Information</h2>
-            <p className="t-reg">We use the information we collect to:</p>
-            <ul className="legal-list">
-              <li>Respond to your inquiries and provide customer service</li>
-              <li>Send you project proposals and quotes</li>
-              <li>Communicate with you about our services</li>
-              <li>Improve our website and services</li>
-            </ul>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">3. Information Sharing</h2>
-            <p className="t-reg">
-              We do not sell, trade, or otherwise transfer your personal information to third parties. 
-              This does not include trusted third parties who assist us in operating our website or 
-              conducting our business, so long as those parties agree to keep this information confidential.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">4. Data Security</h2>
-            <p className="t-reg">
-              We implement a variety of security measures to maintain the safety of your personal information. 
-              However, no method of transmission over the Internet or electronic storage is 100% secure.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">5. Cookies</h2>
-            <p className="t-reg">
-              Our website may use cookies to enhance your experience. You can choose to have your computer 
-              warn you each time a cookie is being sent, or you can choose to turn off all cookies.
-            </p>
-          </section>
-
-          <section className="legal-section">
-            <h2 className="h-sub">6. Contact Us</h2>
-            <p className="t-reg">
-              If you have any questions about this Privacy Policy, please contact us at{' '}
-              <a href="mailto:hello@techomnis.com" className="ul">
-                hello@techomnis.com
-              </a>
-              <span className="ph" style={{ marginLeft: '0.5rem' }}>Email placeholder</span>
-            </p>
-          </section>
-        </div>
-      </div>
-    </main>
+        </section>
+      </main>
+    </div>
   )
 }

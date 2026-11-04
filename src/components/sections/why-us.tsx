@@ -1,10 +1,11 @@
 'use client'
 
 import { useRef } from 'react'
+import Link from 'next/link'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { useGSAP } from '@gsap/react'
-import { teamMembers } from '@/content/team'
+import { teamMembers, type TeamMember } from '@/content/team'
 import { counterStats, awardStats } from '@/content/stats'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
 import { Button } from '@/components/ui/button'
@@ -12,38 +13,59 @@ import { useMotion } from '@/hooks/use-motion'
 
 gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-function ProfileCard({ member }: { member: (typeof teamMembers)[0] }) {
+function ProfileCard({ member }: { member: TeamMember }) {
   return (
     <div className="profile ln lr lb">
-      <img 
-        src={member.image} 
-        alt={member.name}
-        className="avatar"
-        style={{ objectFit: 'cover' }}
-      />
+      <div className="avatar" role="img" aria-label={`Photo placeholder for ${member.name}`}>
+        {member.initials}
+      </div>
       <p className="nm">{member.name}</p>
       <p className="cap">{member.role}</p>
-      <p className="t-reg bio">{member.bio}</p>
-      <a href="#contact" className="read t-reg" data-hover>
+      <p className="t-reg bio">
+        {member.bio[0]}
+        {member.bio.length > 1 && member.metric.placeholder && (
+          <span className="ph"> Bio placeholder</span>
+        )}
+      </p>
+      <Link href="/about#team" className="read t-reg" data-go="About">
         <span className="ul">Read details</span>
-      </a>
+      </Link>
       <span className="foot psoc">
-        {member.socials.map((social, index) => (
+        {member.linkedin && (
           <a
-            key={index}
-            href={social.url}
+            href={member.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             data-hover
-            aria-label={`${member.name} on ${social.platform === 'linkedin' ? 'LinkedIn' : 'Upwork'}`}
+            data-ph={!member.linkedin.startsWith('http')}
+            aria-label={`${member.name} on LinkedIn (link to be added)`}
           >
-            {social.platform === 'linkedin' ? (
-              <LinkedInIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
-            ) : (
-              <UpworkIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
-            )}
+            <LinkedInIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
           </a>
-        ))}
+        )}
+        {!member.linkedin && (
+          <a
+            href="#"
+            data-hover
+            data-ph
+            aria-label={`${member.name} on LinkedIn (link to be added)`}
+          >
+            <LinkedInIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
+          </a>
+        )}
+        {member.upwork && (
+          <a
+            href={member.upwork}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-hover
+            data-ph={!member.upwork.startsWith('http')}
+            aria-label={`${member.name} on Upwork (link to be added)`}
+          >
+            <UpworkIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
+          </a>
+        )}
+        <span className="ph">Photo + links placeholder</span>
       </span>
     </div>
   )
@@ -102,17 +124,9 @@ function CounterCell({ stat, index }: { stat: (typeof counterStats)[0]; index: n
           {stat.suffix}
         </p>
         <p className="t-reg">
-          {stat.description.split(' ').map((word, i, arr) => {
-            if (i === Math.floor(arr.length / 2)) {
-              return (
-                <span key={i}>
-                  <br />
-                  {word}{' '}
-                </span>
-              )
-            }
-            return word + ' '
-          })}
+          {stat.description.split(' ').slice(0, 3).join(' ')}
+          <br />
+          {stat.description.split(' ').slice(3).join(' ')}
         </p>
       </div>
     </div>
@@ -136,14 +150,14 @@ export function WhyUs() {
               ship like engineers, so the whole system works end to end.
             </p>
             <div className="btnw">
-              <Button href="#contact" data-go="Contact">
+              <Button href="/about" data-go="About">
                 Read more about us
               </Button>
             </div>
           </div>
           <div className="g2 prof">
             {teamMembers.map((member) => (
-              <ProfileCard key={member.id} member={member} />
+              <ProfileCard key={member.initials} member={member} />
             ))}
           </div>
         </div>
