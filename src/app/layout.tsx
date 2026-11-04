@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Figtree } from 'next/font/google'
 import './globals.css'
 import { MotionProvider } from '@/hooks/use-motion'
+import { AnimationInitializer } from '@/components/animation-initializer'
 
 const figtree = Figtree({
   subsets: ['latin'],
@@ -113,7 +114,10 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider>
+          <AnimationInitializer />
+          {children}
+        </MotionProvider>
       </body>
     </html>
   )
