@@ -542,7 +542,7 @@ export function SiteMotion() {
     
     const timer = setTimeout(() => {
       initMotion()
-    }, 50)
+    }, 200)
     
     return () => clearTimeout(timer)
   }, [pathname, cleanup, initMotion])

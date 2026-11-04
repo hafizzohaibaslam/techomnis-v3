@@ -357,7 +357,7 @@ export default function WorkPage() {
                 <div className="counter-cell ln lr lb">
                   <div className="in">
                     <p className="num">
-                      <span data-count="17">17</span>
+                      <span data-count="17">0</span>
                     </p>
                     <p className="t-reg">
                       case studies of <br />
@@ -368,7 +368,7 @@ export default function WorkPage() {
                 <div className="counter-cell ln lr lb">
                   <div className="in">
                     <p className="num">
-                      <span data-count="12">12</span>+
+                      <span data-count="12">0</span>+
                     </p>
                     <p className="t-reg">
                       industries, from <br />
@@ -380,7 +380,7 @@ export default function WorkPage() {
                   <div className="in">
                     <p className="num">
                       <span data-count="5" data-dec="1">
-                        5.0
+                        0.0
                       </span>{' '}
                       <small>of 5.0</small>
                     </p>
@@ -393,7 +393,7 @@ export default function WorkPage() {
                 <div className="counter-cell ln lb">
                   <div className="in">
                     <p className="num">
-                      $<span data-count="300">300</span>K+
+                      $<span data-count="300">0</span>K+
                     </p>
                     <p className="t-reg">
                       earned on Upwork <br />
