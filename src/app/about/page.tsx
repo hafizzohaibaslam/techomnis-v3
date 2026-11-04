@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import type { ReactElement } from 'react'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
@@ -288,24 +288,26 @@ export default function AboutPage() {
                     parts fit together and the product works end to end.
                   </p>
                   <div className="btns" data-rise>
-                    <Link
+                    <TransitionLink
                       href="/contact"
+                      label="Contact"
                       className="bbtn"
                       data-hover
                       data-bbtn
                       data-go="Contact"
                     >
                       Let&apos;s talk
-                    </Link>
-                    <Link
+                    </TransitionLink>
+                    <TransitionLink
                       href="/process"
+                      label="Process"
                       className="btn"
                       data-hover
                       data-btn
                       data-go="Process"
                     >
                       Explore the process
-                    </Link>
+                    </TransitionLink>
                   </div>
                 </div>
                 <div className="center vcell">

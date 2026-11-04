@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
@@ -141,8 +141,9 @@ export default function WorkPage() {
               {cases.map((caseItem, idx) => (
                 <article key={caseItem.slug} className="pitem feature ln lb">
                   {caseItem.hasPage ? (
-                    <Link
+                    <TransitionLink
                       href={`/work/${caseItem.slug}`}
+                      label={caseItem.name}
                       className="media"
                       data-media
                       data-go={caseItem.name}
@@ -158,7 +159,7 @@ export default function WorkPage() {
                         Read more
                       </span>
                       <span className="ph phtag">Product shot placeholder</span>
-                    </Link>
+                    </TransitionLink>
                   ) : (
                     <a
                       href="#"
@@ -322,8 +323,9 @@ export default function WorkPage() {
                       </p>
                     </div>
                   </div>
-                  <Link
+                  <TransitionLink
                     href="/contact"
+                    label="Contact"
                     className="cell pcell ln"
                     data-go="Contact"
                     data-hover
@@ -343,7 +345,7 @@ export default function WorkPage() {
                         Tell us about the product you need shipped or rescued.
                       </p>
                     </div>
-                  </Link>
+                  </TransitionLink>
                 </div>
               </div>
             </div>

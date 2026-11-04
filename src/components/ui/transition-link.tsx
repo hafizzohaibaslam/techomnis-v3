@@ -92,7 +92,10 @@ export const TransitionLink = forwardRef<HTMLAnchorElement, TransitionLinkProps>
 
       setTimeout(() => {
         document.documentElement.classList.add('to-arrive')
-        window.scrollTo(0, 0)
+        const hasHash = href.includes('#')
+        if (!hasHash) {
+          window.scrollTo(0, 0)
+        }
         router.push(href)
       }, 1600)
     }, [href, label, onClick, router])

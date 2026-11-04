@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
@@ -588,15 +588,16 @@ export default function ProcessPage() {
                     happy to walk you through it.
                   </p>
                   <div className="btnw" data-rise>
-                    <Link
+                    <TransitionLink
                       href="/contact"
+                      label="Contact"
                       className="btn"
                       data-hover
                       data-btn
                       data-go="Contact"
                     >
                       Let&apos;s start a live conversation
-                    </Link>
+                    </TransitionLink>
                   </div>
                 </div>
                 <div className="center vcell">
@@ -656,9 +657,9 @@ export default function ProcessPage() {
                     owners and ship like engineers, so the whole system works end to end.
                   </p>
                   <div className="btnw">
-                    <Link href="/about" className="btn" data-hover data-btn data-go="About">
+                    <TransitionLink href="/about" label="About" className="btn" data-hover data-btn data-go="About">
                       Read more about us
-                    </Link>
+                    </TransitionLink>
                   </div>
                 </div>
                 <div className="g2 prof">
@@ -672,9 +673,9 @@ export default function ProcessPage() {
                       Founded TechOmnis in 2024. Top Rated Plus on Upwork with 5.0 from 68 reviews
                       and $300K+ earned.
                     </p>
-                    <Link href="/about#team" className="read t-reg" data-go="About">
+                    <TransitionLink href="/about#team" label="About" className="read t-reg" data-go="About">
                       <span className="ul">Read details</span>
-                    </Link>
+                    </TransitionLink>
                     <span className="foot psoc">
                       <a
                         href="#"
@@ -704,9 +705,9 @@ export default function ProcessPage() {
                     <p className="t-reg bio">
                       Leads delivery across the engineering team. <span className="ph">Bio placeholder</span>
                     </p>
-                    <Link href="/about#team" className="read t-reg" data-go="About">
+                    <TransitionLink href="/about#team" label="About" className="read t-reg" data-go="About">
                       <span className="ul">Read details</span>
-                    </Link>
+                    </TransitionLink>
                     <span className="foot psoc">
                       <a
                         href="#"

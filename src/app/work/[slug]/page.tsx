@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import type { Metadata } from 'next'
 import { cases, getCaseBySlug, type CaseStudy } from '@/content/cases'
 import { InnerFooter } from '@/components/layout/inner-footer'
@@ -114,8 +114,9 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
   const href = caseStudy.hasPage ? `/work/${caseStudy.slug}` : '#'
   return (
     <div className={`case ln lb ${isRight ? 'r' : 'lr'}`}>
-      <Link
+      <TransitionLink
         href={href}
+        label={caseStudy.name}
         className="media"
         data-media
         data-ph={!caseStudy.hasPage ? true : undefined}
@@ -128,7 +129,7 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
           Read more
         </span>
         <span className="ph phtag">Product shot placeholder</span>
-      </Link>
+      </TransitionLink>
       <div className="case-meta">
         <h3 className="h-small">
           <span className="ul">{caseStudy.name}</span>
@@ -167,8 +168,9 @@ export default async function CaseStudyPage({ params }: Props) {
     <>
       <div className="page" id="page">
         <main id="main">
-          <Link
+          <TransitionLink
             href="/work"
+            label="Work"
             className="closeb"
             data-go="Work"
             data-hover
@@ -177,7 +179,7 @@ export default async function CaseStudyPage({ params }: Props) {
             <svg viewBox="0 0 16 16" aria-hidden="true">
               <path d="M2 2l12 12M14 2L2 14" fill="none" />
             </svg>
-          </Link>
+          </TransitionLink>
 
           <section className="chero" id="top" aria-label={`${caseStudy.name} case study`}>
             <div className="wrap center">
@@ -616,9 +618,9 @@ export default async function CaseStudyPage({ params }: Props) {
                     Discover more
                   </h2>
                   <div className="btnw">
-                    <Link href="/work" className="btn" data-hover data-btn data-go="Work">
+                    <TransitionLink href="/work" label="Work" className="btn" data-hover data-btn data-go="Work">
                       All projects
-                    </Link>
+                    </TransitionLink>
                   </div>
                 </div>
                 <div className="g2">
@@ -627,9 +629,9 @@ export default async function CaseStudyPage({ params }: Props) {
                   ))}
                 </div>
                 <div className="allp">
-                  <Link href="/work" className="btn" data-hover data-btn data-go="Work">
+                  <TransitionLink href="/work" label="Work" className="btn" data-hover data-btn data-go="Work">
                     All projects
-                  </Link>
+                  </TransitionLink>
                 </div>
               </div>
             </section>
@@ -729,8 +731,9 @@ export default async function CaseStudyPage({ params }: Props) {
 
       <nav className="menu case-menu" aria-label="Case navigation">
         <div className="menu-c">
-          <Link
+          <TransitionLink
             href="/work"
+            label="Work"
             className="mi prev"
             data-hover
             data-go="Work"
@@ -741,9 +744,10 @@ export default async function CaseStudyPage({ params }: Props) {
               <path d="M15 5l-7 7 7 7" />
             </svg>
             <span className="lbl">Prev case</span>
-          </Link>
-          <Link
+          </TransitionLink>
+          <TransitionLink
             href="/work"
+            label="Work"
             className="mi next"
             data-hover
             data-go="Work"
@@ -754,7 +758,7 @@ export default async function CaseStudyPage({ params }: Props) {
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M9 5l7 7-7 7" />
             </svg>
-          </Link>
+          </TransitionLink>
         </div>
       </nav>
     </>

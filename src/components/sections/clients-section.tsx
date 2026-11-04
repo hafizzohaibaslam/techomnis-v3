@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import {
   clientsRow1,
   clientsRow2Left,
@@ -315,9 +314,9 @@ export function ClientsSection({
               </div>
             ))}
             <div className="center ln lb">
-              <Link href="#" className="btn" data-hover data-btn data-ph>
+              <a href="#" className="btn" data-hover data-btn data-ph>
                 All reviews on Upwork
-              </Link>
+              </a>
             </div>
           </div>
         )}

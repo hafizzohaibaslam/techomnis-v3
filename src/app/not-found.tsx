@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import { LogoMark } from '@/components/ui/icons'
 
 export default function NotFound() {
@@ -15,9 +15,9 @@ export default function NotFound() {
             The page you are looking for does not exist or has been moved. Let&apos;s get you back
             on track.
           </p>
-          <Link href="/" className="bbtn bk" data-hover data-bbtn data-go="Home">
+          <TransitionLink href="/" label="Home" className="bbtn bk" data-hover data-bbtn data-go="Home">
             Back to homepage
-          </Link>
+          </TransitionLink>
         </section>
       </main>
     </div>

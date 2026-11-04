@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import type { ReactElement } from 'react'
-import Link from 'next/link'
+import { TransitionLink } from '@/components/ui/transition-link'
 import type { Metadata } from 'next'
 import { services, getServiceBySlug } from '@/content/services'
 import { cases, type CaseStudy } from '@/content/cases'
@@ -137,8 +137,9 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
   const href = caseStudy.hasPage ? `/work/${caseStudy.slug}` : '#'
   return (
     <div className={`case ln lb ${isRight ? 'r' : 'lr'}`}>
-      <Link
+      <TransitionLink
         href={href}
+        label={caseStudy.name}
         className="media"
         data-media
         data-ph={!caseStudy.hasPage ? true : undefined}
@@ -151,7 +152,7 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
           Read more
         </span>
         <span className="ph phtag">Product shot placeholder</span>
-      </Link>
+      </TransitionLink>
       <div className="case-meta">
         <h3 className="h-small">
           <span className="ul">{caseStudy.name}</span>
@@ -295,24 +296,26 @@ export default async function ServiceDetailPage({ params }: Props) {
                     before any build work starts. Then we fix, harden and ship to production.
                   </p>
                   <div className="btns" data-rise>
-                    <Link
+                    <TransitionLink
                       href="/contact"
+                      label="Contact"
                       className="bbtn"
                       data-hover
                       data-bbtn
                       data-go="Contact"
                     >
                       Request this service
-                    </Link>
-                    <Link
+                    </TransitionLink>
+                    <TransitionLink
                       href="/process"
+                      label="Process"
                       className="btn"
                       data-hover
                       data-btn
                       data-go="Process"
                     >
                       Explore the process
-                    </Link>
+                    </TransitionLink>
                   </div>
                 </div>
                 <div className="center vcell">
@@ -523,9 +526,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                   Related work
                 </h2>
                 <div className="btnw">
-                  <Link href="/work" className="btn" data-hover data-btn data-go="Work">
+                  <TransitionLink href="/work" label="Work" className="btn" data-hover data-btn data-go="Work">
                     All projects
-                  </Link>
+                  </TransitionLink>
                 </div>
               </div>
               <div className="g2">
@@ -534,9 +537,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                 ))}
               </div>
               <div className="allp">
-                <Link href="/work" className="btn" data-hover data-btn data-go="Work">
+                <TransitionLink href="/work" label="Work" className="btn" data-hover data-btn data-go="Work">
                   All projects
-                </Link>
+                </TransitionLink>
               </div>
             </div>
           </section>
