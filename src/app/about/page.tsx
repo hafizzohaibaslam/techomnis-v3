@@ -5,7 +5,10 @@ import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
+import { WorldMap } from '@/components/sections/world-map'
+import { ClientsSection } from '@/components/sections/clients-section'
 import { team, mindsetItems, quotes } from '@/content/team'
+import { reviews, scoreCards } from '@/content/reviews'
 
 export const metadata: Metadata = {
   title: 'About · TechOmnis',
@@ -72,7 +75,7 @@ function MindsetIcon({ type }: { type: string }) {
 
 export default function AboutPage() {
   return (
-    <body className="inner">
+    <div className="inner">
       <a className="skip" href="#main">
         Skip to content
       </a>
@@ -345,6 +348,14 @@ export default function AboutPage() {
             </div>
           </section>
 
+          <WorldMap />
+
+          <ClientsSection 
+            showReviews={true} 
+            reviews={reviews.map(r => ({ quote: r.quote, isWide: r.isWide }))}
+            scoreCards={scoreCards}
+          />
+
           <section id="why" className="why" aria-label="Why us">
             <div className="wrap">
               <div className="g4 cnt">
@@ -436,6 +447,6 @@ export default function AboutPage() {
         <InnerFooter />
       </div>
       <InnerNavigation />
-    </body>
+    </div>
   )
 }

@@ -123,7 +123,7 @@ function AwardIcon() {
 
 export default function WorkPage() {
   return (
-    <body className="inner">
+    <div className="inner">
       <a className="skip" href="#main">
         Skip to content
       </a>
@@ -440,6 +440,6 @@ export default function WorkPage() {
         <InnerFooter />
       </div>
       <InnerNavigation />
-    </body>
+    </div>
   )
 }

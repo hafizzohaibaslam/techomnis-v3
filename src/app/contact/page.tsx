@@ -62,7 +62,7 @@ export default function ContactPage() {
   }
 
   return (
-    <body className="inner">
+    <div className="inner">
       <a className="skip" href="#main">
         Skip to content
       </a>
@@ -195,6 +195,6 @@ export default function ContactPage() {
           </section>
         </main>
       </div>
-    </body>
+    </div>
   )
 }

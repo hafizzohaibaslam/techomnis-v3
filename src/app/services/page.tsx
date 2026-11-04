@@ -4,7 +4,9 @@ import Link from 'next/link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
+import { ClientsSection } from '@/components/sections/clients-section'
 import { services, specialServices, buildItems } from '@/content/services'
+import { reviews, scoreCards } from '@/content/reviews'
 
 export const metadata: Metadata = {
   title: 'Services · TechOmnis',
@@ -99,7 +101,7 @@ function SpecialIcon({ type }: { type: string }) {
 
 export default function ServicesPage() {
   return (
-    <body className="inner">
+    <div className="inner">
       <a className="skip" href="#main">
         Skip to content
       </a>
@@ -337,6 +339,12 @@ export default function ServicesPage() {
             </div>
           </section>
 
+          <ClientsSection 
+            showReviews={true} 
+            reviews={reviews.map(r => ({ quote: r.quote, isWide: r.isWide }))}
+            scoreCards={scoreCards}
+          />
+
           <section id="why" className="why" aria-label="Why us">
             <div className="wrap">
               <div className="g4 cnt">
@@ -428,6 +436,6 @@ export default function ServicesPage() {
         <InnerFooter />
       </div>
       <InnerNavigation />
-    </body>
+    </div>
   )
 }
