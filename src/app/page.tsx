@@ -11,7 +11,6 @@ import { Clients } from '@/components/sections/clients'
 import { Reviews } from '@/components/sections/reviews'
 import { WhyUs } from '@/components/sections/why-us'
 import { Footer } from '@/components/sections/footer'
-import { CustomCursor, TransitionOverlay } from '@/components/ui/cursor'
 import { useLenis } from '@/hooks/use-lenis'
 
 export default function Home() {
@@ -35,8 +34,6 @@ export default function Home() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <CustomCursor />
-      <TransitionOverlay />
       <div className="page" id="page">
         <main id="main">
           <Hero />

@@ -88,45 +88,39 @@ function sizePills() {
 
 function hoverLoop(host: HTMLElement, tgt: SVGElement, prop: string, amp: number) {
   let animating = false
-  let currentX = 0
-  let targetX = 0
-  
-  const animate = () => {
-    if (!animating) return
-    currentX += (targetX - currentX) * 0.15
-    tgt.style.transform = `translate${prop.toUpperCase()}(${currentX}px)`
-    if (Math.abs(targetX - currentX) > 0.1) {
-      requestAnimationFrame(animate)
-    } else {
-      tgt.style.transform = `translate${prop.toUpperCase()}(${targetX}px)`
-    }
-  }
-  
+  let startTime = 0
   const rem = () => parseFloat(getComputedStyle(document.documentElement).fontSize) || 16
-  let loopId: number | null = null
-  let phase = 0
+  const period = 1400
   
   const loop = () => {
-    phase += 0.05
-    targetX = Math.sin(phase) * amp * rem()
-    if (animating) loopId = requestAnimationFrame(loop)
+    if (!animating) return
+    const elapsed = (performance.now() - startTime) % period
+    const halfPeriod = period / 2
+    const t = elapsed < halfPeriod ? elapsed / halfPeriod : (elapsed - halfPeriod) / halfPeriod
+    const val = elapsed < halfPeriod 
+      ? E.p1(t) * amp * rem()
+      : -E.p2(t) * amp * rem()
+    tgt.style.transform = `translate${prop.toUpperCase()}(${val.toFixed(2)}px)`
+    requestAnimationFrame(loop)
   }
   
   host.addEventListener('mouseenter', () => {
     animating = true
-    phase = 0
+    startTime = performance.now()
     loop()
-    animate()
   })
   
   host.addEventListener('mouseleave', () => {
     animating = false
-    if (loopId) cancelAnimationFrame(loopId)
-    targetX = 0
+    const startVal = parseFloat(tgt.style.transform.replace(/[^-\d.]/g, '') || '0')
+    const outStart = performance.now()
+    const outDur = 200
+    
     const reset = () => {
-      currentX += (0 - currentX) * 0.2
-      tgt.style.transform = `translateX(${currentX}px)`
-      if (Math.abs(currentX) > 0.1) requestAnimationFrame(reset)
+      const t = Math.min(1, (performance.now() - outStart) / outDur)
+      const val = startVal * (1 - E.pOut(t))
+      tgt.style.transform = `translate${prop.toUpperCase()}(${val.toFixed(2)}px)`
+      if (t < 1) requestAnimationFrame(reset)
       else tgt.style.transform = ''
     }
     reset()
@@ -315,8 +309,7 @@ export function AnimationInitializer() {
       initQuoteSlider(slider as HTMLElement)
     })
 
-    // "What we build" crossfade (homepage direction section)
-    initWeBuildCrossfade()
+    // Note: "What we build" crossfade is handled by Direction component using GSAP
 
     cleanupRef.current = () => {
       window.removeEventListener('resize', sizePills)
@@ -509,55 +502,3 @@ function initQuoteSlider(container: HTMLElement) {
   })
 }
 
-function initWeBuildCrossfade() {
-  const tw = document.getElementById('dirTw')
-  if (!tw) return
-  
-  const ws = tw.querySelectorAll('.w')
-  if (ws.length < 2) return
-
-  tw.classList.add('scrub')
-  ws.forEach((w) => {
-    const el = w as HTMLElement
-    el.style.opacity = '0'
-    el.style.transform = 'translateY(110%) scale(0.8)'
-    el.style.transformOrigin = '50% 50%'
-    el.style.transition = 'opacity 0.4s ease, transform 0.4s ease'
-  })
-  // Show first one
-  const first = ws[0] as HTMLElement
-  first.style.opacity = '1'
-  first.style.transform = 'translateY(0) scale(1)'
-
-  const handleScroll = () => {
-    const section = tw.closest('.direction')
-    if (!section) return
-    
-    const rect = section.getBoundingClientRect()
-    const viewportHeight = window.innerHeight
-    const progress = Math.max(0, Math.min(1, (viewportHeight - rect.top) / (viewportHeight + rect.height)))
-    
-    const thresholds = [0, 0.4, 0.7]
-    let activeIndex = 0
-    thresholds.forEach((th, i) => {
-      if (progress >= th) activeIndex = i
-    })
-
-    ws.forEach((w, i) => {
-      const el = w as HTMLElement
-      if (i === activeIndex) {
-        el.style.opacity = '1'
-        el.style.transform = 'translateY(0) scale(1)'
-      } else if (i < activeIndex) {
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(-110%) scale(0.8)'
-      } else {
-        el.style.opacity = '0'
-        el.style.transform = 'translateY(110%) scale(0.8)'
-      }
-    })
-  }
-
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  handleScroll()
-}

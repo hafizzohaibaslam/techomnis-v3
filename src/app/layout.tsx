@@ -3,6 +3,7 @@ import { Figtree } from 'next/font/google'
 import './globals.css'
 import { MotionProvider } from '@/hooks/use-motion'
 import { AnimationInitializer } from '@/components/animation-initializer'
+import { TransitionOverlay } from '@/components/ui/transition'
 
 const figtree = Figtree({
   subsets: ['latin'],
@@ -116,6 +117,7 @@ export default function RootLayout({
       <body>
         <MotionProvider>
           <AnimationInitializer />
+          <TransitionOverlay />
           {children}
         </MotionProvider>
       </body>

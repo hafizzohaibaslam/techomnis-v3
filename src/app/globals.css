@@ -272,12 +272,26 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
 .mpanel{display:none}
 .cur{display:none!important}
 .lcount{display:none;position:absolute;left:3.33rem;top:calc(100vh - 10rem);font-size:5.71rem;line-height:6rem;font-weight:600;letter-spacing:-.1rem;z-index:5}
-/* page transition (UXIS .transition): panel + counter-moving wrapper act as a mask; the title sits in a 10rem window */
+/* page transition (UXIS a-111 leave / a-110 arrive): panel + counter-moving wrapper act as a mask; the title sits in a 10rem window */
 .trans{position:fixed;inset:0;z-index:900;background:#222;color:#fff;display:none;overflow:hidden;pointer-events:none}
-.to-arrive .trans{display:flex}
+.to-arrive .trans,.trans.trans-visible{display:flex}
 .trans .trw{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .trans p{height:10rem;overflow:hidden;display:flex;align-items:center;font-size:4.64rem;line-height:5.71rem;font-weight:600;letter-spacing:-.092rem}
 .trans p span{display:inline-block}
+/* Leave: panel rises from +100vh, wrapper counter-moves, title rises from +6rem */
+.trans.trans-leave{animation:trans-leave-panel .8s cubic-bezier(.55,.055,.675,.19) forwards}
+.trans.trans-leave .trw{animation:trans-leave-wrap .8s cubic-bezier(.55,.055,.675,.19) forwards}
+.trans.trans-leave #transT{animation:trans-leave-title .9s cubic-bezier(.16,1,.3,1) .6s forwards}
+@keyframes trans-leave-panel{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes trans-leave-wrap{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+@keyframes trans-leave-title{from{transform:translateY(6rem)}to{transform:translateY(0)}}
+/* Arrive: title goes to -10rem, panel goes to -100vh */
+.trans.trans-arrive{animation:trans-arrive-panel .8s cubic-bezier(.215,.61,.355,1) .9s forwards}
+.trans.trans-arrive .trw{animation:trans-arrive-wrap .8s cubic-bezier(.215,.61,.355,1) .9s forwards}
+.trans.trans-arrive #transT{animation:trans-arrive-title .7s cubic-bezier(.645,.045,.355,1) .7s forwards}
+@keyframes trans-arrive-panel{from{transform:translateY(0)}to{transform:translateY(-100%)}}
+@keyframes trans-arrive-wrap{from{transform:translateY(0)}to{transform:translateY(100%)}}
+@keyframes trans-arrive-title{from{transform:translateY(0)}to{transform:translateY(-10rem)}}
 .motion-off *,.motion-off *::before,.motion-off *::after{transition-duration:0s!important;animation:none!important}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:0s!important;animation:none!important;scroll-behavior:auto!important}}
 
