@@ -78,20 +78,64 @@ function MediaLink({
   const moreRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
-    const mediaEl = moreRef.current?.closest('.media')
+    const mediaEl = moreRef.current?.closest('.media') as HTMLElement | null
     if (!mediaEl) return
+
+    let targetX = 0, targetY = 0
+    let currentX = 0, currentY = 0
+    let rafId = 0
+    let isHovering = false
+
+    const lerp = (a: number, b: number, t: number) => a + (b - a) * t
+
+    const animate = () => {
+      currentX = lerp(currentX, targetX, 0.15)
+      currentY = lerp(currentY, targetY, 0.15)
+      if (moreRef.current) {
+        moreRef.current.style.left = `${currentX}px`
+        moreRef.current.style.top = `${currentY}px`
+      }
+      if (isHovering || Math.abs(targetX - currentX) > 0.5 || Math.abs(targetY - currentY) > 0.5) {
+        rafId = requestAnimationFrame(animate)
+      } else {
+        rafId = 0
+      }
+    }
 
     const handleMouseMove = (e: MouseEvent) => {
       if (window.matchMedia('(max-width: 1023px)').matches) return
       const rect = mediaEl.getBoundingClientRect()
-      if (moreRef.current) {
-        moreRef.current.style.left = `${e.clientX - rect.left}px`
-        moreRef.current.style.top = `${e.clientY - rect.top}px`
-      }
+      targetX = e.clientX - rect.left
+      targetY = e.clientY - rect.top
+      if (!rafId) rafId = requestAnimationFrame(animate)
     }
 
-    mediaEl.addEventListener('mousemove', handleMouseMove as EventListener)
-    return () => mediaEl.removeEventListener('mousemove', handleMouseMove as EventListener)
+    const handleMouseEnter = (e: MouseEvent) => {
+      if (window.matchMedia('(max-width: 1023px)').matches) return
+      isHovering = true
+      const rect = mediaEl.getBoundingClientRect()
+      currentX = targetX = e.clientX - rect.left
+      currentY = targetY = e.clientY - rect.top
+      if (moreRef.current) {
+        moreRef.current.style.left = `${currentX}px`
+        moreRef.current.style.top = `${currentY}px`
+      }
+      if (!rafId) rafId = requestAnimationFrame(animate)
+    }
+
+    const handleMouseLeave = () => {
+      isHovering = false
+    }
+
+    mediaEl.addEventListener('mousemove', handleMouseMove)
+    mediaEl.addEventListener('mouseenter', handleMouseEnter)
+    mediaEl.addEventListener('mouseleave', handleMouseLeave)
+    return () => {
+      mediaEl.removeEventListener('mousemove', handleMouseMove)
+      mediaEl.removeEventListener('mouseenter', handleMouseEnter)
+      mediaEl.removeEventListener('mouseleave', handleMouseLeave)
+      if (rafId) cancelAnimationFrame(rafId)
+    }
   }, [])
 
   if (!hasPage) {

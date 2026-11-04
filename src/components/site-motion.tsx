@@ -110,7 +110,11 @@ function draw3(el: HTMLElement, dur: number, ease: (t: number) => number, delay:
   return gsap.to(o, {
     u: 1, duration: dur, delay: delay || 0, ease: (t: number) => ease(t),
     onUpdate: () => seg(el, o.u, p),
-    onComplete: () => { el.style.removeProperty(p + 's'); el.style.removeProperty(p + 'e') }
+    onComplete: () => {
+      el.style.removeProperty(p + 's')
+      el.style.removeProperty(p + 'e')
+      el.dataset.lineDrawn = '1'
+    }
   })
 }
 
@@ -219,7 +223,11 @@ function initSliders() {
 }
 
 function finishAll() {
-  $$('.ln,.vline,.header.hl').forEach((l) => ['--s', '--e', '--hs', '--he'].forEach((k) => (l as HTMLElement).style.removeProperty(k)))
+  $$('.ln,.vline,.header.hl').forEach((l) => {
+    const el = l as HTMLElement
+    ;['--s', '--e', '--hs', '--he'].forEach((k) => el.style.removeProperty(k))
+    el.dataset.lineDrawn = '1'
+  })
   $$('[data-count]').forEach((c) => {
     const el = c as HTMLElement
     el.textContent = el.dataset.dec ? (+el.dataset.count!).toFixed(1) : el.dataset.count!
@@ -288,6 +296,7 @@ export function SiteMotion() {
     const setupScrollAnimations = () => {
       $$('.ln').forEach((l) => {
         const el = l as HTMLElement
+        if (el.dataset.lineDrawn === '1') return
         el.style.setProperty('--e', '0')
         const L = Math.max(el.offsetWidth, el.offsetHeight)
         ScrollTrigger.create({ trigger: el, start: 'top bottom', once: true, onEnter: () => draw3(el, lineDur(L), E.css, 0) })
@@ -295,6 +304,7 @@ export function SiteMotion() {
       
       $$('.vline').forEach((v) => {
         const el = v as HTMLElement
+        if (el.dataset.lineDrawn === '1') return
         el.style.setProperty('--e', '0')
         ScrollTrigger.create({ trigger: el.parentElement, start: 'top bottom', once: true, onEnter: () => draw3(el, lineDur(el.offsetHeight), E.css, 0) })
       })
@@ -426,7 +436,7 @@ export function SiteMotion() {
       strokes.forEach(([p, L]) => { const el = p as HTMLElement; el.style.strokeDasharray = String(L); el.style.strokeDashoffset = String(L) })
       fades.forEach((p) => { (p as HTMLElement).style.opacity = '0' })
       ScrollTrigger.create({ trigger: svg, start: 'top 90%', once: true, onEnter: () => {
-        strokes.forEach(([p, _L], k) => gsap.to(p, { strokeDashoffset: 0, duration: 1.6, ease: 'power1.inOut', delay: Math.min(0.8, k * 0.08), onComplete: () => { const el = p as HTMLElement; el.style.strokeDasharray = ''; el.style.strokeDashoffset = '' } }))
+        strokes.forEach(([p], k) => gsap.to(p, { strokeDashoffset: 0, duration: 1.6, ease: 'power1.inOut', delay: Math.min(0.8, k * 0.08), onComplete: () => { const el = p as HTMLElement; el.style.strokeDasharray = ''; el.style.strokeDashoffset = '' } }))
         if (fades.length) gsap.to(fades, { opacity: 1, duration: 0.5, ease: 'none', delay: strokes.length ? 1.4 : 0, stagger: { amount: Math.min(0.6, fades.length * 0.05) } })
       }})
     })

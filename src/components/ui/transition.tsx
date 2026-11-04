@@ -36,14 +36,12 @@ function getMotionEnabled(): boolean {
 
 const E = {
   tIn: (t: number) => {
-    const x1 = 0.645, y1 = 0.045, x2 = 0.355, y2 = 1
-    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx
+    const y1 = 0.045, y2 = 1
     const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by
     return ((ay * t + by) * t + cy) * t
   },
   tOut: (t: number) => {
-    const x1 = 0.215, y1 = 0.61, x2 = 0.355, y2 = 1
-    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx
+    const y1 = 0.61, y2 = 1
     const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by
     return ((ay * t + by) * t + cy) * t
   },
