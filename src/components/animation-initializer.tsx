@@ -54,6 +54,7 @@ function seg(el: HTMLElement, u: number, p: string) {
 
 function draw3(el: HTMLElement, dur: number, ease: (t: number) => number, p: string = '--') {
   const start = performance.now()
+  console.log('[draw3] Starting animation, duration:', dur, 's')
   const animate = () => {
     const t = Math.min(1, (performance.now() - start) / (dur * 1000))
     seg(el, ease(t), p)
@@ -61,6 +62,7 @@ function draw3(el: HTMLElement, dur: number, ease: (t: number) => number, p: str
     else {
       el.style.removeProperty(p + 's')
       el.style.removeProperty(p + 'e')
+      console.log('[draw3] Animation complete')
     }
   }
   requestAnimationFrame(animate)
@@ -138,6 +140,8 @@ export function AnimationInitializer() {
     observersRef.current.forEach((obs) => obs.disconnect())
     observersRef.current = []
 
+    console.log('[AnimationInitializer] Running, motionEnabled:', motionEnabled)
+
     if (!motionEnabled) {
       document.querySelectorAll('.ln, .vline, .header.hl').forEach((l) => {
         const el = l as HTMLElement
@@ -178,6 +182,7 @@ export function AnimationInitializer() {
           if (entry.isIntersecting) {
             const el = entry.target as HTMLElement
             const L = Math.max(el.offsetWidth, el.offsetHeight)
+            console.log('[AnimationInitializer] Hairline animation triggered, L:', L)
             draw3(el, lineDur(L), E.css)
             lnObserver.unobserve(el)
           }
@@ -185,7 +190,9 @@ export function AnimationInitializer() {
       },
       { threshold: 0 }
     )
-    document.querySelectorAll('.ln').forEach((el) => {
+    const lnElements = document.querySelectorAll('.ln')
+    console.log('[AnimationInitializer] Found', lnElements.length, '.ln elements')
+    lnElements.forEach((el) => {
       const htmlEl = el as HTMLElement
       htmlEl.style.setProperty('--e', '0')
       lnObserver.observe(el)
