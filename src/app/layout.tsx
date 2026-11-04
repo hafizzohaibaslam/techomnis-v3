@@ -68,7 +68,7 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='15' fill='none' stroke='%23222' stroke-width='5.5' stroke-dasharray='80 14.2' transform='rotate(-50 20 20)'/%3E%3Ccircle cx='20' cy='20' r='4.2' fill='%23222'/%3E%3C/svg%3E",
+        url: '/TechOmnis-Icon-Framed.svg',
         type: 'image/svg+xml',
       },
     ],

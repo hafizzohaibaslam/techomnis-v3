@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip" href="#main">
         Skip to content
       </a>
       <span className="lcount" id="lcount" aria-hidden="true">0%</span>
