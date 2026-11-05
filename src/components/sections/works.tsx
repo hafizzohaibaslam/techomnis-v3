@@ -159,13 +159,12 @@ function MediaLink({
 
   if (!hasPage) {
     return (
-      <div className="media" data-media data-ph={!hasImage} aria-label={label}>
+      <div className="media" data-media aria-label={label}>
         {children}
         <div className="dark"></div>
         <span ref={moreRef} className="more" aria-hidden="true">
           Coming soon
         </span>
-        {!hasImage && <span className="ph phtag">Product shot placeholder</span>}
       </div>
     )
   }
@@ -178,7 +177,6 @@ function MediaLink({
       <span ref={moreRef} className="more" aria-hidden="true">
         Read more <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
       </span>
-      {!hasImage && <span className="ph phtag">Product shot placeholder</span>}
     </TransitionLink>
   )
 }

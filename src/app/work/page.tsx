@@ -180,14 +180,12 @@ export default function WorkPage() {
                       <span className="more" aria-hidden="true">
                         Read more
                       </span>
-                      {!caseItem.image && <span className="ph phtag">Product shot placeholder</span>}
                     </TransitionLink>
                   ) : (
                     <a
                       href="#"
                       className="media"
                       data-media
-                      data-ph={!caseItem.image}
                       aria-label={`${caseItem.name} case study (page coming soon)`}
                     >
                       <CaseArt
@@ -200,7 +198,6 @@ export default function WorkPage() {
                       <span className="more" aria-hidden="true">
                         {caseItem.isExtra ? 'Coming soon' : 'Read more'}
                       </span>
-                      {!caseItem.image && <span className="ph phtag">Product shot placeholder</span>}
                     </a>
                   )}
                   <div className="feature-row">

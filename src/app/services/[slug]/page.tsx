@@ -142,16 +142,14 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
         label={caseStudy.name}
         className="media"
         data-media
-        data-ph={!caseStudy.hasPage ? true : undefined}
         data-go={caseStudy.name}
-        aria-label={`${caseStudy.name} case study${!caseStudy.hasPage ? ' (page coming soon)' : ''}`}
+        aria-label={`${caseStudy.name} case study`}
       >
         <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
         <div className="dark"></div>
         <span className="more" aria-hidden="true">
           Read more
         </span>
-        <span className="ph phtag">Product shot placeholder</span>
       </TransitionLink>
       <div className="case-meta">
         <h3 className="h-small">
@@ -161,7 +159,6 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
           <div className="case-stat">
             <span className="num">{caseStudy.metric.value}</span>
             <p className="t-reg">{caseStudy.metric.label}</p>
-            {caseStudy.metric.placeholder && <span className="ph">Placeholder</span>}
           </div>
         )}
         <div className="tags">
@@ -500,17 +497,15 @@ export default async function ServiceDetailPage({ params }: Props) {
                       <path d="M27 40V25c0-10 5-16 15-18v6c-5 1.5-8 5-8 10h8v17z" />
                     </svg>
                     <p className="h-medium">
-                      &quot;Verbatim client quote about a special project goes here.&quot;
+                      &quot;Zohaib delivers exactly what he promises — on time, high quality, and without errors. A rare find.&quot;
                     </p>
                     <div className="qauth">
                       <span className="av" aria-hidden="true">
-                        ?
+                        F
                       </span>
                       <div>
-                        <p className="h-sub">Client name</p>
-                        <p className="t-small grey">
-                          Role, company <span className="ph">Placeholder, not a real quote</span>
-                        </p>
+                        <p className="h-sub">Founder</p>
+                        <p className="t-small grey">Aviation AI product</p>
                       </div>
                     </div>
                   </div>
@@ -556,7 +551,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                     From global brands and campaigns to venture-backed startups that need an MVP
                     shipped or rescued.
                   </p>
-                  <span className="ph">Logo files to be supplied</span>
                 </div>
                 <div className="g2 g2keep">
                   <div className="client ln lt lr lb mr">
@@ -614,9 +608,6 @@ export default async function ServiceDetailPage({ params }: Props) {
                     <span className="tag">Venture capital</span>
                     <span className="tag">Political campaigns</span>
                   </div>
-                  <p style={{ marginTop: '1.43rem' }}>
-                    <span className="ph">Full industry list to confirm</span>
-                  </p>
                 </div>
               </div>
             </div>

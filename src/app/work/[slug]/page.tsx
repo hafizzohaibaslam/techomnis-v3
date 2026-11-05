@@ -119,16 +119,14 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
         label={caseStudy.name}
         className="media"
         data-media
-        data-ph={!caseStudy.hasPage ? true : undefined}
         data-go={caseStudy.name}
-        aria-label={`${caseStudy.name} case study${!caseStudy.hasPage ? ' (page coming soon)' : ''}`}
+        aria-label={`${caseStudy.name} case study`}
       >
         <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
         <div className="dark"></div>
         <span className="more" aria-hidden="true">
           Read more
         </span>
-        <span className="ph phtag">Product shot placeholder</span>
       </TransitionLink>
       <div className="case-meta">
         <h3 className="h-small">
@@ -138,7 +136,6 @@ function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: b
           <div className="case-stat">
             <span className="num">{caseStudy.metric.value}</span>
             <p className="t-reg">{caseStudy.metric.label}</p>
-            {caseStudy.metric.placeholder && <span className="ph">Placeholder</span>}
           </div>
         )}
         <div className="tags">
@@ -162,7 +159,7 @@ export default async function CaseStudyPage({ params }: Props) {
   }
 
   const currentIndex = cases.findIndex((c) => c.slug === slug)
-  const relatedCases = cases.filter((c, i) => i !== currentIndex && c.hasPage).slice(0, 2)
+  const relatedCases = cases.filter((c, i) => i !== currentIndex).slice(0, 4)
 
   return (
     <>
@@ -187,7 +184,7 @@ export default async function CaseStudyPage({ params }: Props) {
                 {caseStudy.name} · {caseStudy.category.toLowerCase()}
               </span>
               <h1 className="h-big" data-split>
-                {caseStudy.description}
+                {caseStudy.headline || caseStudy.description}
               </h1>
               <a
                 href="#about-project"
@@ -208,7 +205,6 @@ export default async function CaseStudyPage({ params }: Props) {
           <div className="wrap">
             <div className="cmedia media" data-rise style={{ borderRadius: 0 }}>
               <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
-              <span className="ph phtag">Product shot placeholder</span>
             </div>
           </div>
 
@@ -220,8 +216,7 @@ export default async function CaseStudyPage({ params }: Props) {
                     About project
                   </h2>
                   <p className="t-reg" data-rise>
-                    {caseStudy.description}{' '}
-                    <span className="ph">Extended description placeholder</span>
+                    {caseStudy.description}
                   </p>
                   <div className="tags lg" data-rise>
                     {caseStudy.tags.map((tag) => (
@@ -244,8 +239,9 @@ export default async function CaseStudyPage({ params }: Props) {
                       </div>
                       <div className="cb">
                         <p className="t-reg grey">
-                          Why we built {caseStudy.name} and the problem it solves for its users.{' '}
-                          <span className="ph">Placeholder</span>
+                          {slug === 'othego'
+                            ? 'Every founder building an AI product faces the same problem: chatbots are expensive to run and hard to keep accurate. We built Othego to solve that for ourselves first.'
+                            : `The context behind ${caseStudy.name} and why we built it.`}
                         </p>
                       </div>
                     </div>
@@ -259,118 +255,28 @@ export default async function CaseStudyPage({ params }: Props) {
                       </div>
                       <div className="cb">
                         <p className="t-reg grey">
-                          Built the product end to end: the chat experience, the retrieval pipeline
-                          and the Stripe subscription tiers.
+                          {slug === 'othego'
+                            ? 'Built the product end to end: the chat experience, the RAG retrieval pipeline, lead capture, analytics dashboard, and Stripe subscription tiers.'
+                            : `Built the full product for ${caseStudy.name}.`}
                         </p>
                       </div>
                     </div>
                   </div>
-                  <div className="qrow ln lb">
-                    <div className="ch">
-                      <div className="qt2">
-                        <h3 className="tt">What users say</h3>
-                        <a href="#" className="cap3 grey" data-ph>
-                          <span className="ul" style={{ ['--ulh' as string]: '1px' }}>
-                            Review source
-                          </span>
-                        </a>
+                  {caseStudy.metric && (
+                    <div className="qrow ln lb">
+                      <div className="ch">
+                        <div className="qt2">
+                          <h3 className="tt">Key metric</h3>
+                        </div>
                       </div>
-                      <svg
-                        viewBox="0 0 48 48"
-                        aria-hidden="true"
-                        style={{
-                          width: '3.33rem',
-                          height: '3.33rem',
-                          fill: 'none',
-                          stroke: '#D2D2D2',
-                          strokeWidth: 1.2,
-                        }}
-                      >
-                        <path d="M5 40V25C5 15 10 9 20 7v6c-5 1.5-8 5-8 10h8v17z" />
-                        <path d="M27 40V25c0-10 5-16 15-18v6c-5 1.5-8 5-8 10h8v17z" />
-                      </svg>
+                      <div className="qbody">
+                        <p className="h-medium">
+                          {caseStudy.metric.value}
+                        </p>
+                        <p className="t-reg grey">{caseStudy.metric.label}</p>
+                      </div>
                     </div>
-                    <div className="qbody">
-                      <p className="t-reg t-bold">
-                        &quot;Verbatim user or customer quote about {caseStudy.name} goes
-                        here.&quot;
-                      </p>
-                      <p className="t-reg grey">
-                        Name, role <span className="ph">Placeholder, not a real quote</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <section className="about-g res" aria-label="Results">
-            <div className="wrap" style={{ height: '100%' }}>
-              <div className="g2 ln lb" style={{ height: '100%' }}>
-                <div className="g2 g2keep ln lr">
-                  <div className="ncell ln lr lb mr">
-                    <p className="num">xN</p>
-                    <p className="t-reg">
-                      Key outcome for {caseStudy.name}, to confirm{' '}
-                      <span className="ph">Placeholder</span>
-                    </p>
-                  </div>
-                  <div className="ncell ln lb">
-                    <p className="num">
-                      XX<small>%</small>
-                    </p>
-                    <p className="t-reg">
-                      Second outcome, to confirm <span className="ph">Placeholder</span>
-                    </p>
-                  </div>
-                  <div className="chartc ln lr mr">
-                    <div className="t">
-                      <h3 className="eyebrow">Usage trend</h3>
-                      <p className="t-small grey">
-                        Data source TBC <span className="ph">Placeholder</span>
-                      </p>
-                    </div>
-                    <svg viewBox="0 0 260 150" aria-hidden="true" preserveAspectRatio="none">
-                      <path
-                        d="M0 140 L30 128 L60 132 L90 110 L120 114 L150 90 L180 96 L210 60 L240 52 L260 30"
-                        fill="none"
-                        stroke="#5B6CFF"
-                        strokeWidth="2"
-                      />
-                      <g stroke="#EDEDED">
-                        <line x1="0" y1="149" x2="260" y2="149" />
-                        <line x1="0" y1="100" x2="260" y2="100" />
-                        <line x1="0" y1="50" x2="260" y2="50" />
-                      </g>
-                    </svg>
-                  </div>
-                  <div className="chartc">
-                    <div className="t">
-                      <h3 className="eyebrow">Subscriptions</h3>
-                      <p className="t-small grey">
-                        Data source TBC <span className="ph">Placeholder</span>
-                      </p>
-                    </div>
-                    <svg viewBox="0 0 260 150" aria-hidden="true" preserveAspectRatio="none">
-                      <g fill="#C9B8FF">
-                        <rect x="8" y="110" width="22" height="40" />
-                        <rect x="44" y="88" width="22" height="62" />
-                        <rect x="80" y="95" width="22" height="55" />
-                        <rect x="116" y="70" width="22" height="80" />
-                        <rect x="152" y="54" width="22" height="96" />
-                        <rect x="188" y="40" width="22" height="110" />
-                        <rect x="224" y="22" width="22" height="128" />
-                      </g>
-                    </svg>
-                  </div>
-                </div>
-                <div className="achieved">
-                  <span className="eyebrow">What we achieved</span>
-                  <p className="h-medium">
-                    Result statement for {caseStudy.name} goes here, backed by a real number.{' '}
-                    <span className="ph">Placeholder</span>
-                  </p>
+                  )}
                 </div>
               </div>
             </div>
@@ -381,233 +287,51 @@ export default async function CaseStudyPage({ params }: Props) {
               Product
             </h2>
             <div className="tags xl" data-rise>
-              <span className="tag">Chat experience</span>
-              <span className="tag">Knowledge base</span>
-              <span className="tag">Onboarding</span>
-              <span className="tag">Subscription tiers</span>
+              {slug === 'othego' ? (
+                <>
+                  <span className="tag">Chat experience</span>
+                  <span className="tag">Knowledge base</span>
+                  <span className="tag">Lead capture</span>
+                  <span className="tag">Analytics</span>
+                  <span className="tag">Subscription tiers</span>
+                </>
+              ) : (
+                caseStudy.tags.map((tag) => (
+                  <span key={tag} className="tag">
+                    {tag}
+                  </span>
+                ))
+              )}
             </div>
           </section>
 
-          <section className="wrap cshot" data-rise>
-            <div className="ph-img" style={{ height: '58.4rem' }}>
+          <div className="wrap">
+            <div className="cmedia media" data-rise style={{ borderRadius: 0 }}>
               <CaseArt gradient={caseStudy.gradient} rotation={-6} />
-              <span className="ph">Screenshot placeholder</span>
             </div>
-            <p className="t-reg">Chat interface. Caption placeholder.</p>
-          </section>
-
-          <section className="wrap cshot two" data-rise>
-            <div className="pair">
-              <div>
-                <div className="ph-img" style={{ height: '40rem', position: 'relative' }}>
-                  <div
-                    className="art"
-                    style={{
-                      background: `linear-gradient(135deg, ${caseStudy.gradient[0]}, ${caseStudy.gradient[1]})`,
-                    }}
-                  >
-                    <div
-                      className="scr"
-                      style={{
-                        left: '10%',
-                        top: '18%',
-                        width: '46%',
-                        height: '88%',
-                        transform: 'rotate(4deg)',
-                      }}
-                    >
-                      <i style={{ top: '16%' }}></i>
-                      <i style={{ top: '24%', right: '40%' }}></i>
-                      <b
-                        style={{
-                          left: '8%',
-                          right: '8%',
-                          top: '36%',
-                          height: '36%',
-                          background: caseStudy.gradient[1],
-                          opacity: 0.55,
-                        }}
-                      ></b>
-                    </div>
-                    <div
-                      className="scr"
-                      style={{
-                        left: '52%',
-                        top: '28%',
-                        width: '38%',
-                        height: '80%',
-                        transform: 'rotate(4deg)',
-                      }}
-                    >
-                      <i style={{ top: '18%' }}></i>
-                      <b
-                        style={{
-                          left: '8%',
-                          width: '38%',
-                          top: '30%',
-                          height: '24%',
-                          background: caseStudy.gradient[1],
-                        }}
-                      ></b>
-                      <i style={{ top: '64%' }}></i>
-                      <i style={{ top: '72%', right: '30%' }}></i>
-                    </div>
-                  </div>
-                  <span className="ph">Screenshot placeholder</span>
-                </div>
-              </div>
-              <div>
-                <div className="ph-img" style={{ height: '40rem', position: 'relative' }}>
-                  <div
-                    className="art"
-                    style={{
-                      background: `linear-gradient(135deg, ${caseStudy.gradient[0]}, ${caseStudy.gradient[1]})`,
-                    }}
-                  >
-                    <div
-                      className="scr"
-                      style={{
-                        left: '10%',
-                        top: '18%',
-                        width: '46%',
-                        height: '88%',
-                        transform: 'rotate(4deg)',
-                      }}
-                    >
-                      <i style={{ top: '16%' }}></i>
-                      <i style={{ top: '24%', right: '40%' }}></i>
-                      <b
-                        style={{
-                          left: '8%',
-                          right: '8%',
-                          top: '36%',
-                          height: '36%',
-                          background: caseStudy.gradient[1],
-                          opacity: 0.55,
-                        }}
-                      ></b>
-                    </div>
-                    <div
-                      className="scr"
-                      style={{
-                        left: '52%',
-                        top: '28%',
-                        width: '38%',
-                        height: '80%',
-                        transform: 'rotate(4deg)',
-                      }}
-                    >
-                      <i style={{ top: '18%' }}></i>
-                      <b
-                        style={{
-                          left: '8%',
-                          width: '38%',
-                          top: '30%',
-                          height: '24%',
-                          background: caseStudy.gradient[1],
-                        }}
-                      ></b>
-                      <i style={{ top: '64%' }}></i>
-                      <i style={{ top: '72%', right: '30%' }}></i>
-                    </div>
-                  </div>
-                  <span className="ph">Screenshot placeholder</span>
-                </div>
-              </div>
-            </div>
-            <p className="t-reg">Knowledge base upload · Bot settings</p>
-          </section>
+          </div>
 
           <section className="tagline" aria-label="Engineering">
             <h2 className="h-xl" data-split>
               Engineering
             </h2>
             <div className="tags xl" data-rise>
-              <span className="tag">Retrieval pipeline</span>
-              <span className="tag">Vector search</span>
-              <span className="tag">Prompt pipelines</span>
-              <span className="tag">Cost control</span>
-              <span className="tag">Evals</span>
+              {slug === 'othego' ? (
+                <>
+                  <span className="tag">Retrieval pipeline</span>
+                  <span className="tag">Vector search</span>
+                  <span className="tag">Prompt pipelines</span>
+                  <span className="tag">Cost control</span>
+                  <span className="tag">Evals</span>
+                </>
+              ) : (
+                <>
+                  <span className="tag">Full-stack</span>
+                  <span className="tag">API</span>
+                  <span className="tag">Infrastructure</span>
+                </>
+              )}
             </div>
-          </section>
-
-          <section className="wrap cshot" data-rise>
-            <div className="ph-img" style={{ height: '58.4rem' }}>
-              <div
-                className="art"
-                style={{
-                  background: `linear-gradient(135deg, #F3F3F7, ${caseStudy.gradient[1]})`,
-                }}
-              >
-                <div
-                  className="scr"
-                  style={{
-                    left: '10%',
-                    top: '18%',
-                    width: '46%',
-                    height: '88%',
-                    transform: 'rotate(-6deg)',
-                  }}
-                >
-                  <i style={{ top: '16%' }}></i>
-                  <i style={{ top: '24%', right: '40%' }}></i>
-                  <b
-                    style={{
-                      left: '8%',
-                      right: '8%',
-                      top: '36%',
-                      height: '36%',
-                      background: caseStudy.gradient[1],
-                      opacity: 0.55,
-                    }}
-                  ></b>
-                </div>
-                <div
-                  className="scr"
-                  style={{
-                    left: '52%',
-                    top: '28%',
-                    width: '38%',
-                    height: '80%',
-                    transform: 'rotate(-6deg)',
-                  }}
-                >
-                  <i style={{ top: '18%' }}></i>
-                  <b
-                    style={{
-                      left: '8%',
-                      width: '38%',
-                      top: '30%',
-                      height: '24%',
-                      background: caseStudy.gradient[1],
-                    }}
-                  ></b>
-                  <i style={{ top: '64%' }}></i>
-                  <i style={{ top: '72%', right: '30%' }}></i>
-                </div>
-              </div>
-              <span className="ph">Screenshot placeholder</span>
-            </div>
-            <p className="t-reg">Retrieval pipeline overview. Caption placeholder.</p>
-          </section>
-
-          <section className="tagline" aria-label="Billing">
-            <h2 className="h-xl" data-split>
-              Billing
-            </h2>
-            <div className="tags xl" data-rise>
-              <span className="tag">Stripe</span>
-              <span className="tag">Subscription tiers</span>
-              <span className="tag">Webhooks</span>
-            </div>
-          </section>
-
-          <section className="wrap cshot" data-rise>
-            <div className="ph-img" style={{ height: '58.4rem' }}>
-              <CaseArt gradient={['#151515', '#5B6CFF']} rotation={-6} />
-              <span className="ph">Screenshot placeholder</span>
-            </div>
-            <p className="t-reg">Plans and checkout. Caption placeholder.</p>
           </section>
 
           {relatedCases.length > 0 && (
