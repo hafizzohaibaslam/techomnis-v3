@@ -8,7 +8,7 @@ export const clientsRow1: Client[] = [
   { name: 'Disney', logo: '/clients/disney.svg' },
   { name: 'GLAAD', logo: '/clients/glaad.png' },
   { name: 'Six Senses', logo: '/clients/six-senses.png' },
-  { name: 'Mucker Capital', logo: '/clients/mucker-white.png' },
+  { name: 'Mucker Capital', logo: '/clients/mucker.png' },
 ]
 
 export const clientsRow2Left: Client[] = [
