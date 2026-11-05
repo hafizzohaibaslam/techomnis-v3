@@ -30,31 +30,34 @@ export function InnerFooter() {
             <TransitionLink href="/privacy" label="Privacy" data-go="Privacy">
               <span className="ul">Privacy Policy</span>
             </TransitionLink>
-            <span className="grey">
-              hello@techomnis.com <span className="ph">Confirm</span>
-            </span>
+            <a href="mailto:hello@techomnis.com" className="grey">
+              hello@techomnis.com
+            </a>
           </div>
           <div className="social">
             <a
-              href="#"
-              data-ph
-              aria-label="TechOmnis on LinkedIn (link to be added)"
+              href="https://linkedin.com/company/techomnis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TechOmnis on LinkedIn"
               data-hover
             >
               <LinkedInIcon />
             </a>
             <a
-              href="#"
-              data-ph
-              aria-label="TechOmnis on Upwork (link to be added)"
+              href="https://www.upwork.com/agencies/techomnis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TechOmnis on Upwork"
               data-hover
             >
               <UpworkIcon />
             </a>
             <a
-              href="#"
-              data-ph
-              aria-label="TechOmnis on GitHub (link to be added)"
+              href="https://github.com/techomnis"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TechOmnis on GitHub"
               data-hover
             >
               <GitHubIcon />

@@ -296,18 +296,15 @@ export default function ServicesPage() {
                       <path d="M27 40V25c0-10 5-16 15-18v6c-5 1.5-8 5-8 10h8v17z" />
                     </svg>
                     <p className="h-medium">
-                      &quot;Verbatim client quote about a special project goes here.&quot;
+                      &quot;Zohaib delivers exactly what he promises — on time, high quality, and without errors. A rare find.&quot;
                     </p>
                     <div className="qauth">
                       <span className="av" aria-hidden="true">
-                        ?
+                        F
                       </span>
                       <div>
-                        <p className="h-sub">Client name</p>
-                        <p className="t-small grey">
-                          Role, company{' '}
-                          <span className="ph">Placeholder, not a real quote</span>
-                        </p>
+                        <p className="h-sub">Founder</p>
+                        <p className="t-small grey">Aviation AI product</p>
                       </div>
                     </div>
                   </div>

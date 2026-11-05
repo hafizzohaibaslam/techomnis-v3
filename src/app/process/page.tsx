@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
@@ -663,8 +664,14 @@ export default function ProcessPage() {
                 </div>
                 <div className="g2 prof">
                   <div className="profile ln lr lb">
-                    <div className="avatar" role="img" aria-label="Photo placeholder for Zohaib Aslam">
-                      ZA
+                    <div className="avatar-img" aria-label="Photo of Zohaib Aslam">
+                      <Image
+                        src="/images/team/zohaib-aslam.png"
+                        alt="Zohaib Aslam"
+                        width={80}
+                        height={80}
+                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                      />
                     </div>
                     <p className="nm">Zohaib Aslam</p>
                     <p className="cap">Founder, TechOmnis</p>
@@ -676,27 +683,34 @@ export default function ProcessPage() {
                     </TransitionLink>
                     <span className="foot psoc">
                       <a
-                        href="#"
-                        data-ph
+                        href="https://www.linkedin.com/in/hzohaibaslam"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         data-hover
-                        aria-label="Zohaib Aslam on LinkedIn (link to be added)"
+                        aria-label="Zohaib Aslam on LinkedIn"
                       >
                         <LinkedInIcon />
                       </a>
                       <a
-                        href="#"
-                        data-ph
+                        href="https://www.upwork.com/freelancers/~013f9f91b47aa1ba3c"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         data-hover
-                        aria-label="Zohaib Aslam on Upwork (link to be added)"
+                        aria-label="Zohaib Aslam on Upwork"
                       >
                         <UpworkIcon />
                       </a>
-                      <span className="ph">Photo + links placeholder</span>
                     </span>
                   </div>
                   <div className="profile ln lb">
-                    <div className="avatar" role="img" aria-label="Photo placeholder for Zohaib Murtaza">
-                      ZM
+                    <div className="avatar-img" aria-label="Photo of Zohaib Murtaza">
+                      <Image
+                        src="/images/team/zohaib-murtaza.webp"
+                        alt="Zohaib Murtaza"
+                        width={80}
+                        height={80}
+                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                      />
                     </div>
                     <p className="nm">Zohaib Murtaza</p>
                     <p className="cap">Co-founder &amp; CTO</p>
@@ -708,14 +722,14 @@ export default function ProcessPage() {
                     </TransitionLink>
                     <span className="foot psoc">
                       <a
-                        href="#"
-                        data-ph
+                        href="https://www.linkedin.com/in/zohaib-m/"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         data-hover
-                        aria-label="Zohaib Murtaza on LinkedIn (link to be added)"
+                        aria-label="Zohaib Murtaza on LinkedIn"
                       >
                         <LinkedInIcon />
                       </a>
-                      <span className="ph">Placeholder</span>
                     </span>
                   </div>
                 </div>

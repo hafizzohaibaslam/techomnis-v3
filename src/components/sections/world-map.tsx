@@ -7,8 +7,7 @@ export function WorldMap() {
         </h2>
         <p className="t-reg" data-rise>
           Founded in Lahore in 2024. Our clients range from global brands and campaigns
-          to venture-backed startups.{' '}
-          <span className="ph">Client locations to confirm</span>
+          to venture-backed startups across the US, UK and UAE.
         </p>
         <div className="worldwrap" data-rise>
           <svg
@@ -128,15 +127,15 @@ export function WorldMap() {
           </span>
           <span className="pin" style={{ left: '21.4%', top: '30.1%' }}>
             <i style={{ background: '#fff' }}></i>
-            <span>
-              Client region <em className="ph" style={{ fontStyle: 'normal' }}>TBC</em>
-            </span>
+            <span>United States</span>
           </span>
-          <span className="pin" style={{ left: '52.9%', top: '22.3%' }}>
+          <span className="pin" style={{ left: '47.5%', top: '24%' }}>
             <i style={{ background: '#fff' }}></i>
-            <span>
-              Client region <em className="ph" style={{ fontStyle: 'normal' }}>TBC</em>
-            </span>
+            <span>United Kingdom</span>
+          </span>
+          <span className="pin" style={{ left: '58%', top: '38%' }}>
+            <i style={{ background: '#fff' }}></i>
+            <span>UAE</span>
           </span>
         </div>
       </div>

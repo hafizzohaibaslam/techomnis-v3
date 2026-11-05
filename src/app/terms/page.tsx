@@ -27,11 +27,10 @@ export default function TermsPage() {
             <div className="blk">
               <h1>Terms of Service</h1>
               <p>
-                <span className="ph">Placeholder text, needs legal review before launch</span>
+                These terms govern your use of the TechOmnis website and our product engineering
+                services.
               </p>
-              <p>
-                Last updated: <span className="ph">Date TBC</span>
-              </p>
+              <p>Last updated: 5 November 2026</p>
             </div>
             <div className="blk">
               <h2>Agreement to terms</h2>
@@ -86,9 +85,6 @@ export default function TermsPage() {
             <div className="blk">
               <h2>Contact</h2>
               <p>Questions about these terms can be sent to hello@techomnis.com.</p>
-              <p>
-                <span className="ph">Confirm address</span>
-              </p>
             </div>
           </div>
         </section>

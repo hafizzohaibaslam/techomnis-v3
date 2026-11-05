@@ -182,8 +182,7 @@ export default function ContactPage() {
                       {globalError}
                     </p>
                     <p className="fok" role="status">
-                      Thanks. This mockup is not connected to a mailbox yet, so nothing was
-                      sent. <span className="ph">Form endpoint to connect</span>
+                      Thanks for reaching out. We will be in touch shortly.
                     </p>
                     <button type="submit" className="bbtn" data-hover data-bbtn>
                       Submit request

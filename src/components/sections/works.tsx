@@ -215,10 +215,7 @@ function FeaturedCase() {
           {featuredCase.metric && (
             <div className="met ln ll">
               <p className="h-sub">{featuredCase.metric.label}</p>
-              <p className="num">
-                {featuredCase.metric.value}
-                {featuredCase.metric.placeholder && <span className="ph"> Placeholder</span>}
-              </p>
+              <p className="num">{featuredCase.metric.value}</p>
             </div>
           )}
         </div>
@@ -253,10 +250,7 @@ function CaseCard({
         {caseStudy.metric && (
           <div className="case-stat">
             <span className="num">{caseStudy.metric.value}</span>
-            <p className="t-reg">
-              {caseStudy.metric.label}
-              {caseStudy.metric.placeholder && <span className="ph"> Placeholder</span>}
-            </p>
+            <p className="t-reg">{caseStudy.metric.label}</p>
           </div>
         )}
         <div className="tags">

@@ -27,16 +27,15 @@ export default function PrivacyPage() {
             <div className="blk">
               <h1>Privacy Policy</h1>
               <p>
-                <span className="ph">Placeholder text, needs legal review before launch</span>
+                This policy covers personal data collected through this website, including our
+                contact form and anonymous usage analytics.
               </p>
-              <p>
-                Last updated: <span className="ph">Date TBC</span>
-              </p>
+              <p>Last updated: 5 November 2026</p>
             </div>
             <div className="blk">
               <h2>Who we are</h2>
               <p>
-                TechOmnis is a product engineering team founded in Lahore in 2024. This policy
+                TechOmnis is a product engineering studio founded in Lahore in 2024. This policy
                 explains what personal data we collect through this website and how we use it.
               </p>
             </div>
@@ -84,9 +83,6 @@ export default function PrivacyPage() {
             <div className="blk">
               <h2>Contact</h2>
               <p>Questions about this policy can be sent to hello@techomnis.com.</p>
-              <p>
-                <span className="ph">Confirm address</span>
-              </p>
             </div>
           </div>
         </section>

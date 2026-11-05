@@ -194,7 +194,6 @@ export function ClientsSection({
                       </span>
                     ))}
                   </p>
-                  {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                 </div>
               </div>
             ))}
@@ -257,7 +256,6 @@ export function ClientsSection({
                       </span>
                     ))}
                   </p>
-                  {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                 </div>
               </div>
             ))}
@@ -284,7 +282,6 @@ export function ClientsSection({
                         </span>
                       ))}
                     </p>
-                    {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                   </div>
                 </div>
               ))}
@@ -303,7 +300,6 @@ export function ClientsSection({
                       </span>
                     ))}
                   </p>
-                  {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                 </div>
               </div>
             ))}

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import type { ReactElement } from 'react'
+import Image from 'next/image'
 import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
@@ -113,21 +114,28 @@ export default function AboutPage() {
                     className={`titem ${idx % 2 === 1 ? 'r' : ''} ${idx === 0 ? 'ln lr' : ''}`}
                   >
                     <div className="ttop">
-                      <div
-                        className="tphoto"
-                        role="img"
-                        aria-label={`Photo placeholder for ${member.name}`}
-                      >
-                        {member.initials}
-                      </div>
+                      {member.image ? (
+                        <div className="tphoto-img" aria-label={`Photo of ${member.name}`}>
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            width={120}
+                            height={120}
+                            style={{ objectFit: 'cover', borderRadius: '50%' }}
+                          />
+                        </div>
+                      ) : (
+                        <div
+                          className="tphoto"
+                          role="img"
+                          aria-label={member.name}
+                        >
+                          {member.initials}
+                        </div>
+                      )}
                       <div className="tyears">
                         <p className="num">{member.metric.value}</p>
-                        <p className="t-reg">
-                          {member.metric.label}{' '}
-                          {member.metric.placeholder && (
-                            <span className="ph">Placeholder</span>
-                          )}
-                        </p>
+                        <p className="t-reg">{member.metric.label}</p>
                         {idx === 0 && (
                           <span className="tbadge" aria-hidden="true">
                             TR+
@@ -142,18 +150,7 @@ export default function AboutPage() {
                       </div>
                       <div className="bio">
                         {member.bio.map((para, i) => (
-                          <p key={i} className="t-reg">
-                            {para}{' '}
-                            {i === member.bio.length - 1 &&
-                              member.bio[member.bio.length - 1].includes('placeholder') && (
-                                <span className="ph">Bio placeholder</span>
-                              )}
-                            {i === member.bio.length - 1 &&
-                              idx === 0 &&
-                              !member.bio[member.bio.length - 1].includes('placeholder') && (
-                                <span className="ph">Bio to confirm</span>
-                              )}
-                          </p>
+                          <p key={i} className="t-reg">{para}</p>
                         ))}
                       </div>
                       <div className="prof">
@@ -167,25 +164,28 @@ export default function AboutPage() {
                         </div>
                       </div>
                       <div className="tsoc">
-                        <a
-                          href="#"
-                          data-ph
-                          data-hover
-                          aria-label={`${member.name} on LinkedIn (link to be added)`}
-                        >
-                          <LinkedInIcon />
-                        </a>
-                        <a
-                          href="#"
-                          data-ph
-                          data-hover
-                          aria-label={`${member.name} on Upwork (link to be added)`}
-                        >
-                          <UpworkIcon />
-                        </a>
-                        <span className="ph" style={{ alignSelf: 'center' }}>
-                          Links placeholder
-                        </span>
+                        {member.linkedin && (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-hover
+                            aria-label={`${member.name} on LinkedIn`}
+                          >
+                            <LinkedInIcon />
+                          </a>
+                        )}
+                        {member.upwork && (
+                          <a
+                            href={member.upwork}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            data-hover
+                            aria-label={`${member.name} on Upwork`}
+                          >
+                            <UpworkIcon />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </article>

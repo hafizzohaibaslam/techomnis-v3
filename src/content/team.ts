@@ -15,7 +15,7 @@ export const teamMembers: TeamMember[] = [
     initials: 'ZA',
     name: 'Zohaib Aslam',
     role: 'Founder',
-    image: '/zohaib-a-image.png',
+    image: '/images/team/zohaib-aslam.png',
     metric: { value: '5.0', label: 'Upwork rating' },
     bio: [
       'A full-stack AI engineer who leads product, architecture and AI systems at TechOmnis.',
@@ -29,12 +29,14 @@ export const teamMembers: TeamMember[] = [
       'TypeScript',
       'Python',
     ],
+    linkedin: 'https://www.linkedin.com/in/hzohaibaslam',
+    upwork: 'https://www.upwork.com/freelancers/~013f9f91b47aa1ba3c',
   },
   {
     initials: 'ZM',
     name: 'Zohaib Murtaza',
     role: 'Co-founder & CTO',
-    image: '/zohaib-m-image.webp',
+    image: '/images/team/zohaib-murtaza.webp',
     metric: { value: '8+', label: 'years experience' },
     bio: [
       'Eight years shipping web products.',
@@ -48,6 +50,7 @@ export const teamMembers: TeamMember[] = [
       'React',
       'Node.js',
     ],
+    linkedin: 'https://www.linkedin.com/in/zohaib-m/',
   },
 ]
 

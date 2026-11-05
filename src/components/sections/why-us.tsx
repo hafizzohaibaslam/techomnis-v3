@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { teamMembers, type TeamMember } from '@/content/team'
 import { counterStats, awardStats } from '@/content/stats'
@@ -7,17 +8,24 @@ import { Button } from '@/components/ui/button'
 function ProfileCard({ member }: { member: TeamMember }) {
   return (
     <div className="profile ln lr lb">
-      <div className="avatar" role="img" aria-label={`Photo placeholder for ${member.name}`}>
-        {member.initials}
-      </div>
+      {member.image ? (
+        <div className="avatar-img" aria-label={`Photo of ${member.name}`}>
+          <Image
+            src={member.image}
+            alt={member.name}
+            width={80}
+            height={80}
+            style={{ objectFit: 'cover', borderRadius: '50%' }}
+          />
+        </div>
+      ) : (
+        <div className="avatar" role="img" aria-label={member.name}>
+          {member.initials}
+        </div>
+      )}
       <p className="nm">{member.name}</p>
       <p className="cap">{member.role}</p>
-      <p className="t-reg bio">
-        {member.bio[0]}
-        {member.bio.length > 1 && member.metric.placeholder && (
-          <span className="ph"> Bio placeholder</span>
-        )}
-      </p>
+      <p className="t-reg bio">{member.bio[0]}</p>
       <Link href="/about#team" className="read t-reg" data-go="About">
         <span className="ul">Read details</span>
       </Link>
@@ -28,18 +36,7 @@ function ProfileCard({ member }: { member: TeamMember }) {
             target="_blank"
             rel="noopener noreferrer"
             data-hover
-            data-ph={!member.linkedin.startsWith('http')}
-            aria-label={`${member.name} on LinkedIn (link to be added)`}
-          >
-            <LinkedInIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
-          </a>
-        )}
-        {!member.linkedin && (
-          <a
-            href="#"
-            data-hover
-            data-ph
-            aria-label={`${member.name} on LinkedIn (link to be added)`}
+            aria-label={`${member.name} on LinkedIn`}
           >
             <LinkedInIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
           </a>
@@ -50,13 +47,11 @@ function ProfileCard({ member }: { member: TeamMember }) {
             target="_blank"
             rel="noopener noreferrer"
             data-hover
-            data-ph={!member.upwork.startsWith('http')}
-            aria-label={`${member.name} on Upwork (link to be added)`}
+            aria-label={`${member.name} on Upwork`}
           >
             <UpworkIcon className="h-[1.67rem] w-[1.67rem] fill-[#222]" />
           </a>
         )}
-        <span className="ph">Photo + links placeholder</span>
       </span>
     </div>
   )

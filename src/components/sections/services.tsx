@@ -46,6 +46,15 @@ function ChartIcon() {
   )
 }
 
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="5" y="2" width="14" height="20" rx="2" />
+      <path d="M12 18h.01" />
+    </svg>
+  )
+}
+
 const stages: Record<string, Array<{ icon: React.ComponentType; title: string; description: string }>> = {
   'mvp-rescue': [
     {
@@ -64,6 +73,18 @@ const stages: Record<string, Array<{ icon: React.ComponentType; title: string; d
       description: 'Production deploy with monitoring and rollback, plus before and after metrics for every fix.',
     },
   ],
+  'product-design': [
+    {
+      icon: PencilIcon,
+      title: 'Design',
+      description: 'Research, flows, UI and design systems, designed by a team that also ships the code.',
+    },
+    {
+      icon: DashboardIcon,
+      title: 'Build-ready',
+      description: 'Specs, components and handoff documentation your engineers can ship from.',
+    },
+  ],
   'product-engineering': [
     {
       icon: DashboardIcon,
@@ -76,6 +97,18 @@ const stages: Record<string, Array<{ icon: React.ComponentType; title: string; d
       icon: ChartIcon,
       title: 'Integrate',
       description: 'AI features that hold up in production, like our own RAG chatbot SaaS, Othego. They are measured, monitored and priced so they stay affordable.',
+    },
+  ],
+  'mobile-apps': [
+    {
+      icon: PhoneIcon,
+      title: 'Build',
+      description: 'Flutter or React Native app, sharing one backend and design system with your web product.',
+    },
+    {
+      icon: ShieldCheckIcon,
+      title: 'Ship',
+      description: 'Store submission, beta testing and production deploy for iOS and Android.',
     },
   ],
 }

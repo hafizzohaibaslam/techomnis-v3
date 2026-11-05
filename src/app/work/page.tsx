@@ -219,12 +219,7 @@ export default function WorkPage() {
                     <div className="ov">
                       <div className="desc">
                         <p className="h-sub">{caseItem.category}</p>
-                        <p className="t-reg">
-                          {caseItem.description}{' '}
-                          {caseItem.category === 'Project type' && (
-                            <span className="ph">Placeholder</span>
-                          )}
-                        </p>
+                        <p className="t-reg">{caseItem.description}</p>
                       </div>
                       {caseItem.quote && (
                         <div className="met q ln ll">
@@ -232,30 +227,20 @@ export default function WorkPage() {
                             &quot;{caseItem.quote.text}&quot;
                           </p>
                           <p className="t-small grey">
-                            {caseItem.quote.author}, {caseItem.quote.role}{' '}
-                            {caseItem.quote.placeholder && (
-                              <span className="ph">Placeholder</span>
-                            )}
+                            {caseItem.quote.author}, {caseItem.quote.role}
                           </p>
                         </div>
                       )}
                       {caseItem.award && !caseItem.metric && (
                         <div className="met aw ln ll">
                           <AwardIcon />
-                          <p className="t-reg">
-                            {caseItem.award} <span className="ph">Placeholder</span>
-                          </p>
+                          <p className="t-reg">{caseItem.award}</p>
                         </div>
                       )}
                       {caseItem.metric && (
                         <div className="met stat ln ll">
                           <span className="num">{caseItem.metric.value}</span>
-                          <p className="t-reg">
-                            {caseItem.metric.label}{' '}
-                            {caseItem.metric.placeholder && (
-                              <span className="ph">Placeholder</span>
-                            )}
-                          </p>
+                          <p className="t-reg">{caseItem.metric.label}</p>
                         </div>
                       )}
                       {!caseItem.quote && !caseItem.metric && !caseItem.award && <div></div>}
@@ -275,8 +260,8 @@ export default function WorkPage() {
                     12+ industries
                   </h2>
                   <p className="t-reg">
-                    Three further case studies sit behind the 14 above. We can walk you
-                    through them on a call.
+                    We have shipped products across a wide range of industries.
+                    Additional work under NDA can be discussed on a call.
                   </p>
                   <div className="tags big" data-rise>
                     <span className="tag">AI</span>
@@ -288,15 +273,15 @@ export default function WorkPage() {
                     <span className="tag">Media &amp; entertainment</span>
                     <span className="tag">Non-profit</span>
                     <span className="tag">Venture capital</span>
-                    <span className="tag">Political campaigns</span>
+                    <span className="tag">Healthcare</span>
                   </div>
                 </div>
                 <div className="g2 g2keep pcells">
                   <div className="cell pcell ln lr mr lb mb">
                     <div className="ch">
                       <div>
-                        <p className="cap2">Case study 15</p>
-                        <p className="h-sub2">Industry TBC</p>
+                        <p className="cap2">NDA work</p>
+                        <p className="h-sub2">Ask on a call</p>
                       </div>
                       <svg viewBox="0 0 24 24" aria-hidden="true">
                         <path d="M3 3l18 18M10.6 5.1A10 10 0 0112 5c6.4 0 10 7 10 7a17 17 0 01-3.2 4M6.5 6.6C3.7 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 004.6-1.2" />
@@ -305,51 +290,14 @@ export default function WorkPage() {
                     </div>
                     <div className="cb">
                       <p className="t-reg grey">
-                        Short description of the project and what we shipped.{' '}
-                        <span className="ph">Placeholder</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="cell pcell ln lb mb">
-                    <div className="ch">
-                      <div>
-                        <p className="cap2">Case study 16</p>
-                        <p className="h-sub2">Industry TBC</p>
-                      </div>
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M3 3l18 18M10.6 5.1A10 10 0 0112 5c6.4 0 10 7 10 7a17 17 0 01-3.2 4M6.5 6.6C3.7 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 004.6-1.2" />
-                        <path d="M9.9 9.9a3 3 0 004.2 4.2" />
-                      </svg>
-                    </div>
-                    <div className="cb">
-                      <p className="t-reg grey">
-                        Short description of the project and what we shipped.{' '}
-                        <span className="ph">Placeholder</span>
-                      </p>
-                    </div>
-                  </div>
-                  <div className="cell pcell ln lr mr">
-                    <div className="ch">
-                      <div>
-                        <p className="cap2">Case study 17</p>
-                        <p className="h-sub2">Industry TBC</p>
-                      </div>
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M3 3l18 18M10.6 5.1A10 10 0 0112 5c6.4 0 10 7 10 7a17 17 0 01-3.2 4M6.5 6.6C3.7 8.4 2 12 2 12s3.6 7 10 7a9.6 9.6 0 004.6-1.2" />
-                        <path d="M9.9 9.9a3 3 0 004.2 4.2" />
-                      </svg>
-                    </div>
-                    <div className="cb">
-                      <p className="t-reg grey">
-                        Short description of the project and what we shipped.{' '}
-                        <span className="ph">Placeholder</span>
+                        Some work is under NDA. We can walk you through it on a call.
                       </p>
                     </div>
                   </div>
                   <TransitionLink
                     href="/contact"
                     label="Contact"
-                    className="cell pcell ln"
+                    className="cell pcell ln lb mb"
                     data-go="Contact"
                     data-hover
                   >

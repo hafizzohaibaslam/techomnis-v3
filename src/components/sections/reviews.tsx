@@ -28,7 +28,6 @@ function QuoteCell({
             </span>
           ))}
         </p>
-        {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
       </div>
     </div>
   )
