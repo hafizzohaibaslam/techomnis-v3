@@ -14,10 +14,12 @@ export function Footer() {
               🤝
             </span>
           </TransitionLink>
-          <p className="t-reg ft-sub">
+        </div>
+        <div className="ft-info">
+          <p className="t-reg">
             Tell us where the product is. We&apos;ll reply within 24 hours.
           </p>
-          <a href="mailto:hello@techomnis.com" className="ft-email t-reg">
+          <a href="mailto:hello@techomnis.com" className="t-reg">
             hello@techomnis.com
           </a>
         </div>
