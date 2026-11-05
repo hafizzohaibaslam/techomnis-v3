@@ -647,18 +647,17 @@ export default function ProcessPage() {
               <div className="g2 top">
                 <div className="why-left ln lr lb">
                   <div className="ttl">
-                    <span className="eyebrow">Leadership team</span>
+                    <span className="eyebrow">Studio team</span>
                     <h2 className="h-large" data-split>
-                      Why us
+                      Senior by default.
                     </h2>
                   </div>
                   <p className="t-reg">
-                    One senior team across UI, API, LLM, data and infra. We think like product
-                    owners and ship like engineers, so the whole system works end to end.
+                    A founder-led studio. The people who scope your product are the people who build it.
                   </p>
                   <div className="btnw">
                     <TransitionLink href="/about" label="About" className="btn" data-hover data-btn data-go="About">
-                      Read more about us
+                      Meet the studio
                     </TransitionLink>
                   </div>
                 </div>
@@ -670,8 +669,7 @@ export default function ProcessPage() {
                     <p className="nm">Zohaib Aslam</p>
                     <p className="cap">Founder, TechOmnis</p>
                     <p className="t-reg bio">
-                      Founded TechOmnis in 2024. Top Rated Plus on Upwork with 5.0 from 68 reviews
-                      and $300K+ earned.
+                      Founded TechOmnis in 2024. Top Rated Plus on Upwork with a 5.0 rating from 68 reviews.
                     </p>
                     <TransitionLink href="/about#team" label="About" className="read t-reg" data-go="About">
                       <span className="ul">Read details</span>
@@ -697,13 +695,13 @@ export default function ProcessPage() {
                     </span>
                   </div>
                   <div className="profile ln lb">
-                    <div className="avatar" role="img" aria-label="Photo placeholder for Zohaib Mehmood">
+                    <div className="avatar" role="img" aria-label="Photo placeholder for Zohaib Murtaza">
                       ZM
                     </div>
-                    <p className="nm">Zohaib Mehmood</p>
-                    <p className="cap">Team lead, TechOmnis</p>
+                    <p className="nm">Zohaib Murtaza</p>
+                    <p className="cap">Co-founder &amp; CTO</p>
                     <p className="t-reg bio">
-                      Leads delivery across the engineering team. <span className="ph">Bio placeholder</span>
+                      Full-stack engineer who owns AI integration and infrastructure. Runs the technical side of TechOmnis.
                     </p>
                     <TransitionLink href="/about#team" label="About" className="read t-reg" data-go="About">
                       <span className="ul">Read details</span>
@@ -713,7 +711,7 @@ export default function ProcessPage() {
                         href="#"
                         data-ph
                         data-hover
-                        aria-label="Zohaib Mehmood on LinkedIn (link to be added)"
+                        aria-label="Zohaib Murtaza on LinkedIn (link to be added)"
                       >
                         <LinkedInIcon />
                       </a>
@@ -749,25 +747,22 @@ export default function ProcessPage() {
                 <div className="counter-cell ln lr lb">
                   <div className="in">
                     <p className="num">
-                      <span data-count="5" data-dec="1">
-                        0.0
-                      </span>{' '}
-                      <small>of 5.0</small>
+                      $<span data-count="2">0</span>B+
                     </p>
                     <p className="t-reg">
-                      average rating from <br />
-                      68 Upwork reviews
+                      client impact across <br />
+                      the portfolio
                     </p>
                   </div>
                 </div>
                 <div className="counter-cell ln lb">
                   <div className="in">
                     <p className="num">
-                      $<span data-count="300">0</span>K+
+                      <span data-count="100">0</span>M+
                     </p>
                     <p className="t-reg">
-                      earned on Upwork <br />
-                      as Top Rated Plus
+                      user sessions powered <br />
+                      by our systems
                     </p>
                   </div>
                 </div>
@@ -792,10 +787,10 @@ export default function ProcessPage() {
                   style={{ gridColumn: 'span 3', justifyContent: 'space-around' }}
                 >
                   <div className="in">
-                    <span className="big">$2B+</span>
+                    <span className="big">5.0</span>
                     <p className="t-reg">
-                      client impact across <br />
-                      the portfolio
+                      68 Upwork reviews, <br />
+                      perfect rating
                     </p>
                   </div>
                   <div className="in">

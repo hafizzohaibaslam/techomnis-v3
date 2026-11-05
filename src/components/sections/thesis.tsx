@@ -45,17 +45,18 @@ export function Thesis() {
       <div className="wrap" style={{ height: '100%' }}>
         <div className="g2 ln lb" style={{ height: '100%' }}>
           <div className="thesis-left ln lr">
-            <span className="eyebrow">Our engineering approach</span>
+            <span className="eyebrow">The demo-to-production gap</span>
             <h2 className="h-large" data-split>
-              Audit. Build. Ship.
+              Demos are cheap now. Production isn&apos;t.
             </h2>
             <p className="t-reg">
-              Every product is different, but the loop is the same. Audit what exists, build
-              what&apos;s missing and ship it to production, then measure and repeat.
+              AI writes the first 80% of most software. The last 20% decides whether a product
+              survives: auth, data, payments, performance, and an AI bill that scales with usage.
+              That&apos;s where we work. Then we keep building.
             </p>
             <div className="btnw">
-              <Button href="#contact" data-go="Contact">
-                Explore process
+              <Button href="/process" data-go="Process">
+                How we work
               </Button>
             </div>
           </div>

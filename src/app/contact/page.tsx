@@ -85,10 +85,13 @@ export default function ContactPage() {
               <div className="g2">
                 <div className="ct-l">
                   <div className="ttl">
-                    <span className="eyebrow">Let&apos;s talk</span>
+                    <span className="eyebrow">Start a project</span>
                     <h1 className="h-big" data-split>
-                      Contact us
+                      Let&apos;s talk.
                     </h1>
+                    <p className="t-reg" style={{ marginTop: '1.5rem' }}>
+                      Tell us where the product is. We&apos;ll reply within 24 hours with a clear next step.
+                    </p>
                   </div>
                   <div className="ct-links">
                     <div className="lk">
@@ -96,21 +99,18 @@ export default function ContactPage() {
                       <a href="mailto:hello@techomnis.com" data-hover>
                         <span className="ul">hello@techomnis.com</span>
                       </a>
-                      <span className="ph">Confirm address</span>
                     </div>
                     <div className="lk">
                       <span className="cap3">Hire us on Upwork</span>
-                      <a href="#" data-ph data-hover>
-                        <span className="ul">Top Rated Plus profile</span>
+                      <a href="https://www.upwork.com/agencies/techomnis" target="_blank" rel="noopener noreferrer" data-hover>
+                        <span className="ul">Top Rated Plus agency</span>
                       </a>
-                      <span className="ph">Link placeholder</span>
                     </div>
                     <div className="lk">
-                      <span className="cap3">Founder</span>
-                      <a href="#" data-ph data-hover>
-                        <span className="ul">Zohaib Aslam on LinkedIn</span>
+                      <span className="cap3">TechOmnis</span>
+                      <a href="https://linkedin.com/company/techomnis" target="_blank" rel="noopener noreferrer" data-hover>
+                        <span className="ul">LinkedIn</span>
                       </a>
-                      <span className="ph">Link placeholder</span>
                     </div>
                   </div>
                 </div>

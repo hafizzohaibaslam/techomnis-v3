@@ -92,18 +92,17 @@ export function WhyUs() {
         <div className="g2 top">
           <div className="why-left ln lr lb">
             <div className="ttl">
-              <span className="eyebrow">Leadership team</span>
+              <span className="eyebrow">Studio team</span>
               <h2 className="h-large" data-split>
-                Why us
+                Senior by default.
               </h2>
             </div>
             <p className="t-reg">
-              One senior team across UI, API, LLM, data and infra. We think like product owners and
-              ship like engineers, so the whole system works end to end.
+              A founder-led studio. The people who scope your product are the people who build it.
             </p>
             <div className="btnw">
               <Button href="/about" data-go="About">
-                Read more about us
+                Meet the studio
               </Button>
             </div>
           </div>

@@ -373,25 +373,22 @@ export default function ServicesPage() {
                 <div className="counter-cell ln lr lb">
                   <div className="in">
                     <p className="num">
-                      <span data-count="5" data-dec="1">
-                        0.0
-                      </span>{' '}
-                      <small>of 5.0</small>
+                      $<span data-count="2">0</span>B+
                     </p>
                     <p className="t-reg">
-                      average rating from <br />
-                      68 Upwork reviews
+                      client impact across <br />
+                      the portfolio
                     </p>
                   </div>
                 </div>
                 <div className="counter-cell ln lb">
                   <div className="in">
                     <p className="num">
-                      $<span data-count="300">0</span>K+
+                      <span data-count="100">0</span>M+
                     </p>
                     <p className="t-reg">
-                      earned on Upwork <br />
-                      as Top Rated Plus
+                      user sessions powered <br />
+                      by our systems
                     </p>
                   </div>
                 </div>
@@ -415,10 +412,10 @@ export default function ServicesPage() {
                   style={{ gridColumn: 'span 3', justifyContent: 'space-around' }}
                 >
                   <div className="in">
-                    <span className="big">$2B+</span>
+                    <span className="big">5.0</span>
                     <p className="t-reg">
-                      client impact across <br />
-                      the portfolio
+                      68 Upwork reviews, <br />
+                      perfect rating
                     </p>
                   </div>
                   <div className="in">

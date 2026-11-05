@@ -14,7 +14,14 @@ export function Footer() {
               🤝
             </span>
           </TransitionLink>
+          <p className="t-reg ft-sub">
+            Tell us where the product is. We&apos;ll reply within 24 hours.
+          </p>
+          <a href="mailto:hello@techomnis.com" className="ft-email t-reg">
+            hello@techomnis.com
+          </a>
         </div>
+        <div className="ft-tag t-reg">We ship the whole system, end to end.</div>
         <div className="ft-bar">
           <div className="l t-reg">
             <span>© {new Date().getFullYear()} TechOmnis.</span>
