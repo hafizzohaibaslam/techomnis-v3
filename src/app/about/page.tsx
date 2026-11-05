@@ -147,7 +147,7 @@ export default function AboutPage() {
                             alt={member.name}
                             width={120}
                             height={120}
-                            style={{ objectFit: 'cover', borderRadius: '50%' }}
+                            style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
                           />
                         </div>
                       ) : (

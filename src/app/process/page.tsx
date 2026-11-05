@@ -695,7 +695,7 @@ export default function ProcessPage() {
                         alt="Zohaib Aslam"
                         width={80}
                         height={80}
-                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                        style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
                       />
                     </div>
                     <p className="nm">Zohaib Aslam</p>
@@ -734,7 +734,7 @@ export default function ProcessPage() {
                         alt="Zohaib Murtaza"
                         width={80}
                         height={80}
-                        style={{ objectFit: 'cover', borderRadius: '50%' }}
+                        style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
                       />
                     </div>
                     <p className="nm">Zohaib Murtaza</p>

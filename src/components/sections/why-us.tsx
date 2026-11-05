@@ -15,7 +15,7 @@ function ProfileCard({ member }: { member: TeamMember }) {
             alt={member.name}
             width={80}
             height={80}
-            style={{ objectFit: 'cover', borderRadius: '50%' }}
+            style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
           />
         </div>
       ) : (
