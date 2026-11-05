@@ -341,7 +341,7 @@ export default function ServicesPage() {
 
           <ClientsSection 
             showReviews={true} 
-            reviews={reviews.map(r => ({ quote: r.quote, isWide: r.isWide }))}
+            reviews={reviews.map(r => ({ quote: r.quote, clientName: r.clientName, isPlaceholder: r.isPlaceholder, isWide: r.isWide }))}
             scoreCards={scoreCards}
           />
 

@@ -2,7 +2,7 @@ export interface Review {
   id: string
   quote: string
   clientName: string
-  isPlaceholder: true
+  isPlaceholder?: boolean
   isWide?: boolean
 }
 
@@ -15,47 +15,47 @@ export interface ScoreCard {
 export const reviews: Review[] = [
   {
     id: '1',
-    quote: 'Client quote about working with TechOmnis.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'Zohaib delivers exactly what he promises — on time, high quality, and without errors. A rare find.',
+    clientName: 'Founder, aviation AI product',
+    isPlaceholder: false,
   },
   {
     id: '2',
-    quote: 'Client quote about working with TechOmnis.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'one of the most talented and hard-working developers',
+    clientName: 'Sam Aguilar, PM and lead developer, MJV',
+    isPlaceholder: false,
   },
   {
     id: '3',
-    quote: 'Client quote about working with TechOmnis.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'a fantastic developer… a great communicator and asset to any team',
+    clientName: 'Forrest Alonso Haydon, Co-Founder & Chief Project Officer, MJV',
+    isPlaceholder: false,
   },
   {
     id: '4',
-    quote: 'Client quote about working with TechOmnis.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'Zohaib, was awesome to work with and very attentive to every detail. We completed the project on time and on budget.',
+    clientName: 'Client, AI product build',
+    isPlaceholder: false,
   },
   {
     id: '5',
-    quote: 'Client quote about the TechOmnis engagement and what it delivered.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'Zohaib was great. We brought him in for the migration of a chrome extension to a new CRM we deployed and he did a great job. I would highly recommend him.',
+    clientName: 'Client, M&A advisory firm',
+    isPlaceholder: false,
     isWide: true,
   },
   {
     id: '6',
-    quote: 'Client quote about the TechOmnis engagement and what it delivered.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'Zohaib is an excellent software developer. He makes web applications very visually pleasing.',
+    clientName: 'Client, React product',
+    isPlaceholder: false,
     isWide: true,
   },
   {
     id: '7',
-    quote: 'Client quote about working with TechOmnis.',
-    clientName: 'Client name, role, company',
-    isPlaceholder: true,
+    quote: 'Smart, flexible, and startup-friendly.',
+    clientName: 'Upwork client',
+    isPlaceholder: false,
   },
 ]
 

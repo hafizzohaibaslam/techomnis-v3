@@ -28,7 +28,7 @@ function QuoteCell({
             </span>
           ))}
         </p>
-        <span className="ph">Placeholder, not a real quote</span>
+        {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
       </div>
     </div>
   )
@@ -78,7 +78,7 @@ export function Reviews() {
       <QuoteCell review={reviews[5]} className="ln lr lb" />
       <QuoteCell review={reviews[6]} className="ln lr lb" />
       <div className="center ln lb">
-        <Button href="#" isPlaceholder>
+        <Button href="https://www.upwork.com/freelancers/~013f9f91b47aa1ba3c" target="_blank" rel="noopener noreferrer">
           All reviews on Upwork
         </Button>
       </div>

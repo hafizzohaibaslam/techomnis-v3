@@ -42,6 +42,8 @@ function QuoteMark() {
 
 interface Review {
   quote: string
+  clientName: string
+  isPlaceholder?: boolean
   isWide?: boolean
 }
 
@@ -185,11 +187,14 @@ export function ClientsSection({
                 </div>
                 <div className="who">
                   <p className="t-reg grey">
-                    Client name,
-                    <br />
-                    role, company
+                    {review.clientName.split(',').map((part, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {part.trim()}
+                      </span>
+                    ))}
                   </p>
-                  <span className="ph">Placeholder, not a real quote</span>
+                  {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                 </div>
               </div>
             ))}
@@ -245,11 +250,14 @@ export function ClientsSection({
                 </div>
                 <div className="who">
                   <p className="t-reg grey">
-                    Client name,
-                    <br />
-                    role, company
+                    {review.clientName.split(',').map((part, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {part.trim()}
+                      </span>
+                    ))}
                   </p>
-                  <span className="ph">Placeholder, not a real quote</span>
+                  {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                 </div>
               </div>
             ))}
@@ -269,11 +277,14 @@ export function ClientsSection({
                   </div>
                   <div className="who">
                     <p className="t-reg grey">
-                      Client name,
-                      <br />
-                      role, company
+                      {review.clientName.split(',').map((part, i) => (
+                        <span key={i}>
+                          {i > 0 && <br />}
+                          {part.trim()}
+                        </span>
+                      ))}
                     </p>
-                    <span className="ph">Placeholder, not a real quote</span>
+                    {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                   </div>
                 </div>
               ))}
@@ -285,16 +296,26 @@ export function ClientsSection({
                 </div>
                 <div className="who">
                   <p className="t-reg grey">
-                    Client name,
-                    <br />
-                    role, company
+                    {review.clientName.split(',').map((part, i) => (
+                      <span key={i}>
+                        {i > 0 && <br />}
+                        {part.trim()}
+                      </span>
+                    ))}
                   </p>
-                  <span className="ph">Placeholder, not a real quote</span>
+                  {review.isPlaceholder && <span className="ph">Placeholder, not a real quote</span>}
                 </div>
               </div>
             ))}
             <div className="center ln lb">
-              <a href="#" className="btn" data-hover data-btn data-ph>
+              <a
+                href="https://www.upwork.com/freelancers/~013f9f91b47aa1ba3c"
+                className="btn"
+                data-hover
+                data-btn
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 All reviews on Upwork
               </a>
             </div>
