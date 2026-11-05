@@ -22,9 +22,10 @@ function ClientLogo({ client }: { client: Client }) {
       <Image
         src={client.logo}
         alt={client.name}
-        width={120}
-        height={48}
+        width={320}
+        height={120}
         className="logo-img"
+        unoptimized
       />
       {client.subtitle && <small className="client-sub">{client.subtitle}</small>}
     </div>

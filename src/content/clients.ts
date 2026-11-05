@@ -15,7 +15,7 @@ export const clientsRow2Left: Client[] = [
   { name: 'Edulog', logo: '/clients/edulog.png' },
   { name: 'Vote.org', logo: '/clients/vote-org.svg', subtitle: 'via Authentic' },
   { name: 'Archyr', logo: '/clients/archyr.png' },
-  { name: 'Waivs.ai', logo: '/clients/waivs.svg' },
+  { name: 'Waivs.ai', logo: '/clients/waivs.png' },
 ]
 
 export const clientsRow2Right: Client[] = [
