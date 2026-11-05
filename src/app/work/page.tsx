@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
@@ -15,12 +16,32 @@ function CaseArt({
   gradient,
   darkTheme,
   rotation,
+  image,
 }: {
   gradient: [string, string]
   darkTheme?: boolean
   rotation: number
+  image?: string
 }) {
   const bgColor = darkTheme ? '#2B2F36' : ''
+  
+  if (image) {
+    return (
+      <div
+        className="art"
+        style={{ background: `linear-gradient(135deg,${gradient[0]},${gradient[1]})` }}
+      >
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="(max-width: 1023px) 100vw, 50vw"
+          style={{ objectFit: 'cover' }}
+        />
+      </div>
+    )
+  }
+  
   return (
     <div
       className="art"
@@ -153,31 +174,33 @@ export default function WorkPage() {
                         gradient={caseItem.gradient}
                         darkTheme={caseItem.darkTheme}
                         rotation={caseItem.rotation ?? (idx % 2 === 0 ? -6 : 5)}
+                        image={caseItem.image}
                       />
                       <div className="dark"></div>
                       <span className="more" aria-hidden="true">
                         Read more
                       </span>
-                      <span className="ph phtag">Product shot placeholder</span>
+                      {!caseItem.image && <span className="ph phtag">Product shot placeholder</span>}
                     </TransitionLink>
                   ) : (
                     <a
                       href="#"
                       className="media"
                       data-media
-                      data-ph
+                      data-ph={!caseItem.image}
                       aria-label={`${caseItem.name} case study (page coming soon)`}
                     >
                       <CaseArt
                         gradient={caseItem.gradient}
                         darkTheme={caseItem.darkTheme}
                         rotation={caseItem.rotation ?? (idx % 2 === 0 ? -6 : 5)}
+                        image={caseItem.image}
                       />
                       <div className="dark"></div>
                       <span className="more" aria-hidden="true">
-                        Read more
+                        {caseItem.isExtra ? 'Coming soon' : 'Read more'}
                       </span>
-                      <span className="ph phtag">Product shot placeholder</span>
+                      {!caseItem.image && <span className="ph phtag">Product shot placeholder</span>}
                     </a>
                   )}
                   <div className="feature-row">

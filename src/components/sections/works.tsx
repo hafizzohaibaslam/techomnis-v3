@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useEffect } from 'react'
+import Image from 'next/image'
 import { TransitionLink } from '@/components/ui/transition-link'
 import { cases, type CaseStudy } from '@/content/cases'
 import { ArrowRight } from '@/components/ui/icons'
@@ -10,8 +11,24 @@ const featuredCase = cases[0]
 const displayCases = cases.slice(1, 5)
 const totalCaseStudies = cases.length
 
-function CaseArt({ gradient, rotation = -5 }: { gradient: [string, string]; rotation?: number }) {
+function CaseArt({ gradient, rotation = -5, image }: { gradient: [string, string]; rotation?: number; image?: string }) {
   const gradientStyle = `linear-gradient(135deg, ${gradient[0]}, ${gradient[1]})`
+  
+  if (image) {
+    return (
+      <div className="art" style={{ background: gradientStyle }}>
+        <Image
+          src={image}
+          alt=""
+          fill
+          sizes="(max-width: 1023px) 100vw, 50vw"
+          style={{ objectFit: 'cover' }}
+          priority
+        />
+      </div>
+    )
+  }
+  
   return (
     <div className="art" style={{ background: gradientStyle }}>
       <div
@@ -69,11 +86,13 @@ function MediaLink({
   label,
   children,
   hasPage,
+  hasImage,
 }: {
   href: string
   label: string
   children: React.ReactNode
   hasPage: boolean
+  hasImage?: boolean
 }) {
   const moreRef = useRef<HTMLSpanElement>(null)
 
@@ -140,13 +159,13 @@ function MediaLink({
 
   if (!hasPage) {
     return (
-      <div className="media" data-media data-ph aria-label={label}>
+      <div className="media" data-media data-ph={!hasImage} aria-label={label}>
         {children}
         <div className="dark"></div>
         <span ref={moreRef} className="more" aria-hidden="true">
           Coming soon
         </span>
-        <span className="ph phtag">Product shot placeholder</span>
+        {!hasImage && <span className="ph phtag">Product shot placeholder</span>}
       </div>
     )
   }
@@ -159,7 +178,7 @@ function MediaLink({
       <span ref={moreRef} className="more" aria-hidden="true">
         Read more <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
       </span>
-      <span className="ph phtag">Product shot placeholder</span>
+      {!hasImage && <span className="ph phtag">Product shot placeholder</span>}
     </TransitionLink>
   )
 }
@@ -171,8 +190,9 @@ function FeaturedCase() {
         href={featuredCase.hasPage ? `/work/${featuredCase.slug}` : '#'}
         label={`${featuredCase.name} case study`}
         hasPage={featuredCase.hasPage}
+        hasImage={!!featuredCase.image}
       >
-        <CaseArt gradient={featuredCase.gradient} rotation={featuredCase.rotation} />
+        <CaseArt gradient={featuredCase.gradient} rotation={featuredCase.rotation} image={featuredCase.image} />
       </MediaLink>
       <div className="feature-row">
         <div className="nm">
@@ -222,8 +242,9 @@ function CaseCard({
         href={caseStudy.hasPage ? `/work/${caseStudy.slug}` : '#'}
         label={`${caseStudy.name} case study`}
         hasPage={caseStudy.hasPage}
+        hasImage={!!caseStudy.image}
       >
-        <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
+        <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} image={caseStudy.image} />
       </MediaLink>
       <div className="case-meta">
         <h3 className="h-small">
