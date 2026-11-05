@@ -4,6 +4,19 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Terms of Service · TechOmnis',
   description: 'Terms and conditions for using the TechOmnis website and services.',
+  openGraph: {
+    title: 'Terms of Service · TechOmnis',
+    description: 'Terms and conditions for using the TechOmnis website and services.',
+    url: 'https://techomnis.com/terms',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Terms of Service · TechOmnis',
+    description: 'Terms and conditions for using the TechOmnis website and services.',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/terms',
+  },
 }
 
 export default function TermsPage() {

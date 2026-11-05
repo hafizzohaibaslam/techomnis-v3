@@ -15,6 +15,21 @@ export const metadata: Metadata = {
   title: 'About TechOmnis — Founder-Led Product Studio',
   description:
     'TechOmnis is a founder-led product studio founded in 2024. 17 case studies across 12+ industries, built for teams in the US, UK and UAE.',
+  openGraph: {
+    title: 'About TechOmnis — Founder-Led Product Studio',
+    description:
+      'TechOmnis is a founder-led product studio founded in 2024. 17 case studies across 12+ industries, built for teams in the US, UK and UAE.',
+    url: 'https://techomnis.com/about',
+    type: 'website',
+  },
+  twitter: {
+    title: 'About TechOmnis — Founder-Led Product Studio',
+    description:
+      'TechOmnis is a founder-led product studio founded in 2024. 17 case studies across 12+ industries, built for teams in the US, UK and UAE.',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/about',
+  },
 }
 
 function MindsetIcon({ type }: { type: string }) {

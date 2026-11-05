@@ -7,7 +7,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact TechOmnis — Start a Project',
     description: 'Tell us about the product. We reply within 24 hours. hello@techomnis.com',
+    url: 'https://techomnis.com/contact',
     type: 'website',
+  },
+  twitter: {
+    title: 'Contact TechOmnis — Start a Project',
+    description: 'Tell us about the product. We reply within 24 hours. hello@techomnis.com',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/contact',
   },
 }
 

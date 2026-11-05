@@ -12,6 +12,21 @@ export const metadata: Metadata = {
   title: 'Services — Product Design, Engineering & AI | TechOmnis',
   description:
     'Product design, web and SaaS engineering, Flutter and React Native apps, AI integration and AI agents, plus production rescue. One studio, end to end.',
+  openGraph: {
+    title: 'Services — Product Design, Engineering & AI | TechOmnis',
+    description:
+      'Product design, web and SaaS engineering, Flutter and React Native apps, AI integration and AI agents, plus production rescue. One studio, end to end.',
+    url: 'https://techomnis.com/services',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Services — Product Design, Engineering & AI | TechOmnis',
+    description:
+      'Product design, web and SaaS engineering, Flutter and React Native apps, AI integration and AI agents, plus production rescue. One studio, end to end.',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/services',
+  },
 }
 
 function ServiceIcon({ type }: { type: string }) {

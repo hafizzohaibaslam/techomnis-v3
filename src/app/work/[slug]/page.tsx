@@ -3,6 +3,7 @@ import { TransitionLink } from '@/components/ui/transition-link'
 import type { Metadata } from 'next'
 import { cases, getCaseBySlug, type CaseStudy } from '@/content/cases'
 import { InnerFooter } from '@/components/layout/inner-footer'
+import { BreadcrumbSchema, CaseStudySchema } from '@/components/schema/breadcrumb'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -22,9 +23,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Case Study Not Found · TechOmnis' }
   }
 
+  const shortOutcome = caseStudy.metric ? `${caseStudy.metric.value} ${caseStudy.metric.label}` : caseStudy.category
+  const title = `${caseStudy.name}: ${shortOutcome} | TechOmnis`
+  const description = `${caseStudy.name}: ${caseStudy.description}`
+
   return {
-    title: `${caseStudy.name} case study · TechOmnis`,
-    description: `${caseStudy.name}: ${caseStudy.description} A TechOmnis case study.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `https://techomnis.com/work/${slug}`,
+      type: 'article',
+      images: caseStudy.image ? [{ url: caseStudy.image, width: 1200, height: 630, alt: `${caseStudy.name} case study cover` }] : undefined,
+    },
+    twitter: {
+      title,
+      description,
+      images: caseStudy.image ? [caseStudy.image] : undefined,
+    },
+    alternates: {
+      canonical: `https://techomnis.com/work/${slug}`,
+    },
   }
 }
 
@@ -163,6 +183,20 @@ export default async function CaseStudyPage({ params }: Props) {
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'Work', url: 'https://techomnis.com/work' },
+          { name: caseStudy.name, url: `https://techomnis.com/work/${slug}` },
+        ]}
+      />
+      <CaseStudySchema
+        name={caseStudy.name}
+        description={caseStudy.description}
+        url={`https://techomnis.com/work/${slug}`}
+        image={caseStudy.image ? `https://techomnis.com${caseStudy.image}` : undefined}
+        category={caseStudy.category}
+      />
       <div className="page" id="page">
         <main id="main">
           <TransitionLink
@@ -403,11 +437,11 @@ export default async function CaseStudyPage({ params }: Props) {
                 <div className="counter-cell ln lb">
                   <div className="in">
                     <p className="num">
-                      $<span data-count="300">0</span>K+
+                      <span data-count="100">0</span>M+
                     </p>
                     <p className="t-reg">
-                      earned on Upwork <br />
-                      as Top Rated Plus
+                      user sessions powered <br />
+                      by our systems
                     </p>
                   </div>
                 </div>

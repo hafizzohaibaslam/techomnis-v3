@@ -57,12 +57,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const casePages: MetadataRoute.Sitemap = caseStudies.map((caseStudy) => ({
-    url: `${baseUrl}/work/${caseStudy.slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.7,
-  }))
+  const casePages: MetadataRoute.Sitemap = caseStudies
+    .filter((caseStudy) => caseStudy.hasPage)
+    .map((caseStudy) => ({
+      url: `${baseUrl}/work/${caseStudy.slug}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    }))
 
   const servicePages: MetadataRoute.Sitemap = services.map((service) => ({
     url: `${baseUrl}/services/${service.slug}`,

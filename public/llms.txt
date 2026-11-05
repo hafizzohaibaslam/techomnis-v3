@@ -1,0 +1,41 @@
+# TechOmnis
+
+> A founder-led product studio for web, mobile and AI
+
+## About
+
+TechOmnis is a product studio that designs, engineers and ships web, mobile and AI products to production. Founded in 2024, we work with teams across the US, UK and UAE.
+
+## Services
+
+- **Production Rescue**: We take AI-built, legacy or stalled products to production.
+- **Product Design**: UX/UI, design systems and prototypes built by a team that ships code.
+- **Product Engineering**: Web apps, SaaS, marketplaces and mobile apps on one backend.
+- **AI Systems**: RAG, copilots, chatbots and agents with evals, cost limits and tracing.
+- **Mobile Apps**: iOS and Android in Flutter or React Native, sharing backend and design.
+
+## Tech Stack
+
+Next.js, React, TypeScript, Tailwind, Vue, Node, Python, Postgres, Supabase, Firebase, MongoDB, Redis, Stripe, AWS, Google Cloud, Vercel, Docker, Flutter, React Native, OpenAI, Anthropic, Gemini, Vertex AI
+
+## Contact
+
+- Email: hello@techomnis.com
+- Website: https://techomnis.com
+
+## Key URLs
+
+- Home: https://techomnis.com
+- Services: https://techomnis.com/services
+- Work: https://techomnis.com/work
+- About: https://techomnis.com/about
+- Process: https://techomnis.com/process
+- Contact: https://techomnis.com/contact
+
+## Stats
+
+- 17 case studies shipped
+- 12+ industries served
+- $2B+ client impact
+- Top Rated Plus on Upwork
+- 5.0 rating from 68 reviews

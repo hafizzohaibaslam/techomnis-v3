@@ -7,6 +7,7 @@ import { cases, type CaseStudy } from '@/content/cases'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
+import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -18,6 +19,29 @@ export async function generateStaticParams() {
   }))
 }
 
+const serviceTitles: Record<string, { title: string; description: string }> = {
+  'mvp-rescue': {
+    title: 'AI-Built MVP to Production: Lovable, Bolt, Cursor | TechOmnis',
+    description: 'We take AI-built products (Lovable, Bolt, Cursor, Replit, v0) and legacy codebases to production. Fixed-fee audit, risk ranking and a clear fix plan.',
+  },
+  'product-design': {
+    title: 'Product Design & UI/UX for SaaS & AI | TechOmnis',
+    description: 'UX/UI design, design systems and prototypes built by a team that also ships the code. Research, flows, UI and build-ready specs.',
+  },
+  'product-engineering': {
+    title: 'SaaS & Web App Development Agency | TechOmnis',
+    description: 'Web apps, SaaS platforms, marketplaces and mobile apps on one backend and one design system. Production apps with CI/CD, tests and monitoring.',
+  },
+  'ai-llm': {
+    title: 'AI Integration: RAG, LLMs, Agents | TechOmnis',
+    description: 'RAG, copilots, chatbots and agents with evaluation sets, human approval, cost limits and tracing. AI that users trust at predictable cost.',
+  },
+  'mobile-apps': {
+    title: 'Mobile Apps: Flutter & React Native | TechOmnis',
+    description: 'iOS and Android apps in Flutter or React Native, sharing one backend and design system with your web product. Built for the store, not the demo.',
+  },
+}
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const service = getServiceBySlug(slug)
@@ -26,9 +50,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: 'Service Not Found · TechOmnis' }
   }
 
-  return {
-    title: `${service.name} · TechOmnis`,
+  const meta = serviceTitles[slug] || {
+    title: `${service.name} | TechOmnis`,
     description: `${service.name} by TechOmnis: ${service.description}`,
+  }
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: `https://techomnis.com/services/${slug}`,
+      type: 'website',
+    },
+    twitter: {
+      title: meta.title,
+      description: meta.description,
+    },
+    alternates: {
+      canonical: `https://techomnis.com/services/${slug}`,
+    },
   }
 }
 
@@ -261,6 +303,13 @@ export default async function ServiceDetailPage({ params }: Props) {
 
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'Services', url: 'https://techomnis.com/services' },
+          { name: service.name, url: `https://techomnis.com/services/${slug}` },
+        ]}
+      />
       <div className="page" id="page">
         <main id="main">
           <section className="start ihero" id="top" aria-label="Introduction">
@@ -578,10 +627,9 @@ export default async function ServiceDetailPage({ params }: Props) {
                   </div>
                   <div className="client ln lr lb">
                     <span className="nm">
-                      Biden
+                      Authentic
                       <br />
-                      campaign
-                      <small>via Authentic</small>
+                      Spark
                     </span>
                   </div>
                   <div className="client ln lr lb mr">
@@ -655,11 +703,11 @@ export default async function ServiceDetailPage({ params }: Props) {
                 <div className="counter-cell ln lb">
                   <div className="in">
                     <p className="num">
-                      $<span data-count="300">0</span>K+
+                      <span data-count="100">0</span>M+
                     </p>
                     <p className="t-reg">
-                      earned on Upwork <br />
-                      as Top Rated Plus
+                      user sessions powered <br />
+                      by our systems
                     </p>
                   </div>
                 </div>

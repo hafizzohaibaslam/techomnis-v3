@@ -10,6 +10,21 @@ export const metadata: Metadata = {
   title: 'Process — Brief, Architecture, Build, Ship | TechOmnis',
   description:
     'Scope in writing, an architecture you can read, a shipped increment every week and a monitored production launch. How TechOmnis works.',
+  openGraph: {
+    title: 'Process — Brief, Architecture, Build, Ship | TechOmnis',
+    description:
+      'Scope in writing, an architecture you can read, a shipped increment every week and a monitored production launch. How TechOmnis works.',
+    url: 'https://techomnis.com/process',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Process — Brief, Architecture, Build, Ship | TechOmnis',
+    description:
+      'Scope in writing, an architecture you can read, a shipped increment every week and a monitored production launch. How TechOmnis works.',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/process',
+  },
 }
 
 function VennDiagram() {

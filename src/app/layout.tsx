@@ -75,6 +75,16 @@ export const metadata: Metadata = {
         type: 'image/svg+xml',
       },
     ],
+    apple: [
+      {
+        url: '/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
+    ],
+  },
+  alternates: {
+    canonical: 'https://techomnis.com',
   },
 }
 
@@ -86,7 +96,11 @@ const jsonLd = {
   logo: 'https://techomnis.com/logo.svg',
   description:
     'TechOmnis is a founder-led product studio for design, engineering and AI. We take products from idea, or from prototype, to production.',
-  sameAs: [],
+  sameAs: [
+    'https://linkedin.com/company/techomnis',
+    'https://www.upwork.com/agencies/techomnis',
+    'https://github.com/techomnis',
+  ],
   contactPoint: {
     '@type': 'ContactPoint',
     email: 'hello@techomnis.com',

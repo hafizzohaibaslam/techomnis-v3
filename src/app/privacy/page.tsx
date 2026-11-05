@@ -4,6 +4,19 @@ import Link from 'next/link'
 export const metadata: Metadata = {
   title: 'Privacy Policy · TechOmnis',
   description: 'How TechOmnis handles personal data sent through this website.',
+  openGraph: {
+    title: 'Privacy Policy · TechOmnis',
+    description: 'How TechOmnis handles personal data sent through this website.',
+    url: 'https://techomnis.com/privacy',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Privacy Policy · TechOmnis',
+    description: 'How TechOmnis handles personal data sent through this website.',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/privacy',
+  },
 }
 
 export default function PrivacyPage() {

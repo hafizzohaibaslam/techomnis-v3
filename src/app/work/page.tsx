@@ -10,6 +10,21 @@ export const metadata: Metadata = {
   title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
   description:
     '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
+  openGraph: {
+    title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
+    description:
+      '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
+    url: 'https://techomnis.com/work',
+    type: 'website',
+  },
+  twitter: {
+    title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
+    description:
+      '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
+  },
+  alternates: {
+    canonical: 'https://techomnis.com/work',
+  },
 }
 
 function CaseArt({
@@ -17,11 +32,13 @@ function CaseArt({
   darkTheme,
   rotation,
   image,
+  name,
 }: {
   gradient: [string, string]
   darkTheme?: boolean
   rotation: number
   image?: string
+  name: string
 }) {
   const bgColor = darkTheme ? '#2B2F36' : ''
   
@@ -33,7 +50,7 @@ function CaseArt({
       >
         <Image
           src={image}
-          alt=""
+          alt={`${name} case study cover`}
           fill
           sizes="(max-width: 1023px) 100vw, 50vw"
           style={{ objectFit: 'cover' }}
@@ -175,6 +192,7 @@ export default function WorkPage() {
                         darkTheme={caseItem.darkTheme}
                         rotation={caseItem.rotation ?? (idx % 2 === 0 ? -6 : 5)}
                         image={caseItem.image}
+                        name={caseItem.name}
                       />
                       <div className="dark"></div>
                       <span className="more" aria-hidden="true">
@@ -193,6 +211,7 @@ export default function WorkPage() {
                         darkTheme={caseItem.darkTheme}
                         rotation={caseItem.rotation ?? (idx % 2 === 0 ? -6 : 5)}
                         image={caseItem.image}
+                        name={caseItem.name}
                       />
                       <div className="dark"></div>
                       <span className="more" aria-hidden="true">
