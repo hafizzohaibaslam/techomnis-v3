@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import {
   clientsRow1,
   clientsRow2Left,
@@ -8,15 +9,16 @@ import {
 function ClientCell({ client, className }: { client: Client; className?: string }) {
   return (
     <div className={`client-cell ${className || ''}`}>
-      <span className="nm">
-        {client.name.split('\n').map((line, i) => (
-          <span key={i}>
-            {i > 0 && <br />}
-            {line}
-          </span>
-        ))}
-        {client.subtitle && <small>{client.subtitle}</small>}
-      </span>
+      <div className="client-logo">
+        <Image
+          src={client.logo}
+          alt={client.name}
+          width={120}
+          height={48}
+          className="logo-img"
+        />
+        {client.subtitle && <small className="client-sub">{client.subtitle}</small>}
+      </div>
     </div>
   )
 }
@@ -39,7 +41,6 @@ export function Clients() {
                 From global brands and campaigns to venture-backed startups that need an MVP
                 shipped or rescued.
               </p>
-              <span className="ph">Logo files to be supplied</span>
             </div>
             <div className="clients-logos">
               {allClients.map((client, idx) => {
@@ -72,9 +73,6 @@ export function Clients() {
                   </span>
                 ))}
               </div>
-              <p style={{ marginTop: '1.43rem' }}>
-                <span className="ph">Full industry list to confirm</span>
-              </p>
             </div>
           </div>
         </div>

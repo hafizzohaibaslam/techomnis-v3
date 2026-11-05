@@ -1,9 +1,11 @@
+import Image from 'next/image'
 import {
   clientsRow1,
   clientsRow2Left,
   clientsRow2Right,
   businessDomains,
   proofInNumbers,
+  type Client,
 } from '@/content/clients'
 
 function StarIcon() {
@@ -11,6 +13,21 @@ function StarIcon() {
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
     </svg>
+  )
+}
+
+function ClientLogo({ client }: { client: Client }) {
+  return (
+    <div className="client-logo">
+      <Image
+        src={client.logo}
+        alt={client.name}
+        width={120}
+        height={48}
+        className="logo-img"
+      />
+      {client.subtitle && <small className="client-sub">{client.subtitle}</small>}
+    </div>
   )
 }
 
@@ -58,7 +75,6 @@ export function ClientsSection({
               From global brands and campaigns to venture-backed startups that need an MVP
               shipped or rescued.
             </p>
-            <span className="ph">Logo files to be supplied</span>
           </div>
           <div className="g2 g2keep">
             {clientsRow1.map((client, idx) => (
@@ -66,17 +82,7 @@ export function ClientsSection({
                 key={client.name}
                 className={`client ln ${idx === 0 || idx === 2 ? 'lr' : ''} ${idx < 2 ? 'lt' : ''} lb ${idx % 2 === 0 ? 'mr' : ''}`}
               >
-                <span className="nm">
-                  {client.name.split(' ').length > 1 ? (
-                    <>
-                      {client.name.split(' ')[0]}
-                      <br />
-                      {client.name.split(' ').slice(1).join(' ')}
-                    </>
-                  ) : (
-                    client.name
-                  )}
-                </span>
+                <ClientLogo client={client} />
               </div>
             ))}
           </div>
@@ -89,21 +95,7 @@ export function ClientsSection({
                 key={client.name}
                 className={`client ln lr lb ${idx % 2 === 0 ? 'mr' : ''}`}
               >
-                <span className="nm">
-                  {client.name.includes('\n') ? (
-                    client.name.split('\n').map((line, i) => (
-                      <span key={i}>
-                        {line}
-                        {i < client.name.split('\n').length - 1 && <br />}
-                      </span>
-                    ))
-                  ) : (
-                    <>
-                      {client.name}
-                      {client.subtitle && <small>{client.subtitle}</small>}
-                    </>
-                  )}
-                </span>
+                <ClientLogo client={client} />
               </div>
             ))}
           </div>
@@ -119,9 +111,6 @@ export function ClientsSection({
                 </span>
               ))}
             </div>
-            <p style={{ marginTop: '1.43rem' }}>
-              <span className="ph">Full industry list to confirm</span>
-            </p>
           </div>
         </div>
 
@@ -158,25 +147,16 @@ export function ClientsSection({
           </div>
           {clientsRow2Right.slice(0, 2).map((client, idx) => (
             <div key={client.name} className={`client ln lb ${idx === 0 ? 'mr' : ''}`}>
-              <span className="nm">
-                {client.name.split(' ').map((word, i, arr) => (
-                  <span key={i}>
-                    {word}
-                    {i < arr.length - 1 && <br />}
-                  </span>
-                ))}
-              </span>
+              <ClientLogo client={client} />
             </div>
           ))}
           {clientsRow2Right.slice(2, 4).map((client, idx) => (
             <div key={client.name} className={`client ln lr lb ${idx === 0 ? 'mr' : ''}`}>
-              <span className="nm">{client.name}</span>
+              <ClientLogo client={client} />
             </div>
           ))}
           <div className="client ln lr lb mr">
-            <span className="nm">
-              Othego<small>Own product</small>
-            </span>
+            <ClientLogo client={clientsRow2Right[4]} />
           </div>
           <div className="client ln lb">
             <p className="num more21">

@@ -1,28 +1,29 @@
 export interface Client {
   name: string
+  logo: string
   subtitle?: string
 }
 
 export const clientsRow1: Client[] = [
-  { name: 'Disney' },
-  { name: 'GLAAD' },
-  { name: 'Six Senses' },
-  { name: 'Mucker\nCapital' },
+  { name: 'Disney', logo: '/clients/disney.svg' },
+  { name: 'GLAAD', logo: '/clients/glaad.png' },
+  { name: 'Six Senses', logo: '/clients/six-senses.png' },
+  { name: 'Mucker Capital', logo: '/clients/mucker-white.png' },
 ]
 
 export const clientsRow2Left: Client[] = [
-  { name: 'Edulog' },
-  { name: 'Vote.org', subtitle: 'via Authentic' },
-  { name: 'Archyr' },
-  { name: 'Waivs.ai' },
+  { name: 'Edulog', logo: '/clients/edulog.png' },
+  { name: 'Vote.org', logo: '/clients/vote-org.svg', subtitle: 'via Authentic' },
+  { name: 'Archyr', logo: '/clients/archyr.png' },
+  { name: 'Waivs.ai', logo: '/clients/waivs.svg' },
 ]
 
 export const clientsRow2Right: Client[] = [
-  { name: 'REACH\nPathways' },
-  { name: 'Tuck\nAdvisors' },
-  { name: 'BaboBot' },
-  { name: 'Bellhopt' },
-  { name: 'Othego', subtitle: 'Own product' },
+  { name: 'REACH Pathways', logo: '/clients/reach-pathways.png' },
+  { name: 'Tuck Advisors', logo: '/clients/tuck-advisors.png' },
+  { name: 'BaboBot', logo: '/clients/babobot.png' },
+  { name: 'Bellhopt', logo: '/clients/bellhopt.svg' },
+  { name: 'Othego', logo: '/clients/othego.svg', subtitle: 'Own product' },
 ]
 
 export const businessDomains: string[] = [

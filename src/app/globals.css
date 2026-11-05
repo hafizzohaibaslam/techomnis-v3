@@ -189,6 +189,9 @@ html:not(.motion-off) .motion .bars i{animation:eq 1.1s ease-in-out infinite}
 .client-cell{display:flex;align-items:center;justify-content:center;text-align:center;aspect-ratio:1;min-height:11.67rem}
 .client-cell .nm{font-size:2rem;line-height:2.2rem;font-weight:700;letter-spacing:-.05rem}
 .client-cell .nm small{display:block;font-size:.83rem;line-height:1.2rem;font-weight:600;letter-spacing:0;color:var(--ink7);margin-top:.4rem;text-transform:uppercase}
+.client-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.client-logo .logo-img{max-width:8rem;max-height:3.5rem;width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+.client-logo .client-sub{font-size:.71rem;line-height:1rem;font-weight:600;letter-spacing:.05rem;color:var(--ink7);text-transform:uppercase}
 .clients-right{display:flex;align-items:flex-start}
 .domains-content{padding:2.86rem;display:flex;flex-direction:column;gap:1.43rem}
 .domains-content p{max-width:30rem}
@@ -197,6 +200,9 @@ html:not(.motion-off) .motion .bars i{animation:eq 1.1s ease-in-out infinite}
 .client{height:23.34vw;display:flex;align-items:center;justify-content:center;text-align:center}
 .client .nm{font-size:2rem;line-height:2.2rem;font-weight:700;letter-spacing:-.05rem}
 .client .nm small{display:block;font-size:.83rem;line-height:1.2rem;font-weight:600;letter-spacing:0;color:var(--ink7);margin-top:.4rem;text-transform:uppercase}
+.client .client-logo{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem}
+.client .client-logo .logo-img{max-width:10rem;max-height:4rem;width:auto;height:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:.9}
+.client .client-logo .client-sub{font-size:.71rem;line-height:1rem;font-weight:600;letter-spacing:.05rem;color:var(--ink7);text-transform:uppercase}
 .intro{display:flex;flex-direction:column;align-items:flex-start;gap:1.43rem;padding-top:25.97rem}
 .intro p{max-width:29.8rem}
 .domains{padding:5.4rem 0 0 5.95rem}
@@ -391,6 +397,8 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .client-cell{min-height:45.13vw}
   .client-cell .nm{font-size:6rem;line-height:6.6rem;letter-spacing:-.15rem}
   .client-cell .nm small{font-size:2.8rem;line-height:3.6rem}
+  .client-logo .logo-img{max-width:24rem;max-height:10rem}
+  .client-logo .client-sub{font-size:2.2rem;line-height:3rem}
   .clients-right{border-left:none;border-top:1px solid var(--hair)}
   .domains-content{padding:10.26rem 0}
   .domains-content p{max-width:none;margin-top:4.1rem}
@@ -400,6 +408,8 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .intro p{max-width:none}
   .client,.award{height:45.13vw}
   .client .nm{font-size:6rem;line-height:6.6rem;letter-spacing:-.15rem}.client .nm small{font-size:2.8rem;line-height:3.6rem}
+  .client .client-logo .logo-img{max-width:26rem;max-height:12rem}
+  .client .client-logo .client-sub{font-size:2.2rem;line-height:3rem}
   .domains{padding:10.26rem 0}.domains p{max-width:none;margin-top:4.1rem}.domains .tags{max-width:none;margin-top:8.2rem}
   .value{padding:10.26rem 0 4rem;grid-column:1/-1;grid-row:auto}
   .value>p{max-width:none;margin-top:4.1rem}
