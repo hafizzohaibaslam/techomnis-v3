@@ -16,11 +16,14 @@ export const metadata: Metadata = {
       '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
     url: 'https://techomnis.com/work',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
     description:
       '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/work',
@@ -200,11 +203,10 @@ export default function WorkPage() {
                       </span>
                     </TransitionLink>
                   ) : (
-                    <a
-                      href="#"
+                    <div
                       className="media"
                       data-media
-                      aria-label={`${caseItem.name} case study (page coming soon)`}
+                      aria-label={`${caseItem.name} case study`}
                     >
                       <CaseArt
                         gradient={caseItem.gradient}
@@ -214,10 +216,7 @@ export default function WorkPage() {
                         name={caseItem.name}
                       />
                       <div className="dark"></div>
-                      <span className="more" aria-hidden="true">
-                        {caseItem.isExtra ? 'Coming soon' : 'Read more'}
-                      </span>
-                    </a>
+                    </div>
                   )}
                   <div className="feature-row">
                     <div className="nm">

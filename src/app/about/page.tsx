@@ -21,11 +21,14 @@ export const metadata: Metadata = {
       'TechOmnis is a founder-led product studio founded in 2024. 17 case studies across 12+ industries, built for teams in the US, UK and UAE.',
     url: 'https://techomnis.com/about',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'About TechOmnis — Founder-Led Product Studio',
     description:
       'TechOmnis is a founder-led product studio founded in 2024. 17 case studies across 12+ industries, built for teams in the US, UK and UAE.',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/about',

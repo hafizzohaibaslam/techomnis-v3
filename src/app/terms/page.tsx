@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     description: 'Terms and conditions for using the TechOmnis website and services.',
     url: 'https://techomnis.com/terms',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Terms of Service · TechOmnis',
     description: 'Terms and conditions for using the TechOmnis website and services.',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/terms',

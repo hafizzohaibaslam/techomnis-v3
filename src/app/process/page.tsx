@@ -16,11 +16,14 @@ export const metadata: Metadata = {
       'Scope in writing, an architecture you can read, a shipped increment every week and a monitored production launch. How TechOmnis works.',
     url: 'https://techomnis.com/process',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Process — Brief, Architecture, Build, Ship | TechOmnis',
     description:
       'Scope in writing, an architecture you can read, a shipped increment every week and a monitored production launch. How TechOmnis works.',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/process',

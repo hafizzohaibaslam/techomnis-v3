@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     description: 'How TechOmnis handles personal data sent through this website.',
     url: 'https://techomnis.com/privacy',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Privacy Policy · TechOmnis',
     description: 'How TechOmnis handles personal data sent through this website.',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/privacy',

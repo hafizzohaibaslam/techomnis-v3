@@ -18,11 +18,14 @@ export const metadata: Metadata = {
       'Product design, web and SaaS engineering, Flutter and React Native apps, AI integration and AI agents, plus production rescue. One studio, end to end.',
     url: 'https://techomnis.com/services',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Services — Product Design, Engineering & AI | TechOmnis',
     description:
       'Product design, web and SaaS engineering, Flutter and React Native apps, AI integration and AI agents, plus production rescue. One studio, end to end.',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/services',

@@ -21,7 +21,7 @@ export async function generateStaticParams() {
 
 const serviceTitles: Record<string, { title: string; description: string }> = {
   'mvp-rescue': {
-    title: 'AI-Built MVP to Production: Lovable, Bolt, Cursor | TechOmnis',
+    title: 'AI MVP to Production: Lovable, Bolt, Cursor | TechOmnis',
     description: 'We take AI-built products (Lovable, Bolt, Cursor, Replit, v0) and legacy codebases to production. Fixed-fee audit, risk ranking and a clear fix plan.',
   },
   'product-design': {
@@ -63,10 +63,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: meta.description,
       url: `https://techomnis.com/services/${slug}`,
       type: 'website',
+      images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
     },
     twitter: {
+      card: 'summary_large_image',
       title: meta.title,
       description: meta.description,
+      images: ['/og-image.png'],
     },
     alternates: {
       canonical: `https://techomnis.com/services/${slug}`,

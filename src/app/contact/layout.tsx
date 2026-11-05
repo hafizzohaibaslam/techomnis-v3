@@ -9,10 +9,13 @@ export const metadata: Metadata = {
     description: 'Tell us about the product. We reply within 24 hours. hello@techomnis.com',
     url: 'https://techomnis.com/contact',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'TechOmnis — Product Studio' }],
   },
   twitter: {
+    card: 'summary_large_image',
     title: 'Contact TechOmnis — Start a Project',
     description: 'Tell us about the product. We reply within 24 hours. hello@techomnis.com',
+    images: ['/og-image.png'],
   },
   alternates: {
     canonical: 'https://techomnis.com/contact',
