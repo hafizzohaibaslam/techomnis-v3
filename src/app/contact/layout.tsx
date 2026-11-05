@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Contact TechOmnis — Start a Project',
@@ -23,5 +24,15 @@ export const metadata: Metadata = {
 }
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {
-  return children
+  return (
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'Contact', url: 'https://techomnis.com/contact' },
+        ]}
+      />
+      {children}
+    </>
+  )
 }

@@ -8,6 +8,7 @@ import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
 import { WorldMap } from '@/components/sections/world-map'
 import { ClientsSection } from '@/components/sections/clients-section'
+import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
 import { team, mindsetItems, quotes } from '@/content/team'
 import { reviews, scoreCards } from '@/content/reviews'
 
@@ -94,10 +95,17 @@ function MindsetIcon({ type }: { type: string }) {
 
 export default function AboutPage() {
   return (
-    <div className="inner">
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'About', url: 'https://techomnis.com/about' },
+        ]}
+      />
+      <div className="inner">
+        <a className="skip" href="#main">
+          Skip to content
+        </a>
       <div className="page" id="page">
         <main id="main">
           <section className="start ihero" id="top" aria-label="Introduction">
@@ -462,8 +470,9 @@ export default function AboutPage() {
           </section>
         </main>
         <InnerFooter />
+        </div>
+        <InnerNavigation />
       </div>
-      <InnerNavigation />
-    </div>
+    </>
   )
 }

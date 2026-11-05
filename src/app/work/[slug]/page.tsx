@@ -131,23 +131,29 @@ function CaseArt({ gradient, rotation = -5 }: { gradient: [string, string]; rota
 }
 
 function RelatedCase({ caseStudy, isRight }: { caseStudy: CaseStudy; isRight?: boolean }) {
-  const href = caseStudy.hasPage ? `/work/${caseStudy.slug}` : '#'
   return (
     <div className={`case ln lb ${isRight ? 'r' : 'lr'}`}>
-      <TransitionLink
-        href={href}
-        label={caseStudy.name}
-        className="media"
-        data-media
-        data-go={caseStudy.name}
-        aria-label={`${caseStudy.name} case study`}
-      >
-        <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
-        <div className="dark"></div>
-        <span className="more" aria-hidden="true">
-          Read more
-        </span>
-      </TransitionLink>
+      {caseStudy.hasPage ? (
+        <TransitionLink
+          href={`/work/${caseStudy.slug}`}
+          label={caseStudy.name}
+          className="media"
+          data-media
+          data-go={caseStudy.name}
+          aria-label={`${caseStudy.name} case study`}
+        >
+          <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
+          <div className="dark"></div>
+          <span className="more" aria-hidden="true">
+            Read more
+          </span>
+        </TransitionLink>
+      ) : (
+        <div className="media" data-media aria-label={`${caseStudy.name} case study`}>
+          <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} />
+          <div className="dark"></div>
+        </div>
+      )}
       <div className="case-meta">
         <h3 className="h-small">
           <span className="ul">{caseStudy.name}</span>

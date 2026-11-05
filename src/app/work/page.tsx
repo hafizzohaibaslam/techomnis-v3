@@ -4,6 +4,7 @@ import { TransitionLink } from '@/components/ui/transition-link'
 import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
+import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
 import { cases } from '@/content/cases'
 
 export const metadata: Metadata = {
@@ -164,11 +165,18 @@ function AwardIcon() {
 
 export default function WorkPage() {
   return (
-    <div className="inner">
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
-      <div className="page" id="page">
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'Work', url: 'https://techomnis.com/work' },
+        ]}
+      />
+      <div className="inner">
+        <a className="skip" href="#main">
+          Skip to content
+        </a>
+        <div className="page" id="page">
         <main id="main">
           <section className="start" id="top" aria-label="Work">
             <div className="wrap">
@@ -423,8 +431,9 @@ export default function WorkPage() {
           </section>
         </main>
         <InnerFooter />
+        </div>
+        <InnerNavigation />
       </div>
-      <InnerNavigation />
-    </div>
+    </>
   )
 }

@@ -5,6 +5,7 @@ import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
+import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Process — Brief, Architecture, Build, Ship | TechOmnis',
@@ -122,6 +123,12 @@ function LoopArrow() {
 export default function ProcessPage() {
   return (
     <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'Process', url: 'https://techomnis.com/process' },
+        ]}
+      />
       <div className="page" id="page">
         <main id="main">
           <section className="start ihero" id="top" aria-label="Introduction">

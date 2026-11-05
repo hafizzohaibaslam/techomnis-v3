@@ -5,6 +5,7 @@ import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { ClientsSection } from '@/components/sections/clients-section'
+import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
 import { services, specialServices, buildItems } from '@/content/services'
 import { reviews, scoreCards } from '@/content/reviews'
 
@@ -119,10 +120,17 @@ function SpecialIcon({ type }: { type: string }) {
 
 export default function ServicesPage() {
   return (
-    <div className="inner">
-      <a className="skip" href="#main">
-        Skip to content
-      </a>
+    <>
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: 'https://techomnis.com' },
+          { name: 'Services', url: 'https://techomnis.com/services' },
+        ]}
+      />
+      <div className="inner">
+        <a className="skip" href="#main">
+          Skip to content
+        </a>
       <div className="page" id="page">
         <main id="main">
           <section className="start ihero" id="top" aria-label="Introduction">
@@ -446,8 +454,9 @@ export default function ServicesPage() {
           </section>
         </main>
         <InnerFooter />
+        </div>
+        <InnerNavigation />
       </div>
-      <InnerNavigation />
-    </div>
+    </>
   )
 }
