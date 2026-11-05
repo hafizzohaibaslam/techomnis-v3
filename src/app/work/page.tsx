@@ -6,9 +6,9 @@ import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { cases } from '@/content/cases'
 
 export const metadata: Metadata = {
-  title: 'Work · TechOmnis',
+  title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
   description:
-    '17 case studies across 12+ industries: MVP rescue, product engineering and AI products shipped by TechOmnis.',
+    '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
 }
 
 function CaseArt({

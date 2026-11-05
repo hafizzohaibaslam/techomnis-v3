@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Contact | TechOmnis',
+  title: 'Contact TechOmnis — Start a Project',
   description:
-    'Start a project with TechOmnis. Tell us about your product engineering, AI, or web development needs.',
+    'Tell us about the product, whether it\'s an idea, a prototype or a legacy system. We reply within 24 hours. hello@techomnis.com',
   openGraph: {
-    title: 'Contact | TechOmnis',
-    description: 'Start a project with TechOmnis. Tell us about your needs.',
+    title: 'Contact TechOmnis — Start a Project',
+    description: 'Tell us about the product. We reply within 24 hours. hello@techomnis.com',
     type: 'website',
   },
 }

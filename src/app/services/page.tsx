@@ -9,9 +9,9 @@ import { services, specialServices, buildItems } from '@/content/services'
 import { reviews, scoreCards } from '@/content/reviews'
 
 export const metadata: Metadata = {
-  title: 'Services · TechOmnis',
+  title: 'Services — Product Design, Engineering & AI | TechOmnis',
   description:
-    'MVP rescue, product engineering and AI & LLM features: what TechOmnis builds and how.',
+    'Product design, web and SaaS engineering, Flutter and React Native apps, AI integration and AI agents, plus production rescue. One studio, end to end.',
 }
 
 function ServiceIcon({ type }: { type: string }) {

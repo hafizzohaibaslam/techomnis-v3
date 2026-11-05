@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Our Work | TechOmnis',
+  title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
   description:
-    'Explore our portfolio of 21+ case studies across FinTech, Healthcare, E-commerce, AI, and more. See how we help startups and scale-ups build exceptional products.',
+    '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
   openGraph: {
-    title: 'Our Work | TechOmnis',
+    title: 'Work — SaaS, AI & Mobile Case Studies | TechOmnis',
     description:
-      'Explore our portfolio of 21+ case studies across FinTech, Healthcare, E-commerce, AI, and more.',
+      '17 products shipped end to end: AI platforms, EdTech, M&A automation, hospitality marketplaces, HealthTech, fintech and venture operations.',
     type: 'website',
   },
 }

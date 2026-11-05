@@ -6,9 +6,9 @@ import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
 
 export const metadata: Metadata = {
-  title: 'Process · TechOmnis',
+  title: 'Process — Brief, Architecture, Build, Ship | TechOmnis',
   description:
-    'How TechOmnis works: audit, build and ship, then measure and repeat. A delivery plan and the ways we engage.',
+    'Scope in writing, an architecture you can read, a shipped increment every week and a monitored production launch. How TechOmnis works.',
 }
 
 function VennDiagram() {

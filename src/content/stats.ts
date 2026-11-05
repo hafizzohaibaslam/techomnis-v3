@@ -22,23 +22,22 @@ export const counterStats: CounterStat[] = [
     description: 'industries, from EdTech to hospitality',
   },
   {
-    value: 5,
-    decimal: 1,
-    suffix: ' of 5.0',
-    description: 'average rating from 68 Upwork reviews',
+    value: 2,
+    prefix: '$',
+    suffix: 'B+',
+    description: 'client impact, raised and closed',
   },
   {
-    value: 300,
-    prefix: '$',
-    suffix: 'K+',
-    description: 'earned on Upwork as Top Rated Plus',
+    value: 100,
+    suffix: 'M+',
+    description: 'campaign impressions on a platform we shipped',
   },
 ]
 
 export const awardStats: AwardStat[] = [
   {
-    value: 'Top Rated+',
-    description: 'Top Rated Plus on Upwork',
+    value: '17',
+    description: 'case studies shipped end to end',
   },
   {
     value: '$2B+',

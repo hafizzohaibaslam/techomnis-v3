@@ -13,19 +13,22 @@ const figtree = Figtree({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://techomnis.com'),
-  title: 'TechOmnis: End-to-end product engineering',
+  title: 'TechOmnis — Product Studio for Web, Mobile & AI',
   description:
-    'TechOmnis ships the whole system, end to end: MVP rescue, product engineering and AI products.',
+    'TechOmnis designs, engineers and ships web, mobile and AI products to production. 17 case studies, 12+ industries, $2B+ in client impact.',
   keywords: [
+    'product studio',
     'product engineering',
     'MVP rescue',
-    'AI products',
-    'LLM',
-    'RAG',
-    'SaaS',
-    'Next.js',
-    'TypeScript',
-    'full-stack development',
+    'AI development',
+    'web development agency',
+    'mobile app development',
+    'SaaS development',
+    'AI agents',
+    'RAG chatbot',
+    'Next.js agency',
+    'Flutter development',
+    'React Native development',
   ],
   authors: [{ name: 'TechOmnis' }],
   creator: 'TechOmnis',
@@ -35,23 +38,23 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://techomnis.com',
     siteName: 'TechOmnis',
-    title: 'TechOmnis: End-to-end product engineering',
+    title: 'TechOmnis — Product Studio for Web, Mobile & AI',
     description:
-      'TechOmnis ships the whole system, end to end: MVP rescue, product engineering and AI products.',
+      'TechOmnis designs, engineers and ships web, mobile and AI products to production. 17 case studies, 12+ industries, $2B+ in client impact.',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'TechOmnis - End-to-end product engineering',
+        alt: 'TechOmnis — Product Studio for Web, Mobile & AI',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TechOmnis: End-to-end product engineering',
+    title: 'TechOmnis — Product Studio for Web, Mobile & AI',
     description:
-      'TechOmnis ships the whole system, end to end: MVP rescue, product engineering and AI products.',
+      'TechOmnis designs, engineers and ships web, mobile and AI products to production. 17 case studies, 12+ industries, $2B+ in client impact.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -77,12 +80,12 @@ export const metadata: Metadata = {
 
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'Organization',
+  '@type': 'ProfessionalService',
   name: 'TechOmnis',
   url: 'https://techomnis.com',
   logo: 'https://techomnis.com/logo.svg',
   description:
-    'TechOmnis ships the whole system, end to end: MVP rescue, product engineering and AI products.',
+    'TechOmnis is a founder-led product studio for design, engineering and AI. We take products from idea, or from prototype, to production.',
   sameAs: [],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -98,6 +101,8 @@ const jsonLd = {
       addressCountry: 'PK',
     },
   },
+  priceRange: '$500 - $50,000+',
+  areaServed: ['US', 'UK', 'UAE'],
 }
 
 export default function RootLayout({

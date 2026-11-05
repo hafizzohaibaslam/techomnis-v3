@@ -11,9 +11,9 @@ import { team, mindsetItems, quotes } from '@/content/team'
 import { reviews, scoreCards } from '@/content/reviews'
 
 export const metadata: Metadata = {
-  title: 'About · TechOmnis',
+  title: 'About TechOmnis — Founder-Led Product Studio',
   description:
-    'TechOmnis is one senior team founded by Zohaib Aslam in Lahore in 2024: product engineering, MVP rescue and AI products, end to end.',
+    'TechOmnis is a founder-led product studio founded in 2024. 17 case studies across 12+ industries, built for teams in the US, UK and UAE.',
 }
 
 function MindsetIcon({ type }: { type: string }) {

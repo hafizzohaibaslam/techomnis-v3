@@ -2,6 +2,7 @@ export interface TeamMember {
   initials: string
   name: string
   role: string
+  image?: string
   metric: { value: string; label: string; placeholder?: boolean }
   bio: string[]
   skills: string[]
@@ -13,31 +14,40 @@ export const teamMembers: TeamMember[] = [
   {
     initials: 'ZA',
     name: 'Zohaib Aslam',
-    role: 'Founder, TechOmnis',
-    metric: { value: '$300K+', label: 'earned on Upwork' },
+    role: 'Founder',
+    image: '/zohaib-a-image.png',
+    metric: { value: '5.0', label: 'Upwork rating' },
     bio: [
-      'Founded TechOmnis in 2024 in Lahore. Top Rated Plus on Upwork with 5.0 from 68 reviews and $300K+ earned.',
-      'Leads 17 case studies across 12+ industries, from MVP rescue to full product builds and AI features.',
+      'A full-stack AI engineer who leads product, architecture and AI systems at TechOmnis.',
+      'Top Rated Plus with a 5.0 rating on Upwork.',
     ],
     skills: [
       'Product engineering',
-      'MVP rescue',
       'AI & LLM',
+      'Architecture',
       'Next.js',
       'TypeScript',
-      'Stripe billing',
+      'Python',
     ],
   },
   {
     initials: 'ZM',
-    name: 'Zohaib Mehmood',
-    role: 'Team lead, TechOmnis',
-    metric: { value: 'X+', label: 'years of experience', placeholder: true },
+    name: 'Zohaib Murtaza',
+    role: 'Co-founder & CTO',
+    image: '/zohaib-m-image.webp',
+    metric: { value: '8+', label: 'years experience' },
     bio: [
-      'Leads delivery across the engineering team, from audit to production deploy.',
-      'Second paragraph of the bio goes here.',
+      'Eight years shipping web products.',
+      'Leads engineering across frontend, backend and delivery at TechOmnis.',
     ],
-    skills: ['Skills to confirm'],
+    skills: [
+      'Engineering',
+      'Frontend',
+      'Backend',
+      'Delivery',
+      'React',
+      'Node.js',
+    ],
   },
 ]
 
@@ -45,84 +55,72 @@ export { teamMembers as team }
 
 export const mindsetItems = [
   {
-    title: 'We think like product owners',
+    title: 'Senior by default',
     description:
-      'Every decision is weighed against the product and the business, not only the ticket in front of us.',
+      'The people who scope your product are the people who build it.',
     icon: 'target',
   },
   {
-    title: 'One senior team, end to end',
+    title: 'The whole system',
     description:
-      'UI, API, LLM, data and infra sit with one team, so nothing falls between vendors.',
+      'Design, code, cloud and AI, owned together. No vendor hand-offs.',
     icon: 'users',
   },
   {
-    title: 'We ship to production',
+    title: 'Written, not assumed',
     description:
-      'A fix is not done until it is deployed, monitored and has a rollback plan.',
+      'Scope, risks and non-goals on paper first in a Production Brief.',
+    icon: 'doc',
+  },
+  {
+    title: 'Built to hand over',
+    description:
+      'Your repo, your keys, documentation your next hire can read.',
     icon: 'rocket',
   },
   {
-    title: 'We measure every fix',
+    title: 'Rescue before rewrite',
     description:
-      'You get before and after metrics, so progress is visible and not a matter of opinion.',
-    icon: 'gauge',
-  },
-  {
-    title: 'Audit before we build',
-    description:
-      'A fixed-fee audit comes first. You see the risks and the plan before any build work starts.',
+      'We audit first. Most AI-built MVPs don\'t need a full rewrite.',
     icon: 'search',
   },
   {
     title: 'AI that stays affordable',
     description:
-      'LLM features are measured, monitored and priced so they hold up in production, like Othego.',
+      'Evaluation sets, cost limits and monitoring so AI holds up in production.',
     icon: 'bot',
   },
   {
-    title: 'Clear handover',
+    title: 'One team, one repo',
     description:
-      'Docs, tests and CI/CD come with the code, so your team can own it after we leave.',
-    icon: 'doc',
+      'UI, API, data, infra and AI in one team, so nothing falls between vendors.',
+    icon: 'gauge',
   },
   {
-    title: 'We are honest about unknowns',
+    title: 'We say no in writing',
     description:
-      'If something is not confirmed, we say so and label it, as on this page.',
+      'If it isn\'t worth building, the Production Brief will say so.',
     icon: 'info',
   },
 ]
 
 export const quotes = [
   {
-    text: 'Simplicity is prerequisite for reliability.',
-    author: 'Edsger W. Dijkstra',
-    role: 'Computer scientist',
-    initials: 'ED',
+    text: 'Speed is cheap now. Judgment isn\'t.',
+    author: 'TechOmnis',
+    role: 'Studio principle',
+    initials: 'TO',
   },
   {
-    text: 'Programs must be written for people to read, and only incidentally for machines to execute.',
-    author: 'Harold Abelson',
-    role: 'Structure and Interpretation of Computer Programs',
-    initials: 'HA',
+    text: 'Software isn\'t done when it demos. It\'s done when it survives users.',
+    author: 'TechOmnis',
+    role: 'Studio principle',
+    initials: 'TO',
   },
   {
-    text: 'Talk is cheap. Show me the code.',
-    author: 'Linus Torvalds',
-    role: 'Creator of Linux',
-    initials: 'LT',
-  },
-  {
-    text: 'Premature optimization is the root of all evil.',
-    author: 'Donald Knuth',
-    role: 'Computer scientist',
-    initials: 'DK',
-  },
-  {
-    text: 'Make it work, make it right, make it fast.',
-    author: 'Kent Beck',
-    role: 'Software engineer',
-    initials: 'KB',
+    text: 'The best studio is the one you don\'t have to manage.',
+    author: 'TechOmnis',
+    role: 'Studio principle',
+    initials: 'TO',
   },
 ]

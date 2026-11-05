@@ -12,181 +12,120 @@ export interface CompanyValue {
 export interface ProcessStep {
   number: string
   title: string
+  timing?: string
   description: string
-  details: string[]
+  details?: string[]
 }
 
 export const companyStats: CompanyStat[] = [
   {
-    value: '21',
+    value: '17',
     label: 'Case Studies',
-    description: 'Delivered projects across industries',
+    description: 'Products shipped end to end',
   },
   {
     value: '12+',
     label: 'Industries',
-    description: 'From FinTech to Healthcare',
+    description: 'From EdTech to HealthTech',
   },
   {
     value: '$2B+',
     label: 'Client Impact',
-    description: 'Value created for our clients',
-  },
-  {
-    value: '5.0',
-    label: 'Upwork Rating',
-    description: 'From 68 reviews, Top Rated Plus',
-  },
-  {
-    value: '$300K+',
-    label: 'Earned',
-    description: 'On Upwork platform',
+    description: 'Raised and closed across the portfolio',
   },
 ]
 
 export const companyValues: CompanyValue[] = [
   {
-    title: 'Ship, Don\'t Slip',
-    description: 'We deliver on time, every time. No excuses, no surprises. Our track record speaks for itself.',
+    title: 'Senior by default',
+    description: 'The people who scope your product are the people who build it.',
   },
   {
-    title: 'Think Like Owners',
-    description: 'We treat every project as if it were our own. We care about outcomes, not just outputs.',
+    title: 'Whole system',
+    description: 'Design, code, cloud and AI, owned together.',
   },
   {
-    title: 'Quality Over Quantity',
-    description: 'We\'d rather do fewer things exceptionally well than many things poorly.',
+    title: 'Written, not assumed',
+    description: 'Scope, risks and non-goals on paper first.',
   },
   {
-    title: 'Transparent Always',
-    description: 'Clear communication, honest estimates, and no hidden surprises. You always know where things stand.',
-  },
-  {
-    title: 'End-to-End Thinking',
-    description: 'We consider the whole system - UI, API, data, infra - because everything affects everything.',
-  },
-  {
-    title: 'Continuous Learning',
-    description: 'Technology evolves fast. We stay current so your products don\'t become outdated.',
+    title: 'Built to hand over',
+    description: 'Your repo, your keys, documentation your next hire can read.',
   },
 ]
 
 export const processSteps: ProcessStep[] = [
   {
     number: '01',
-    title: 'Discovery',
-    description: 'We start by understanding your business, users, and goals. This forms the foundation for everything that follows.',
-    details: [
-      'Stakeholder interviews',
-      'Requirements gathering',
-      'Technical assessment',
-      'Competitive analysis',
-      'User research (if needed)',
-    ],
+    title: 'Brief',
+    timing: 'Week 0–1',
+    description: 'We read what exists: repo, deck, data, users. You get a written Production Brief covering the problem, scope, non-goals, risks and a fixed price for the next step.',
   },
   {
     number: '02',
-    title: 'Strategy & Planning',
-    description: 'We create a detailed roadmap with clear milestones, timelines, and deliverables.',
-    details: [
-      'Technical architecture',
-      'Project timeline',
-      'Resource planning',
-      'Risk assessment',
-      'Success metrics',
-    ],
+    title: 'Architecture',
+    timing: 'Week 1–2',
+    description: 'One diagram anyone on your team can read: data model, services, AI layer and running costs.',
   },
   {
     number: '03',
-    title: 'Design & Prototype',
-    description: 'For new products, we design the user experience before writing code.',
-    details: [
-      'Wireframes',
-      'UI design',
-      'Interactive prototypes',
-      'Design system',
-      'User testing',
-    ],
+    title: 'Design & Build',
+    timing: 'Weekly',
+    description: 'Design and engineering in one team. A shipped, clickable increment every week.',
   },
   {
     number: '04',
-    title: 'Development',
-    description: 'Agile sprints with continuous delivery. You see progress every week.',
-    details: [
-      '2-week sprints',
-      'Daily standups',
-      'Code reviews',
-      'Automated testing',
-      'Continuous deployment',
-    ],
+    title: 'Harden',
+    description: 'We try to break it before your users do: QA, security review, load checks, AI evaluations, monitoring.',
   },
   {
     number: '05',
-    title: 'Launch',
-    description: 'We handle production deployment, monitoring setup, and launch support.',
-    details: [
-      'Production deployment',
-      'Performance testing',
-      'Security review',
-      'Monitoring setup',
-      'Launch support',
-    ],
+    title: 'Launch & Grow',
+    description: 'A monitored production launch with rollback. Then we measure, improve and build what\'s next, or hand over cleanly.',
   },
-  {
-    number: '06',
-    title: 'Scale & Iterate',
-    description: 'Post-launch, we help you iterate based on user feedback and scale as you grow.',
-    details: [
-      'Analytics review',
-      'Performance optimization',
-      'Feature iterations',
-      'Scaling support',
-      'Ongoing maintenance',
-    ],
-  },
+]
+
+export const processPrinciples = [
+  'We read the code before we quote.',
+  'Rescue before rewrite.',
+  'One team, one repo.',
+  'You own everything.',
+  'No evaluation set, no AI launch.',
+  'We say no in writing.',
 ]
 
 export const companyStory = {
-  headline: 'Engineering Excellence, Delivered',
-  intro: 'TechOmnis is a product engineering studio founded in 2024. We help startups and scale-ups build exceptional digital products.',
-  story: [
-    'We started TechOmnis after years of building products at startups and agencies. We saw too many projects fail - not because of bad ideas, but because of poor execution, miscommunication, and technical debt.',
-    'Our mission is simple: deliver high-quality engineering with clear communication and reliable timelines. No scope creep, no disappearing acts, no surprises.',
-    'Today, we work with clients across 12+ industries, from early-stage startups to established companies. Our Top Rated Plus status on Upwork with a perfect 5.0 rating reflects our commitment to excellence.',
+  headline: 'A studio built to ship.',
+  intro: 'TechOmnis is a founder-led product studio for design, engineering and AI. Founded in 2024 in Lahore, it builds for teams in the US, UK and UAE.',
+  whyWeExist: [
+    'Products rarely fail because the idea is wrong. They fail in the gap between a working demo and a working business: hand-offs between vendors, prototypes nobody can extend, AI that never leaves the pilot.',
+    'We started TechOmnis to close that gap with one studio for design, engineering and AI, and one standard: production.',
   ],
-  founder: {
-    name: 'Zohaib Aslam',
-    role: 'Founder',
-    image: '/zohaib-a-image.png',
-    bio: 'Full-stack engineer with a passion for building products that matter. Before founding TechOmnis, Zohaib worked at multiple startups and delivered 60+ projects across various industries.',
-    linkedin: 'https://linkedin.com/in/zohaib-aslam',
-    upwork: 'https://www.upwork.com/freelancers/~01d4a8b7c5e6f7a8b9',
-  },
+  beliefs: [
+    'Speed is cheap now. Judgment isn\'t.',
+    'Software isn\'t done when it demos. It\'s done when it survives users.',
+    'The best studio is the one you don\'t have to manage.',
+  ],
 }
 
-export const clients = [
-  { name: 'Finvera', industry: 'FinTech' },
-  { name: 'Kitahub', industry: 'E-commerce' },
-  { name: 'Leaf AI', industry: 'AgriTech' },
-  { name: 'Babobot', industry: 'SaaS' },
-  { name: 'Agerlink', industry: 'Healthcare' },
-  { name: 'Edulog', industry: 'EdTech' },
-  { name: 'Bell Hopt', industry: 'Healthcare' },
-  { name: 'AtusGlobal', industry: 'Logistics' },
-  { name: 'iCard', industry: 'Networking' },
+export const industries = [
+  'EdTech & K-12',
+  'Immigration & Talent',
+  'M&A & Venture',
+  'Fintech & Mortgage',
+  'HealthTech',
+  'Hospitality & PropTech',
+  'Media & Advocacy',
+  'SaaS & AI Tools',
 ]
 
-export const industries = [
-  'FinTech',
-  'E-commerce', 
-  'AI & ML',
-  'Healthcare',
-  'EdTech',
-  'SaaS',
-  'AgriTech',
-  'Logistics',
-  'Aviation',
-  'Food & Beverage',
-  'Wellness',
-  'Media',
+export const industriesWithExamples = [
+  { name: 'EdTech & K-12', examples: 'REACH Pathways, The Build Fellowship, BaboBot, Edulog' },
+  { name: 'Immigration & Talent', examples: 'Build Talent Labs' },
+  { name: 'M&A & Venture', examples: 'Tuck Advisors, Archyr' },
+  { name: 'Fintech & Mortgage', examples: 'Low Rate Co' },
+  { name: 'HealthTech', examples: 'Waivs.ai' },
+  { name: 'Hospitality & PropTech', examples: 'Bellhopt, Atus Global' },
+  { name: 'Media & Advocacy', examples: 'StoryHEAT, Authentic Spark' },
+  { name: 'SaaS & AI Tools', examples: 'TestFiesta, Othego, MJ Ventures' },
 ]

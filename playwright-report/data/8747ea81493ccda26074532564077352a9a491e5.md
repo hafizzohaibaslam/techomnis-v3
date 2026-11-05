@@ -1,0 +1,392 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: comprehensive-qa.spec.ts >> Comprehensive QA Pass >> Navigation & Transitions >> animation replay on page revisit
+- Location: tests/comprehensive-qa.spec.ts:117:9
+
+# Error details
+
+```
+Test timeout of 120000ms exceeded.
+```
+
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - link "Skip to content" [ref=e3] [cursor=pointer]:
+      - /url: "#main"
+    - generic [ref=e4]:
+      - main [ref=e5]:
+        - region "Introduction" [ref=e6]:
+          - generic [ref=e7]:
+            - generic [ref=e8]:
+              - link "TechOmnis home" [ref=e9] [cursor=pointer]:
+                - /url: /
+                - generic [ref=e10]: techomnis
+                - generic [ref=e17]: End-to-endproductengineering
+              - generic [ref=e18]:
+                - button "Reduce motion" [ref=e19] [cursor=pointer]
+                - paragraph [ref=e26]:
+                  - generic [ref=e27]: "Local time in Lahore:"
+                  - generic [ref=e28]: 07:55
+                  - generic [ref=e29]:
+                    - generic [ref=e30]: pm
+                    - generic [ref=e31]: November 4 · Lahore
+            - generic [ref=e32]:
+              - generic [ref=e33]: Our services
+              - heading "We turn business requirements into production-ready software." [level=1] [ref=e34]
+              - link "Explore" [ref=e36] [cursor=pointer]:
+                - /url: "#most"
+        - region "Most popular service" [ref=e43]:
+          - generic [ref=e45]:
+            - generic [ref=e46]:
+              - generic [ref=e47]: Most popular service
+              - heading "MVP rescue" [level=2] [ref=e48]
+              - paragraph [ref=e49]: Broken MVP or AI-built code? We audit it, fix it and harden it, then ship it to production with monitoring and rollback.
+              - generic [ref=e50]:
+                - link "Request this service" [ref=e51] [cursor=pointer]:
+                  - /url: /contact
+                - link "Service details" [ref=e56] [cursor=pointer]:
+                  - /url: /services/mvp-rescue
+            - 'img "MVP rescue loop: audit, fix plan, stabilise, test, ship, monitor" [ref=e66]':
+              - generic [ref=e76]:
+                - generic [ref=e77]: Audit
+                - generic [ref=e78]: Fix plan
+                - generic [ref=e79]: Stabilise
+                - generic [ref=e80]: Test
+                - generic [ref=e81]: Ship
+                - generic [ref=e82]: Monitor
+        - region "Services" [ref=e83]:
+          - generic [ref=e84]:
+            - generic [ref=e85]:
+              - generic [ref=e86]:
+                - heading "MVP rescue" [level=3] [ref=e90]
+                - paragraph [ref=e91]: Broken MVP or AI-built code gets audited, fixed, hardened and tested so it survives real users. You get a clear fix plan before any build work starts.
+              - generic [ref=e93]:
+                - generic [ref=e94]: Code audit
+                - generic [ref=e95]: AI-code clean-up
+                - generic [ref=e96]: Current state review
+                - generic [ref=e97]: Auth & secrets
+                - generic [ref=e98]: Bug triage
+                - generic [ref=e99]: Test coverage
+                - generic [ref=e100]: CI/CD
+                - generic [ref=e101]: Core Web Vitals
+                - generic [ref=e102]: Error monitoring
+                - generic [ref=e103]: Database clean-up
+                - generic [ref=e104]: Security review
+                - generic [ref=e105]: Launch checklist
+                - generic [ref=e106]: Fixed-fee audit
+                - generic [ref=e107]: Handover docs
+            - generic [ref=e108]:
+              - generic [ref=e109]:
+                - heading "Product engineering" [level=3] [ref=e113]
+                - paragraph [ref=e114]: Design and engineering of the whole product, from the first sketch to billing and launch. One senior team owns UI, API, data and infra.
+              - generic [ref=e116]:
+                - generic [ref=e117]: Next.js
+                - generic [ref=e118]: TypeScript
+                - generic [ref=e119]: Tailwind
+                - generic [ref=e120]: shadcn/ui
+                - generic [ref=e121]: SaaS
+                - generic [ref=e122]: Marketplaces
+                - generic [ref=e123]: EdTech
+                - generic [ref=e124]: Stripe billing
+                - generic [ref=e125]: Dashboards
+                - generic [ref=e126]: Roles & auth
+            - generic [ref=e127]:
+              - generic [ref=e128]:
+                - heading "AI & LLM" [level=3] [ref=e131]
+                - paragraph [ref=e132]: AI features that hold up in production, like our own RAG chatbot SaaS, Othego. They are measured, monitored and priced so they stay affordable.
+              - generic [ref=e134]:
+                - generic [ref=e135]: RAG
+                - generic [ref=e136]: Chatbots
+                - generic [ref=e137]: Agents
+                - generic [ref=e138]: Evals
+                - generic [ref=e139]: Vector search
+                - generic [ref=e140]: Prompt pipelines
+                - generic [ref=e141]: Cost control
+        - region "Special services" [ref=e142]:
+          - generic [ref=e143]:
+            - generic [ref=e144]:
+              - generic [ref=e145]:
+                - generic [ref=e146]: HAVE SPECIFIC NEEDS?
+                - heading "Special services" [level=2] [ref=e147]
+                - paragraph [ref=e148]: Need one piece rather than the whole product? These are the parts clients most often ask us to take on alone.
+              - generic [ref=e149]:
+                - generic [ref=e150]:
+                  - heading "Code audit" [level=3] [ref=e152]
+                  - paragraph [ref=e157]: We read the repo, infra and data, then rank every risk in a written report.
+                - generic [ref=e158]:
+                  - heading "CI/CD" [level=3] [ref=e160]
+                  - paragraph [ref=e167]: Pipelines, preview deploys and rollback, so every change ships the same way.
+                - generic [ref=e168]:
+                  - heading "Stripe billing" [level=3] [ref=e170]
+                  - paragraph [ref=e175]: Subscriptions, tiers and webhooks wired into the product and tested end to end.
+                - generic [ref=e176]:
+                  - heading "Roles & auth" [level=3] [ref=e178]
+                  - paragraph [ref=e183]: Sign-in, roles and secrets handled properly before real users arrive.
+            - generic [ref=e184]:
+              - generic [ref=e185]:
+                - generic [ref=e186]:
+                  - heading "Dashboards" [level=3] [ref=e188]
+                  - paragraph [ref=e195]: Admin and analytics views that show the numbers your team needs.
+                - generic [ref=e196]:
+                  - heading "Vector search" [level=3] [ref=e198]
+                  - paragraph [ref=e203]: Retrieval over your own data for chatbots and assistants, as in Othego.
+                - generic [ref=e204]:
+                  - heading "Evals" [level=3] [ref=e206]
+                  - paragraph [ref=e210]: Test sets and scoring for LLM features, so quality is measured and not guessed.
+                - generic [ref=e211]:
+                  - heading "Error monitoring" [level=3] [ref=e213]
+                  - paragraph [ref=e217]: Alerts and dashboards in production, with before and after metrics for every fix.
+              - generic [ref=e219]:
+                - paragraph [ref=e223]: "\"Verbatim client quote about a special project goes here.\""
+                - generic [ref=e224]:
+                  - generic [aria-hidden] [ref=e225]: "?"
+                  - generic [ref=e226]:
+                    - paragraph [ref=e227]: Client name
+                    - paragraph [ref=e228]:
+                      - text: Role, company
+                      - generic [ref=e229]: Placeholder, not a real quote
+        - region "What we build" [ref=e230]:
+          - generic [ref=e233]:
+            - heading "#we-build" [level=2] [ref=e235]
+            - generic [ref=e236]: SaaS
+            - generic [ref=e237]: Marketplaces
+            - generic [ref=e238]: EdTech platforms
+            - generic [ref=e239]: Dashboards
+            - generic [ref=e240]: Admin panels
+            - generic [ref=e241]: Chatbots
+            - generic [ref=e242]: AI agents
+            - generic [ref=e243]: RAG search
+            - generic [ref=e244]: Stripe billing
+            - generic [ref=e245]: Roles & auth
+            - generic [ref=e246]: APIs
+            - generic [ref=e247]: Next.js apps
+            - generic [ref=e248]: Data pipelines
+            - generic [ref=e249]: Monitoring
+            - generic [ref=e250]: CI/CD
+            - generic [ref=e251]: Landing pages
+            - generic [ref=e252]: Handover docs
+        - region "Our clients" [ref=e253]:
+          - generic [ref=e254]:
+            - generic [ref=e255]:
+              - generic [ref=e256]:
+                - generic [ref=e257]: We built for
+                - heading "Our clients" [level=2] [ref=e258]
+                - paragraph [ref=e259]: From global brands and campaigns to venture-backed startups that need an MVP shipped or rescued.
+                - generic [ref=e260]: Logo files to be supplied
+              - generic [ref=e261]:
+                - generic [ref=e262]: Disney
+                - generic [ref=e264]: GLAAD
+                - generic [ref=e266]: SixSenses
+                - generic [ref=e268]: MuckerCapital
+            - generic [ref=e270]:
+              - generic [ref=e271]:
+                - generic [ref=e272]: Edulog
+                - generic [ref=e275]:
+                  - text: Biden campaign
+                  - generic [ref=e276]: via Authentic
+                - generic [ref=e277]: Archyr
+                - generic [ref=e279]: Waivs.ai
+              - generic [ref=e281]:
+                - heading "Business domains" [level=3] [ref=e282]
+                - paragraph [ref=e283]: "We have shipped products across 12+ industries, including:"
+                - generic [ref=e284]:
+                  - generic [ref=e285]: AI
+                  - generic [ref=e286]: SaaS
+                  - generic [ref=e287]: Marketplaces
+                  - generic [ref=e288]: EdTech
+                  - generic [ref=e289]: Student transportation
+                  - generic [ref=e290]: Hospitality
+                  - generic [ref=e291]: Media & entertainment
+                  - generic [ref=e292]: Non-profit
+                  - generic [ref=e293]: Venture capital
+                  - generic [ref=e294]: Political campaigns
+                - paragraph [ref=e295]:
+                  - generic [ref=e296]: Full industry list to confirm
+            - generic [ref=e297]:
+              - generic [ref=e298]:
+                - heading "Proof in numbers" [level=3] [ref=e299]
+                - paragraph [ref=e300]: The numbers behind the work, from our Upwork record and portfolio.
+                - table "Proof in numbers" [ref=e301]:
+                  - row [ref=e302]:
+                    - columnheader "#" [ref=e303]
+                    - columnheader "Signal" [ref=e304]
+                    - columnheader "Figure" [ref=e305]
+                    - columnheader "Source" [ref=e306]
+                  - row [ref=e307]:
+                    - cell "#1" [ref=e308]
+                    - cell "Upwork rating" [ref=e309]
+                    - cell "5.0 of 5.0" [ref=e310]
+                    - cell "68 reviews on Upwork, Top Rated Plus" [ref=e311]
+                  - row [ref=e312]:
+                    - cell "#2" [ref=e313]
+                    - cell "Earned on Upwork" [ref=e314]
+                    - cell "$300K+" [ref=e315]
+                    - cell "Lifetime earnings on the Upwork profile" [ref=e316]
+                  - row [ref=e317]:
+                    - cell "#3" [ref=e318]
+                    - cell "Client impact" [ref=e319]
+                    - cell "$2B+" [ref=e320]
+                    - cell "Combined across 17 case studies in 12+ industries" [ref=e321]
+              - generic [ref=e323]:
+                - generic [ref=e324]: REACH
+                - text: Pathways
+              - generic [ref=e326]:
+                - generic [ref=e327]: Tuck
+                - text: Advisors
+              - generic [ref=e328]: BaboBot
+              - generic [ref=e330]: Bellhopt
+              - generic [ref=e333]:
+                - text: Othego
+                - generic [ref=e334]: Own product
+              - paragraph [ref=e336]:
+                - text: "17"
+                - generic [ref=e337]: case studies
+            - generic [ref=e338]:
+              - generic [ref=e339]:
+                - generic [ref=e340]: Client reviews
+                - heading "What they say" [level=2] [ref=e341]
+              - generic [ref=e342]:
+                - paragraph [ref=e344]: "\"Verbatim Upwork review goes here.\""
+                - generic [ref=e348]:
+                  - paragraph [ref=e349]: Client name,role, company
+                  - generic [ref=e350]: Placeholder, not a real quote
+              - generic [ref=e351]:
+                - paragraph [ref=e353]: "\"Verbatim Upwork review goes here.\""
+                - generic [ref=e357]:
+                  - paragraph [ref=e358]: Client name,role, company
+                  - generic [ref=e359]: Placeholder, not a real quote
+              - generic [ref=e360]:
+                - paragraph [ref=e362]: "\"Verbatim Upwork review goes here.\""
+                - generic [ref=e366]:
+                  - paragraph [ref=e367]: Client name,role, company
+                  - generic [ref=e368]: Placeholder, not a real quote
+              - generic [ref=e369]:
+                - generic [ref=e370]:
+                  - paragraph [ref=e371]: 5.0 of 5.0
+                  - img "5 out of 5 stars" [ref=e372]
+                - generic [ref=e383]:
+                  - generic [ref=e384]:
+                    - term [ref=e385]: Reviews
+                    - definition [ref=e386]: "68"
+                  - generic [ref=e387]:
+                    - term [ref=e388]: Badge
+                    - definition [ref=e389]: Top Rated Plus
+                  - generic [ref=e390]:
+                    - term [ref=e391]: Earned
+                    - definition [ref=e392]: $300K+
+                  - generic [ref=e393]:
+                    - term [ref=e394]: Platform
+                    - definition [ref=e395]: Upwork
+              - generic [ref=e396]:
+                - generic [ref=e397]:
+                  - paragraph [ref=e398]: 68 reviews
+                  - img "5 out of 5 stars" [ref=e399]
+                - generic [ref=e410]:
+                  - generic [ref=e411]:
+                    - term [ref=e412]: Average
+                    - definition [ref=e413]: "5.0"
+                  - generic [ref=e414]:
+                    - term [ref=e415]: Badge
+                    - definition [ref=e416]: Top Rated Plus
+                  - generic [ref=e417]:
+                    - term [ref=e418]: Earned
+                    - definition [ref=e419]: $300K+
+                  - generic [ref=e420]:
+                    - term [ref=e421]: Platform
+                    - definition [ref=e422]: Upwork
+              - generic [ref=e423]:
+                - paragraph [ref=e425]: "\"Verbatim Upwork review goes here.\""
+                - generic [ref=e429]:
+                  - paragraph [ref=e430]: Client name,role, company
+                  - generic [ref=e431]: Placeholder, not a real quote
+              - generic [ref=e432]:
+                - paragraph [ref=e434]: "\"Longer verbatim Upwork review goes here, copied word for word from the profile with the client's permission.\""
+                - generic [ref=e438]:
+                  - paragraph [ref=e439]: Client name,role, company
+                  - generic [ref=e440]: Placeholder, not a real quote
+              - generic [ref=e441]:
+                - paragraph [ref=e443]: "\"Longer verbatim Upwork review goes here, copied word for word from the profile with the client's permission.\""
+                - generic [ref=e447]:
+                  - paragraph [ref=e448]: Client name,role, company
+                  - generic [ref=e449]: Placeholder, not a real quote
+              - generic [ref=e450]:
+                - paragraph [ref=e452]: "\"Verbatim Upwork review goes here.\""
+                - generic [ref=e456]:
+                  - paragraph [ref=e457]: Client name,role, company
+                  - generic [ref=e458]: Placeholder, not a real quote
+              - link "All reviews on Upwork" [ref=e460] [cursor=pointer]:
+                - /url: "#"
+        - region "Why us" [ref=e467]:
+          - generic [ref=e468]:
+            - generic [ref=e469]:
+              - generic [ref=e471]:
+                - paragraph [ref=e472]: "0"
+                - paragraph [ref=e473]: case studies of products we shipped
+              - generic [ref=e475]:
+                - paragraph [ref=e476]: 0+
+                - paragraph [ref=e477]: industries, from EdTech to hospitality
+              - generic [ref=e479]:
+                - paragraph [ref=e480]: 0.0 of 5.0
+                - paragraph [ref=e481]: average rating from 68 Upwork reviews
+              - generic [ref=e483]:
+                - paragraph [ref=e484]: $0K+
+                - paragraph [ref=e485]: earned on Upwork as Top Rated Plus
+            - generic [ref=e486]:
+              - generic [ref=e488]:
+                - generic [ref=e489]: TopRated+
+                - paragraph [ref=e490]: Top Rated Plus on Upwork
+              - generic [ref=e491]:
+                - generic [ref=e492]:
+                  - generic [ref=e493]: $2B+
+                  - paragraph [ref=e494]: client impact across the portfolio
+                - generic [ref=e495]:
+                  - generic [ref=e496]: "2024"
+                  - paragraph [ref=e497]: founded in Lahore, working worldwide
+      - contentinfo "Contact" [ref=e498]:
+        - generic [ref=e499]:
+          - 'link "Let''s talk: open the contact page" [ref=e501] [cursor=pointer]':
+            - /url: /contact
+            - generic [ref=e502]: Let's talk
+            - generic [aria-hidden] [ref=e503]: 🤝
+          - generic [ref=e504]:
+            - generic [ref=e505]:
+              - generic [ref=e506]: © 2026 TechOmnis.
+              - link "Privacy Policy" [ref=e507] [cursor=pointer]:
+                - /url: /privacy
+              - generic [ref=e509]:
+                - text: hello@techomnis.com
+                - generic [ref=e510]: Confirm
+            - generic [ref=e511]:
+              - link "TechOmnis on LinkedIn (link to be added)" [ref=e512] [cursor=pointer]:
+                - /url: "#"
+              - link "TechOmnis on Upwork (link to be added)" [ref=e515] [cursor=pointer]:
+                - /url: "#"
+              - link "TechOmnis on GitHub (link to be added)" [ref=e518] [cursor=pointer]:
+                - /url: "#"
+    - navigation "Main" [ref=e521]:
+      - generic [ref=e522]:
+        - link "Home" [ref=e523] [cursor=pointer]:
+          - /url: /
+        - generic [ref=e527]:
+          - link "Work" [ref=e528] [cursor=pointer]:
+            - /url: /work
+          - link "Services" [ref=e530] [cursor=pointer]:
+            - /url: /services
+          - link "Process" [ref=e532] [cursor=pointer]:
+            - /url: /process
+          - link "About" [ref=e534] [cursor=pointer]:
+            - /url: /about
+        - link "Let's talk" [ref=e536] [cursor=pointer]:
+          - /url: /contact
+  - button "Open Next.js Dev Tools" [ref=e544] [cursor=pointer]
+  - alert [ref=e548]
+```

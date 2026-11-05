@@ -7,35 +7,35 @@ export const clientsRow1: Client[] = [
   { name: 'Disney' },
   { name: 'GLAAD' },
   { name: 'Six Senses' },
-  { name: 'Mucker Capital' },
+  { name: 'Mucker\nCapital' },
 ]
 
 export const clientsRow2Left: Client[] = [
   { name: 'Edulog' },
-  { name: 'Biden campaign', subtitle: 'via Authentic' },
+  { name: 'Vote.org', subtitle: 'via Authentic' },
   { name: 'Archyr' },
   { name: 'Waivs.ai' },
 ]
 
 export const clientsRow2Right: Client[] = [
-  { name: 'REACH Pathways' },
-  { name: 'Tuck Advisors' },
+  { name: 'REACH\nPathways' },
+  { name: 'Tuck\nAdvisors' },
   { name: 'BaboBot' },
   { name: 'Bellhopt' },
   { name: 'Othego', subtitle: 'Own product' },
 ]
 
 export const businessDomains: string[] = [
-  'AI',
-  'SaaS',
-  'Marketplaces',
-  'EdTech',
-  'Student transportation',
+  'EdTech & K-12',
+  'M&A & Venture',
+  'HealthTech',
   'Hospitality',
-  'Media & entertainment',
-  'Non-profit',
-  'Venture capital',
-  'Political campaigns',
+  'Fintech',
+  'Media & Advocacy',
+  'SaaS & AI Tools',
+  'Immigration & Talent',
+  'Nonprofits',
+  'Marketplaces',
 ]
 
 export interface ProofRow {
@@ -46,18 +46,57 @@ export interface ProofRow {
 
 export const proofInNumbers: ProofRow[] = [
   {
-    signal: 'Upwork rating',
-    figure: '5.0 of 5.0',
-    source: '68 reviews on Upwork, Top Rated Plus',
+    signal: 'Case studies',
+    figure: '17',
+    source: 'Products shipped end to end',
   },
   {
-    signal: 'Earned on Upwork',
-    figure: '$300K+',
-    source: 'Lifetime earnings on the Upwork profile',
+    signal: 'Industries',
+    figure: '12+',
+    source: 'From EdTech to HealthTech',
   },
   {
     signal: 'Client impact',
     figure: '$2B+',
-    source: 'Combined across 17 case studies in 12+ industries',
+    source: 'Raised and closed across the portfolio',
   },
+]
+
+export interface BuiltForLoadRow {
+  project: string
+  reach: string
+  shipped: string
+}
+
+export const builtForLoad: BuiltForLoadRow[] = [
+  {
+    project: 'Edulog Athena V2',
+    reach: 'Modernized field workflows serving 85,000+ students across North America',
+    shipped: 'Engineering on the multi-tenant, GPS-integrated rebuild of a legacy platform',
+  },
+  {
+    project: 'Low Rate Co',
+    reach: '29,354+ clients; one application shops 30+ wholesale lenders',
+    shipped: 'A campaign-aware lead platform with Cindie, an AI mortgage advisor',
+  },
+  {
+    project: 'Authentic Spark',
+    reach: 'Operations for an agency that has raised $1B+ online. Vote.org: 10.2M voter emails, $725K raised',
+    shipped: 'An AI-powered operations hub across dozens of campaign clients',
+  },
+  {
+    project: 'The Build Fellowship',
+    reach: '200+ active fellows · 1,300+ students trained · 54 universities',
+    shipped: 'A public platform plus an internal operations hub',
+  },
+]
+
+export const brandsServed = [
+  'Disney',
+  'GLAAD',
+  'Six Senses',
+  'Mucker Capital',
+  'Edulog',
+  'Vote.org',
+  'Authentic',
 ]

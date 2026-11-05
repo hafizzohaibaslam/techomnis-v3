@@ -15,47 +15,45 @@ export interface ScoreCard {
 export const reviews: Review[] = [
   {
     id: '1',
-    quote: 'Verbatim Upwork review goes here.',
+    quote: 'Client quote about working with TechOmnis.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
   },
   {
     id: '2',
-    quote: 'Verbatim Upwork review goes here.',
+    quote: 'Client quote about working with TechOmnis.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
   },
   {
     id: '3',
-    quote: 'Verbatim Upwork review goes here.',
+    quote: 'Client quote about working with TechOmnis.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
   },
   {
     id: '4',
-    quote: 'Verbatim Upwork review goes here.',
+    quote: 'Client quote about working with TechOmnis.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
   },
   {
     id: '5',
-    quote:
-      "Longer verbatim Upwork review goes here, copied word for word from the profile with the client's permission.",
+    quote: 'Client quote about the TechOmnis engagement and what it delivered.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
     isWide: true,
   },
   {
     id: '6',
-    quote:
-      "Longer verbatim Upwork review goes here, copied word for word from the profile with the client's permission.",
+    quote: 'Client quote about the TechOmnis engagement and what it delivered.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
     isWide: true,
   },
   {
     id: '7',
-    quote: 'Verbatim Upwork review goes here.',
+    quote: 'Client quote about working with TechOmnis.',
     clientName: 'Client name, role, company',
     isPlaceholder: true,
   },
@@ -63,23 +61,23 @@ export const reviews: Review[] = [
 
 export const scoreCards: ScoreCard[] = [
   {
-    mainValue: '5.0',
-    mainLabel: 'of 5.0',
+    mainValue: '17',
+    mainLabel: 'case studies',
     stats: [
-      { label: 'Reviews', value: '68' },
-      { label: 'Badge', value: 'Top Rated Plus' },
-      { label: 'Earned', value: '$300K+' },
-      { label: 'Platform', value: 'Upwork' },
+      { label: 'Industries', value: '12+' },
+      { label: 'Impact', value: '$2B+' },
+      { label: 'Founded', value: '2024' },
+      { label: 'Studio', value: 'Lahore' },
     ],
   },
   {
-    mainValue: '68',
-    mainLabel: 'reviews',
+    mainValue: '$2B+',
+    mainLabel: 'client impact',
     stats: [
-      { label: 'Average', value: '5.0' },
-      { label: 'Badge', value: 'Top Rated Plus' },
-      { label: 'Earned', value: '$300K+' },
-      { label: 'Platform', value: 'Upwork' },
+      { label: 'Cases', value: '17' },
+      { label: 'Industries', value: '12+' },
+      { label: 'Founded', value: '2024' },
+      { label: 'Studio', value: 'Lahore' },
     ],
   },
 ]
