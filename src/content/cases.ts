@@ -25,6 +25,7 @@ export const cases: CaseStudy[] = [
     description: 'Our own AI chatbot SaaS: RAG over your content, a one-line embed, lead capture and analytics. Free to $199/mo.',
     tags: ['SaaS', 'AI Tools', 'B2B'],
     gradient: ['#5B6CFF', '#C9B8FF'],
+    image: '/cases/othego.jpg',
     metric: { value: '$199', label: '/mo top tier' },
     rotation: -6,
     hasPage: true,

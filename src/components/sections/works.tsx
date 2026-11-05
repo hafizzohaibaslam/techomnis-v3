@@ -86,13 +86,11 @@ function MediaLink({
   label,
   children,
   hasPage,
-  hasImage,
 }: {
   href: string
   label: string
   children: React.ReactNode
   hasPage: boolean
-  hasImage?: boolean
 }) {
   const moreRef = useRef<HTMLSpanElement>(null)
 
@@ -188,7 +186,6 @@ function FeaturedCase() {
         href={featuredCase.hasPage ? `/work/${featuredCase.slug}` : '#'}
         label={`${featuredCase.name} case study`}
         hasPage={featuredCase.hasPage}
-        hasImage={!!featuredCase.image}
       >
         <CaseArt gradient={featuredCase.gradient} rotation={featuredCase.rotation} image={featuredCase.image} />
       </MediaLink>
@@ -237,7 +234,6 @@ function CaseCard({
         href={caseStudy.hasPage ? `/work/${caseStudy.slug}` : '#'}
         label={`${caseStudy.name} case study`}
         hasPage={caseStudy.hasPage}
-        hasImage={!!caseStudy.image}
       >
         <CaseArt gradient={caseStudy.gradient} rotation={caseStudy.rotation} image={caseStudy.image} />
       </MediaLink>
