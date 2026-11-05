@@ -397,20 +397,17 @@ export function SiteMotion() {
       })
       
       const tw = $('#dirTw') as HTMLElement | null
-      if (tw) {
+      if (tw && !isMob()) {
         const ws = $$('#dirTw .w') as HTMLElement[]
         tw.classList.add('scrub')
         ws.forEach((w) => w.style.transform = '')
         gsap.set(ws, { opacity: 0, scale: 0.8, transformOrigin: '50% 50%' })
         const r = (v: number) => () => v * rem()
         const tl = gsap.timeline({ defaults: { ease: 'none' }, scrollTrigger: { trigger: '.direction', start: 'top bottom', end: 'bottom top', scrub: 0.5, invalidateOnRefresh: true } })
-        tl.fromTo(ws[0], { opacity: 1, scale: 1 }, { opacity: 1, scale: 1, duration: 55 }, 0)
-          .to(ws[0], { opacity: 0, scale: 0.8, y: r(-3), duration: 25 }, 55)
-          .fromTo(ws[1], { opacity: 0, scale: 0.8, y: r(3) }, { opacity: 1, scale: 1, y: 0, duration: 25 }, 35)
-          .to(ws[1], { opacity: 1, scale: 1, duration: 30 }, 60)
-          .to(ws[1], { opacity: 0, scale: 0.8, y: r(-3), duration: 25 }, 90)
-          .fromTo(ws[2], { opacity: 0, scale: 0.8, y: r(3) }, { opacity: 1, scale: 1, y: 0, duration: 25 }, 75)
-          .to(ws[2], { opacity: 1, scale: 1, duration: 40 }, 100)
+        tl.fromTo(tw, { y: r(9) }, { y: r(9), duration: 10 }, 0).to(tw, { y: 0, duration: 10 }, 10).to(tw, { y: r(-15), duration: 12 }, 51).to(tw, { y: r(-32), duration: 11.5 }, 63)
+          .to(ws[0], { opacity: 1, scale: 1, duration: 10 }, 10).to(ws[0], { opacity: 0, scale: 0.8, duration: 4 }, 51)
+          .to(ws[1], { opacity: 1, scale: 1, duration: 13 }, 50).to(ws[1], { opacity: 0, scale: 0.8, duration: 7 }, 63)
+          .to(ws[2], { opacity: 1, scale: 1, duration: 8.5 }, 66).to({}, { duration: 25.5 }, 74.5)
       }
       
       if (document.fonts) document.fonts.ready.then(() => { sizePills(); ScrollTrigger.refresh() })
