@@ -646,7 +646,8 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
 .titem{padding:3.39rem 3.33rem 3.39rem 0;display:flex;flex-direction:column}
 .titem.r{padding:3.39rem 0 3.39rem 3.33rem}
 .ttop{display:flex;justify-content:space-between;align-items:flex-start;gap:2.6rem}
-.tphoto{width:16.67rem;height:16.67rem;background:#EDEDEB;display:grid;place-items:center;font-size:4rem;font-weight:600;color:#6d6d6d;flex:none}
+.tphoto{width:16.67rem;height:16.67rem;background:#EDEDEB;display:grid;place-items:center;font-size:4rem;font-weight:600;color:#6d6d6d;flex:none;border-radius:.5rem}
+.tphoto-img{width:16.67rem;height:16.67rem;border-radius:.5rem;overflow:hidden;flex:none}
 .tyears{display:flex;gap:.95rem;align-items:flex-start}
 .tyears p.t-reg{max-width:7.5rem}
 .tbadge{width:2.98rem;height:4.76rem;background:#A88F5B;color:#fff;font-weight:700;font-size:1.1rem;display:flex;justify-content:center;padding-top:1rem;clip-path:polygon(0 0,100% 0,100% 100%,50% 82%,0 100%)}
@@ -869,7 +870,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .titem,.titem.r{padding:10.26rem 0}
   .titem+.titem{border-top:1px solid var(--hair)}
   .ttop{gap:4rem}
-  .tphoto{width:30.77rem;height:30.77rem;font-size:10rem}
+  .tphoto,.tphoto-img{width:30.77rem;height:30.77rem;font-size:10rem}
   .tyears{gap:2.6rem}.tyears .num{font-size:10.26rem;line-height:11.28rem}.tyears p.t-reg{font-size:2.82rem;line-height:4.36rem;max-width:20rem}
   .tbadge{width:9rem;height:14rem;font-size:3.6rem;padding-top:3rem}
   .tabout{margin-top:8.2rem;max-width:none;gap:6.15rem}

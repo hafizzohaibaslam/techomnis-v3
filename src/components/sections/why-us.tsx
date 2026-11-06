@@ -9,7 +9,11 @@ function ProfileCard({ member }: { member: TeamMember }) {
   return (
     <div className="profile ln lr lb">
       {member.image ? (
-        <div className="avatar-img" aria-label={`Photo of ${member.name}`}>
+        <div 
+          className="avatar-img" 
+          aria-label={`Photo of ${member.name}`}
+          style={{ backgroundColor: member.bgColor || '#EDEDEB' }}
+        >
           <Image
             src={member.image}
             alt={member.name}

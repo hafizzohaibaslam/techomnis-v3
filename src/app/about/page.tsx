@@ -141,7 +141,11 @@ export default function AboutPage() {
                   >
                     <div className="ttop">
                       {member.image ? (
-                        <div className="tphoto-img" aria-label={`Photo of ${member.name}`}>
+                        <div 
+                          className="tphoto-img" 
+                          aria-label={`Photo of ${member.name}`}
+                          style={{ backgroundColor: member.bgColor || '#EDEDEB' }}
+                        >
                           <Image
                             src={member.image}
                             alt={member.name}
