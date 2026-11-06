@@ -149,9 +149,9 @@ export default function AboutPage() {
                           <Image
                             src={member.image}
                             alt={member.name}
-                            width={120}
-                            height={120}
-                            style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
+                            width={320}
+                            height={320}
+                            style={{ objectFit: 'cover', borderRadius: '0.5rem', width: '100%', height: '100%' }}
                           />
                         </div>
                       ) : (

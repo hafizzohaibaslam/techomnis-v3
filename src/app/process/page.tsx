@@ -693,9 +693,9 @@ export default function ProcessPage() {
                       <Image
                         src="/images/team/zohaib-aslam.png"
                         alt="Zohaib Aslam"
-                        width={80}
-                        height={80}
-                        style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
+                        width={270}
+                        height={270}
+                        style={{ objectFit: 'cover', borderRadius: '0.5rem', width: '100%', height: '100%' }}
                       />
                     </div>
                     <p className="nm">Zohaib Aslam</p>
@@ -732,9 +732,9 @@ export default function ProcessPage() {
                       <Image
                         src="/images/team/zohaib-murtaza.webp"
                         alt="Zohaib Murtaza"
-                        width={80}
-                        height={80}
-                        style={{ objectFit: 'cover', borderRadius: '0.5rem' }}
+                        width={270}
+                        height={270}
+                        style={{ objectFit: 'cover', borderRadius: '0.5rem', width: '100%', height: '100%' }}
                       />
                     </div>
                     <p className="nm">Zohaib Murtaza</p>
