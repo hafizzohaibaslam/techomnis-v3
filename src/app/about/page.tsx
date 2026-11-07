@@ -151,7 +151,7 @@ export default function AboutPage() {
                             alt={member.name}
                             width={320}
                             height={320}
-                            style={{ objectFit: 'cover', borderRadius: '0.5rem', width: '100%', height: '100%' }}
+                            style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem', width: '100%', height: '100%' }}
                           />
                         </div>
                       ) : (
