@@ -531,15 +531,15 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
 .split .vcell svg.dia{position:relative;z-index:2}
 .pyr-wrap{display:flex;align-items:center;justify-content:center}
 .pyr-diagram{width:100%;max-width:27rem;height:auto}
-/* Pyramid entry animation */
-.pyr-guide{stroke-dasharray:260;stroke-dashoffset:260;animation:pyr-draw-guide .4s ease-out forwards}
-.pyr-outline{stroke-dasharray:700;stroke-dashoffset:700;animation:pyr-draw-outline .9s ease-out .15s forwards}
-.pyr-tier{stroke-dasharray:100;stroke-dashoffset:100;animation:pyr-draw-tier .3s ease-out forwards}
+/* Pyramid entry animation - viewBox 352x303, triangle 229x197 */
+.pyr-guide{stroke-dasharray:303;stroke-dashoffset:303;animation:pyr-draw-guide .4s ease-out forwards}
+.pyr-outline{stroke-dasharray:650;stroke-dashoffset:650;animation:pyr-draw-outline .9s ease-out .15s forwards}
+.pyr-tier{stroke-dasharray:200;stroke-dashoffset:200;animation:pyr-draw-tier .3s ease-out forwards}
 .pyr-tier:nth-of-type(1){animation-delay:.6s}
 .pyr-tier:nth-of-type(2){animation-delay:.75s}
 .pyr-tier:nth-of-type(3){animation-delay:.9s}
 .pyr-tier:nth-of-type(4){animation-delay:1.05s}
-.pyr-divider{stroke-dasharray:366;stroke-dashoffset:366;animation:pyr-draw-divider .4s ease-out .75s forwards}
+.pyr-divider{stroke-dasharray:328;stroke-dashoffset:328;animation:pyr-draw-divider .4s ease-out .75s forwards}
 .pyr-labels text{opacity:0;animation:pyr-fade-in .4s ease-out forwards}
 .pyr-labels text:nth-child(1){animation-delay:1.2s}
 .pyr-labels text:nth-child(2){animation-delay:1.4s}
