@@ -335,41 +335,51 @@ export default function AboutPage() {
                     </TransitionLink>
                   </div>
                 </div>
-                <div className="center vcell">
+                <div className="pyr-wrap vcell">
                   <span className="cx" aria-hidden="true"></span>
                   <span className="cy" aria-hidden="true"></span>
-                  <svg
-                    className="dia pyr"
-                    viewBox="0 0 420 360"
-                    style={{ width: '29.2rem', height: '25rem' }}
-                    role="img"
-                    aria-label="One team across five layers: UI, API, LLM, data and infra"
-                  >
-                    <g fill="none" stroke="#222" strokeWidth="1">
-                      <path d="M210 30 L340 330 H80 Z" />
-                      <path d="M175 92 H245" />
-                      <path d="M145 152 H275" />
-                      <path d="M118 212 H302" />
-                      <path d="M95 272 H325" />
-                    </g>
-                    <g fontSize="12" fontWeight="500" textAnchor="middle" fill="#222">
-                      <text x="210" y="74">
-                        UI
-                      </text>
-                      <text x="210" y="132">
-                        API
-                      </text>
-                      <text x="210" y="192">
-                        LLM
-                      </text>
-                      <text x="210" y="252">
-                        Data
-                      </text>
-                      <text x="210" y="312">
-                        Infra
-                      </text>
-                    </g>
-                  </svg>
+                  <div className="pyr-grid" aria-label="One team across five layers: UI, API, LLM, data and infra">
+                    <div className="pyr-guide" aria-hidden="true"></div>
+                    <div className="pyr-left pyr-top">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="1.5" aria-hidden="true">
+                        <path d="M12 2L3 9h3v11h12V9h3L12 2z" />
+                        <path d="M8 14h8M8 18h8" />
+                      </svg>
+                      <span className="pyr-note">Full-stack<br />ownership here</span>
+                    </div>
+                    <div className="pyr-right pyr-top">
+                      <span className="pyr-note">unified team<br />handles all layers</span>
+                    </div>
+                    <div className="pyr-center">
+                      <svg className="dia pyr" viewBox="0 0 280 240" role="img" aria-label="Five-layer pyramid: UI, API, LLM, Data, Infra">
+                        <g fill="none" stroke="#222" strokeWidth="1">
+                          <path d="M140 20 L240 220 H40 Z" />
+                          <path d="M115 62 H165" />
+                          <path d="M90 102 H190" />
+                          <path d="M68 142 H212" />
+                          <path d="M50 182 H230" />
+                        </g>
+                        <g fontSize="11" fontWeight="500" textAnchor="middle" fill="#222">
+                          <text x="140" y="52">UI</text>
+                          <text x="140" y="90">API</text>
+                          <text x="140" y="130">LLM</text>
+                          <text x="140" y="170">Data</text>
+                          <text x="140" y="210">Infra</text>
+                        </g>
+                      </svg>
+                    </div>
+                    <div className="pyr-divider" aria-hidden="true"></div>
+                    <div className="pyr-left pyr-bottom">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#222" strokeWidth="1.5" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M8 12l3 3 5-6" />
+                      </svg>
+                      <span className="pyr-note">No handoffs<br />between vendors</span>
+                    </div>
+                    <div className="pyr-right pyr-bottom">
+                      <span className="pyr-note">one team means<br />fewer gaps</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
