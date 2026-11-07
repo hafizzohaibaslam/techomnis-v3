@@ -157,9 +157,12 @@ function MediaLink({
 
   if (!hasPage) {
     return (
-      <div className="media" data-media data-coming-soon aria-label={label}>
+      <div className="media" data-media aria-label={label}>
         {children}
         <div className="dark"></div>
+        <span ref={moreRef} className="more" aria-hidden="true">
+          <ArrowRight />
+        </span>
       </div>
     )
   }

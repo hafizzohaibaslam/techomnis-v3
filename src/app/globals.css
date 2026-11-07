@@ -362,12 +362,11 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .feature .media,.case .media{height:51.28rem;overflow:visible;-webkit-mask-image:none}
   .media:hover,.media:focus-visible{border-radius:0}
   .media .dark{display:none}
-  /* Project arrow: show for linked cards, hide for coming-soon */
+  /* Project arrow: visible on ALL cards per UXIS reference */
   .media .more{position:absolute;z-index:4;right:4.1rem;bottom:-8.72rem;width:17.95rem;height:17.95rem;border-radius:50%;background:#222;border:1.03rem solid #fff;display:flex;align-items:center;justify-content:center;opacity:1;transform:none;padding:0;gap:0}
   .media .more .more-text{display:none}
   .media .more svg{width:5.46rem;height:5.46rem;stroke:#fff;fill:none;stroke-width:1.6}
   .media .more::before{display:none}
-  .media[data-coming-soon] .more{display:none}
   .media .phtag{right:3rem;top:3rem}
   .feature-row{grid-template-columns:1fr;row-gap:6.15rem;padding-right:0;margin-top:4.1rem}
   .feature-row .nm{gap:3.08rem;padding-right:22rem}

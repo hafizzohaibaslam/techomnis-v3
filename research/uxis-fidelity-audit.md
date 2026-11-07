@@ -59,12 +59,22 @@
 |----------|----------|----------|------|---------|-------|---------|
 | 320px | - | - | - | - | - | - |
 | 375px | - | - | - | - | - | - |
-| 390px | PENDING | ✓ CSS | - | ✓ Portraits | ✓ Map | ✓ Form |
+| 390px | PENDING | ✓ Explore | - | ✓ Portraits | ✓ All | ✓ Form |
 | 430px | - | - | - | - | - | - |
 | 768px | - | - | - | - | - | - |
 | 1440px | ✓ CSS | ✓ CSS | ✓ CSS | ✓ CSS | ✓ CSS | ✓ CSS |
 
 Legend: ✓ PASS, ✗ FAIL, - NOT TESTED, PARTIAL = some elements tested
+
+## Verified Changes (computerUse subagent)
+
+### Services Page @ 390px
+- **Explore Button**: PASS - 160.87 x 62.02px outlined capsule with visible border
+
+### About Page @ 390px  
+- **Team Photos**: PASS - 175.03 x 175.03px square (exactly matching UXIS ~175px reference)
+- **World Map**: PASS - 639.75 x 250.89px (164% wider than 390px viewport, bleeds correctly)
+- **Client Grid**: Row height increased to 45rem (~176px), matching UXIS reference
 
 ## CSS Audit Results
 
