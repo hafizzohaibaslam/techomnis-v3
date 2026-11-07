@@ -345,27 +345,27 @@ export default function AboutPage() {
                     role="img"
                     aria-label="One team across five layers: UI, API, LLM, data and infra"
                   >
-                    <g fill="none" stroke="#8f8f8f" strokeWidth="1">
-                      <path d="M210 20 L400 340 H20 Z" />
-                      <path d="M162 101 H258" />
-                      <path d="M115 181 H305" />
-                      <path d="M86 230 H334" />
-                      <path d="M58 283 H362" />
+                    <g fill="none" stroke="#222" strokeWidth="1">
+                      <path d="M210 30 L340 330 H80 Z" />
+                      <path d="M175 92 H245" />
+                      <path d="M145 152 H275" />
+                      <path d="M118 212 H302" />
+                      <path d="M95 272 H325" />
                     </g>
-                    <g fontSize="13" textAnchor="middle">
-                      <text x="210" y="80">
+                    <g fontSize="12" fontWeight="500" textAnchor="middle" fill="#222">
+                      <text x="210" y="74">
                         UI
                       </text>
-                      <text x="210" y="148">
+                      <text x="210" y="132">
                         API
                       </text>
-                      <text x="210" y="211">
+                      <text x="210" y="192">
                         LLM
                       </text>
-                      <text x="210" y="262">
+                      <text x="210" y="252">
                         Data
                       </text>
-                      <text x="210" y="318">
+                      <text x="210" y="312">
                         Infra
                       </text>
                     </g>
