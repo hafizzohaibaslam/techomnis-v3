@@ -362,8 +362,8 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .feature .media,.case .media{height:51.28rem;overflow:visible;-webkit-mask-image:none}
   .media:hover,.media:focus-visible{border-radius:0}
   .media .dark{display:none}
-  /* Project arrow: visible on ALL cards per UXIS reference */
-  .media .more{position:absolute;z-index:4;right:4.1rem;bottom:-8.72rem;width:17.95rem;height:17.95rem;border-radius:50%;background:#222;border:1.03rem solid #fff;display:flex;align-items:center;justify-content:center;opacity:1;transform:none;padding:0;gap:0}
+  /* Project arrow: visible on ALL cards per UXIS reference - MUST reset desktop centering */
+  .media .more{position:absolute;z-index:4;left:auto;top:auto;right:4.1rem;bottom:-8.72rem;width:17.95rem;height:17.95rem;border-radius:50%;background:#222;border:1.03rem solid #fff;display:flex;align-items:center;justify-content:center;opacity:1;transform:none;padding:0;gap:0;pointer-events:auto}
   .media .more .more-text{display:none}
   .media .more svg{width:5.46rem;height:5.46rem;stroke:#fff;fill:none;stroke-width:1.6}
   .media .more::before{display:none}
@@ -480,7 +480,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .mlist,.menu .home{display:none}
   .mob{display:flex;align-items:center;gap:4.1rem;color:#fff;border-radius:20rem;padding:4.87rem 6.15rem;font-size:3.33rem;font-weight:400;line-height:4.1rem;height:14.87rem}
   .mob svg{width:5.13rem;height:5.13rem;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round}
-  .talk{font-size:3.69rem;line-height:5.13rem;padding:4.87rem 6.15rem;gap:2.75rem;border-radius:20rem;height:14.87rem}.talk svg{width:5.46rem;height:5.46rem}
+  .talk{font-size:3.69rem;line-height:5.13rem;padding:4.87rem 6.15rem;gap:2.75rem;border-radius:20rem;height:14.87rem;white-space:nowrap}.talk svg{width:5.46rem;height:5.46rem}
   .menu.open .menu-c{border-radius:0 0 7.18rem 7.18rem}.menu.wide .menu-c{width:97.95vw}
   /* UXIS .mobile-list_menu: sits directly on the bar, rows 12.6rem, 3.33rem regular text, arrow only on the current page, #5c5c5c rule above the bar */
   .mpanel{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(6.92rem + 16.92rem);width:97.95vw;background:linear-gradient(#5c5c5c,#5c5c5c) no-repeat left 1.4rem bottom 0/calc(100% - 2.8rem) 1px,rgba(34,34,34,.8);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);border-radius:7.18rem 7.18rem 0 0;padding:1.4rem 1.4rem 1.4rem;flex-direction:column;z-index:61}
