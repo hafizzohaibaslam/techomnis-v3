@@ -340,81 +340,88 @@ export default function AboutPage() {
                   <span className="cy" aria-hidden="true"></span>
                   <svg
                     className="pyr-diagram"
-                    viewBox="0 0 390 320"
+                    viewBox="0 0 390 260"
                     role="img"
                     aria-label="One team across five layers: UI, API, LLM, data and infra"
                     preserveAspectRatio="xMidYMid meet"
                   >
-                    {/* Central vertical guide - spans full height, centered at x=195 */}
-                    <line x1="195" y1="0" x2="195" y2="320" stroke="#e5e5e5" strokeWidth="1" />
+                    {/* Central vertical guide - full height at x=195 */}
+                    <line className="pyr-guide" x1="195" y1="0" x2="195" y2="260" stroke="#d4d4d4" strokeWidth="1" />
 
-                    {/* Triangle outline - apex at 195,30, base from 115 to 275 at y=270 */}
+                    {/* Wide triangle: apex (195,25), base (72,215) to (318,215) = 246w x 190h, ratio 0.77 */}
                     <path
-                      d="M195 30 L275 270 H115 Z"
+                      className="pyr-outline"
+                      d="M195 25 L318 215 H72 Z"
                       fill="none"
                       stroke="#222"
                       strokeWidth="1"
                     />
 
-                    {/* Tier divider lines - calculated to stay within triangle bounds */}
-                    {/* At y=78: triangle width = 160*(78-30)/(270-30) = 32, so x = 195±16 = 179 to 211 */}
-                    <line x1="179" y1="78" x2="211" y2="78" stroke="#222" strokeWidth="1" />
-                    {/* At y=126: triangle width = 160*(126-30)/(270-30) = 64, so x = 195±32 = 163 to 227 */}
-                    <line x1="163" y1="126" x2="227" y2="126" stroke="#222" strokeWidth="1" />
-                    {/* At y=174: triangle width = 160*(174-30)/(270-30) = 96, so x = 195±48 = 147 to 243 */}
-                    <line x1="147" y1="174" x2="243" y2="174" stroke="#222" strokeWidth="1" />
-                    {/* At y=222: triangle width = 160*(222-30)/(270-30) = 128, so x = 195±64 = 131 to 259 */}
-                    <line x1="131" y1="222" x2="259" y2="222" stroke="#222" strokeWidth="1" />
+                    {/* 4 tier lines for 5 tiers, calculated within triangle bounds */}
+                    {/* y=63: w=246*(63-25)/190=49, x=195±24.5 */}
+                    <line className="pyr-tier" x1="170" y1="63" x2="220" y2="63" stroke="#222" strokeWidth="1" />
+                    {/* y=101: w=246*(101-25)/190=98, x=195±49 */}
+                    <line className="pyr-tier" x1="146" y1="101" x2="244" y2="101" stroke="#222" strokeWidth="1" />
+                    {/* y=139: w=246*(139-25)/190=147, x=195±74 */}
+                    <line className="pyr-tier" x1="121" y1="139" x2="269" y2="139" stroke="#222" strokeWidth="1" />
+                    {/* y=177: w=246*(177-25)/190=197, x=195±98 */}
+                    <line className="pyr-tier" x1="97" y1="177" x2="293" y2="177" stroke="#222" strokeWidth="1" />
 
-                    {/* Full-width horizontal black divider at tier 2/3 boundary (after API) */}
-                    <line x1="20" y1="126" x2="370" y2="126" stroke="#222" strokeWidth="1" />
+                    {/* Horizontal black divider at tier 2/3 (API/LLM) boundary, spans annotation region */}
+                    {/* Inset ~12px from canvas edges: x=12 to x=378, aligned with tier line at y=101 */}
+                    <line className="pyr-divider" x1="12" y1="101" x2="378" y2="101" stroke="#222" strokeWidth="1" />
 
-                    {/* Tier labels - centered on x=195 */}
-                    <g fontSize="11" fontWeight="500" textAnchor="middle" fill="#222">
-                      <text x="195" y="62">UI</text>
-                      <text x="195" y="110">API</text>
-                      <text x="195" y="158">LLM</text>
-                      <text x="195" y="206">Data</text>
-                      <text x="195" y="254">Infra</text>
+                    {/* Tier labels - larger font, proper spacing */}
+                    <g className="pyr-labels" fontSize="13" fontWeight="500" textAnchor="middle" fill="#222">
+                      <text x="195" y="52">UI</text>
+                      <text x="195" y="88">API</text>
+                      <text x="195" y="126">LLM</text>
+                      <text x="195" y="164">Data</text>
+                      <text x="195" y="202">Infra</text>
                     </g>
 
-                    {/* Left annotation group - top */}
-                    <g className="pyr-ann-left-top">
-                      <path d="M30 52 L22 58 h4 v10 h8 v-10 h4 Z" fill="none" stroke="#222" strokeWidth="1" />
-                      <line x1="26" y1="64" x2="38" y2="64" stroke="#222" strokeWidth="1" />
-                      <text x="30" y="88" fontSize="8" textAnchor="middle" fill="#666">
-                        <tspan x="30" dy="0">Full-stack</tspan>
-                        <tspan x="30" dy="10">ownership</tspan>
-                        <tspan x="30" dy="10">here</tspan>
+                    {/* Left annotation - top: trophy icon + text */}
+                    <g className="pyr-ann pyr-ann-lt">
+                      <g transform="translate(35, 40)">
+                        <path d="M0 4 L8 0 L16 4 V6 H14 V14 H2 V6 H0 Z" fill="none" stroke="#222" strokeWidth="1.2" />
+                        <line x1="4" y1="10" x2="12" y2="10" stroke="#222" strokeWidth="1" />
+                        <line x1="4" y1="12" x2="12" y2="12" stroke="#222" strokeWidth="1" />
+                      </g>
+                      <text x="43" y="72" fontSize="10" fill="#555">
+                        <tspan x="43" textAnchor="middle">Full-stack</tspan>
+                        <tspan x="43" dy="12" textAnchor="middle">ownership</tspan>
+                        <tspan x="43" dy="12" textAnchor="middle">here</tspan>
                       </text>
                     </g>
 
-                    {/* Right annotation group - top */}
-                    <g className="pyr-ann-right-top">
-                      <text x="360" y="62" fontSize="8" textAnchor="middle" fill="#666">
-                        <tspan x="360" dy="0">unified team</tspan>
-                        <tspan x="360" dy="10">handles all</tspan>
-                        <tspan x="360" dy="10">layers</tspan>
+                    {/* Right annotation - top: headline + description */}
+                    <g className="pyr-ann pyr-ann-rt">
+                      <text x="347" y="48" fontSize="10" textAnchor="middle" fill="#555">
+                        <tspan x="347" fontWeight="500">unified team</tspan>
+                        <tspan x="347" dy="12">handles all</tspan>
+                        <tspan x="347" dy="12">layers</tspan>
                       </text>
                     </g>
 
-                    {/* Left annotation group - bottom */}
-                    <g className="pyr-ann-left-bottom">
-                      <circle cx="30" cy="200" r="8" fill="none" stroke="#222" strokeWidth="1" />
-                      <path d="M26 200 l3 3 5-6" fill="none" stroke="#222" strokeWidth="1" />
-                      <text x="30" y="228" fontSize="8" textAnchor="middle" fill="#666">
-                        <tspan x="30" dy="0">No handoffs</tspan>
-                        <tspan x="30" dy="10">between</tspan>
-                        <tspan x="30" dy="10">vendors</tspan>
+                    {/* Left annotation - bottom: checkmark icon + text */}
+                    <g className="pyr-ann pyr-ann-lb">
+                      <g transform="translate(27, 150)">
+                        <circle cx="8" cy="8" r="9" fill="none" stroke="#222" strokeWidth="1.2" />
+                        <path d="M4 8 L7 11 L12 5" fill="none" stroke="#222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </g>
+                      <text x="43" y="186" fontSize="10" fill="#555">
+                        <tspan x="43" textAnchor="middle">No handoffs</tspan>
+                        <tspan x="43" dy="12" textAnchor="middle">between</tspan>
+                        <tspan x="43" dy="12" textAnchor="middle">vendors</tspan>
                       </text>
                     </g>
 
-                    {/* Right annotation group - bottom */}
-                    <g className="pyr-ann-right-bottom">
-                      <text x="360" y="200" fontSize="8" textAnchor="middle" fill="#666">
-                        <tspan x="360" dy="0">one team</tspan>
-                        <tspan x="360" dy="10">means fewer</tspan>
-                        <tspan x="360" dy="10">gaps</tspan>
+                    {/* Right annotation - bottom: headline + description */}
+                    <g className="pyr-ann pyr-ann-rb">
+                      <text x="347" y="162" fontSize="10" textAnchor="middle" fill="#555">
+                        <tspan x="347" fontWeight="500">one team</tspan>
+                        <tspan x="347" dy="12">means fewer</tspan>
+                        <tspan x="347" dy="12">gaps</tspan>
                       </text>
                     </g>
                   </svg>
