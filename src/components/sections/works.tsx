@@ -157,12 +157,9 @@ function MediaLink({
 
   if (!hasPage) {
     return (
-      <div className="media" data-media aria-label={label}>
+      <div className="media" data-media data-coming-soon aria-label={label}>
         {children}
         <div className="dark"></div>
-        <span ref={moreRef} className="more" aria-hidden="true">
-          Coming soon
-        </span>
       </div>
     )
   }
@@ -173,7 +170,8 @@ function MediaLink({
       {children}
       <div className="dark"></div>
       <span ref={moreRef} className="more" aria-hidden="true">
-        Read more <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
+        <span className="more-text">Read more</span>
+        <ArrowRight />
       </span>
     </TransitionLink>
   )

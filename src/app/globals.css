@@ -122,6 +122,7 @@ html:not(.motion-off) .motion .bars i{animation:eq 1.1s ease-in-out infinite}
 /* UXIS .dark-layer: a static 8% radial vignette over every case image (not a wipe) */
 .media .dark{position:absolute;inset:0;z-index:3;pointer-events:none;background:radial-gradient(ellipse 60% 60% at 44% 45%,rgba(54,48,95,0) 54%,rgba(54,48,95,.08) 81%)}
 .media .more{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%) scale(.85);display:flex;align-items:center;justify-content:center;gap:.77rem;color:#fff;border-radius:2.66rem;padding:1.31rem 1.73rem 1.31rem 1.43rem;font-size:1.07rem;line-height:1.67rem;font-weight:600;opacity:0;isolation:isolate;transition:opacity .3s cubic-bezier(.076,.603,.339,.919),transform .3s cubic-bezier(.215,.61,.355,1);pointer-events:none;white-space:nowrap}
+.media .more .more-text{display:inline}
 .media .more::before{content:"";position:absolute;inset:0;border-radius:inherit;background:#222;z-index:-1;transition:transform .3s cubic-bezier(.215,.61,.355,1),background-color .3s cubic-bezier(.088,.492,.45,.94)}
 .media:hover .more::before,.media:focus-visible .more::before{transform:scale(.97);background-color:#000;transition-timing-function:cubic-bezier(.165,.84,.44,1),cubic-bezier(.076,.51,.45,.94)}
 .media .more .arw{display:flex;width:1.25rem;height:1.25rem}
@@ -361,7 +362,12 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .feature .media,.case .media{height:51.28rem;overflow:visible;-webkit-mask-image:none}
   .media:hover,.media:focus-visible{border-radius:0}
   .media .dark{display:none}
-  .media .more,.media:hover .more,.media:focus-visible .more{display:none}
+  /* Project arrow: show for linked cards, hide for coming-soon */
+  .media .more{position:absolute;z-index:4;right:4.1rem;bottom:-8.72rem;width:17.95rem;height:17.95rem;border-radius:50%;background:#222;border:1.03rem solid #fff;display:flex;align-items:center;justify-content:center;opacity:1;transform:none;padding:0;gap:0}
+  .media .more .more-text{display:none}
+  .media .more svg{width:5.46rem;height:5.46rem;stroke:#fff;fill:none;stroke-width:1.6}
+  .media .more::before{display:none}
+  .media[data-coming-soon] .more{display:none}
   .media .phtag{right:3rem;top:3rem}
   .feature-row{grid-template-columns:1fr;row-gap:6.15rem;padding-right:0;margin-top:4.1rem}
   .feature-row .nm{gap:3.08rem;padding-right:22rem}
@@ -369,18 +375,19 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .ov .desc+.met{padding-right:7.18rem}
   .ov .met+.met{--ll:1;padding-left:7.18rem}
   .ov .desc{display:none}
-  .ov .met{padding-left:0;gap:2rem}
-  .ov .met .h-sub{font-size:3.59rem;line-height:5.13rem;font-weight:600;letter-spacing:0}
+  .ov .met{padding-left:0;gap:1rem}
+  .ov .met .h-sub{font-size:4.1rem;line-height:5.13rem;font-weight:600;letter-spacing:-.07rem}
   
   .case,.case.r{padding:5.13rem 0 8.46rem}
   .case-meta{grid-template-columns:1fr;gap:3.08rem;margin-top:4.1rem}
   .case-meta h3{padding-right:22rem}
-  .case-stat{grid-column:1;grid-row:auto;flex-direction:row;gap:2rem;align-items:baseline;justify-content:flex-start}
-  .case-stat .num{font-size:6.15rem;line-height:1}
-  .case-stat p{max-width:none;font-size:3.59rem;line-height:5.13rem;font-weight:600}
-  .case.r.view-more{padding:36rem 0}
+  .case-stat{grid-column:1;grid-row:auto;flex-direction:column;gap:1rem;align-items:flex-start;justify-content:flex-start}
+  .case-stat .num{font-size:9.23rem;line-height:10.26rem;letter-spacing:-.18rem}
+  .case-stat p{max-width:none;font-size:4.1rem;line-height:5.13rem;font-weight:600;letter-spacing:-.07rem}
+  .case.r.view-more{padding:16rem 0}
   .case-stat .ph{justify-self:start}
-  .view-more .btn{width:auto;padding:2rem 3rem}
+  .view-more{display:flex;justify-content:center;width:100%;min-height:15.9rem}
+  .view-more .btn{width:100%;height:15.9rem;padding:0;justify-content:center}
   .view-more .btn svg.pill{display:none}
   .view-more .btn .lbl{text-decoration:underline;text-underline-offset:1.2rem;text-decoration-thickness:1px}
   /* thesis: heading, venn, then copy and a full-width button (UXIS order) */
@@ -470,11 +477,11 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .lcount{font-size:14rem;line-height:16rem;top:calc(100vh - 40rem);left:4.87rem}
   /* menu (UXIS @390: 275 x 69 bar, bottom 27) */
   .menu{bottom:6.92rem;border-radius:8.5rem}
-  .menu-c{width:70.5rem;padding:1.28rem;border-radius:8.5rem}
+  .menu-c{width:70.5rem;padding:1.28rem;border-radius:8.5rem;height:17.7rem}
   .mlist,.menu .home{display:none}
-  .mob{display:flex;align-items:center;gap:4.75rem;color:#fff;border-radius:20rem;padding:4.62rem 4.7rem;font-size:3.33rem;font-weight:400;line-height:4.1rem}
+  .mob{display:flex;align-items:center;gap:4.1rem;color:#fff;border-radius:20rem;padding:4.87rem 6.15rem;font-size:3.33rem;font-weight:400;line-height:4.1rem;height:14.87rem}
   .mob svg{width:5.13rem;height:5.13rem;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round}
-  .talk{font-size:3.69rem;line-height:5.13rem;padding:4.36rem 6.15rem;gap:2.75rem;border-radius:20rem}.talk svg{width:4.62rem;height:4.62rem}
+  .talk{font-size:3.69rem;line-height:5.13rem;padding:4.87rem 6.15rem;gap:2.75rem;border-radius:20rem;height:14.87rem}.talk svg{width:5.46rem;height:5.46rem}
   .menu.open .menu-c{border-radius:0 0 7.18rem 7.18rem}.menu.wide .menu-c{width:97.95vw}
   /* UXIS .mobile-list_menu: sits directly on the bar, rows 12.6rem, 3.33rem regular text, arrow only on the current page, #5c5c5c rule above the bar */
   .mpanel{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(6.92rem + 16.92rem);width:97.95vw;background:linear-gradient(#5c5c5c,#5c5c5c) no-repeat left 1.4rem bottom 0/calc(100% - 2.8rem) 1px,rgba(34,34,34,.8);-webkit-backdrop-filter:blur(7px);backdrop-filter:blur(7px);border-radius:7.18rem 7.18rem 0 0;padding:1.4rem 1.4rem 1.4rem;flex-direction:column;z-index:61}
