@@ -530,7 +530,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
 .split-l>.btns,.split-l>.btnw{margin-top:3.33rem}
 .split .vcell svg.dia{position:relative;z-index:2}
 .pyr-wrap{display:flex;align-items:center;justify-content:center}
-.pyr-diagram{width:100%;max-width:27rem;height:auto}
+.pyr-diagram{width:100%;max-width:46.67rem;height:auto}
 /* Pyramid entry animation - viewBox 352x303, triangle 229x197 */
 .pyr-guide{stroke-dasharray:303;stroke-dashoffset:303;animation:pyr-draw-guide .4s ease-out forwards}
 .pyr-outline{stroke-dasharray:650;stroke-dashoffset:650;animation:pyr-draw-outline .9s ease-out .15s forwards}
