@@ -400,23 +400,23 @@ export default function AboutPage() {
                       </text>
                     </g>
 
-                    {/* Left annotation - bottom */}
+                    {/* Left annotation - bottom: aligned with right annotation */}
                     <g className="pyr-ann pyr-ann-lb">
-                      <g transform="translate(10, 175)">
+                      <g transform="translate(10, 188)">
                         <circle cx="8" cy="8" r="9" fill="none" stroke="#222" strokeWidth="1.2" />
                         <path d="M4 8 L7 11 L12 5" fill="none" stroke="#222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                       </g>
-                      <text x="26" y="211" fontSize="9" fill="#555">
+                      <text x="26" y="224" fontSize="9" fill="#555">
                         <tspan x="26" textAnchor="middle">No handoffs</tspan>
                         <tspan x="26" dy="11" textAnchor="middle">between</tspan>
                         <tspan x="26" dy="11" textAnchor="middle">vendors</tspan>
                       </text>
                     </g>
 
-                    {/* Right annotation - bottom: positioned BELOW tier 4 (y=194) for clearance */}
-                    {/* At y~210, right edge at x~280, so text starting at 295 is safe */}
+                    {/* Right annotation - bottom: positioned well BELOW tier 4 for clearance */}
+                    {/* At y=215, right edge at x~284, text at x=345 gives safe 20px+ margin */}
                     <g className="pyr-ann pyr-ann-rb">
-                      <text x="345" y="200" fontSize="9" textAnchor="end" fill="#222">
+                      <text x="345" y="215" fontSize="9" textAnchor="end" fill="#222">
                         <tspan x="345" fontWeight="600" fontSize="10">one team</tspan>
                         <tspan x="345" dy="12" fontWeight="400" fill="#555">means fewer</tspan>
                         <tspan x="345" dy="11" fontWeight="400" fill="#555">gaps</tspan>
