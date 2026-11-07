@@ -336,6 +336,8 @@ export default function AboutPage() {
                   </div>
                 </div>
                 <div className="pyr-wrap vcell pyr-vcell">
+                  {/* Central vertical guide - extends full OUTER canvas height via CSS */}
+                  <span className="pyr-guide-line" aria-hidden="true"></span>
                   <svg
                     className="pyr-diagram"
                     viewBox="0 0 352 260"
@@ -343,36 +345,29 @@ export default function AboutPage() {
                     aria-label="One team across five layers: UI, API, LLM, data and infra"
                     preserveAspectRatio="xMidYMid meet"
                   >
-                    {/* Central vertical guide - full canvas height at x=176 */}
-                    <line className="pyr-guide" x1="176" y1="0" x2="176" y2="260" stroke="#d4d4d4" strokeWidth="1" />
-
                     {/* Triangle: 229w × 197h, ratio 0.86, centered at x=176 */}
-                    {/* Apex: (176, 30), Base: (61.5, 227) to (290.5, 227) */}
-                    <path
-                      className="pyr-outline"
-                      d="M176 30 L290.5 227 H61.5 Z"
-                      fill="none"
-                      stroke="#222"
-                      strokeWidth="1"
-                    />
+                    {/* Draw as 3 separate lines to ensure all edges render completely */}
+                    {/* Left edge: apex to bottom-left */}
+                    <line className="pyr-edge pyr-edge-left" x1="176" y1="30" x2="61.5" y2="227" stroke="#222" strokeWidth="1" />
+                    {/* Right edge: apex to bottom-right */}
+                    <line className="pyr-edge pyr-edge-right" x1="176" y1="30" x2="290.5" y2="227" stroke="#222" strokeWidth="1" />
+                    {/* Base: bottom-left to bottom-right */}
+                    <line className="pyr-edge pyr-edge-base" x1="61.5" y1="227" x2="290.5" y2="227" stroke="#222" strokeWidth="1" />
 
                     {/* 4 tier lines - UXIS proportions: top tier 35%, others ~16% each */}
-                    {/* Black divider at ~51% from apex (between tier 2 and 3) */}
-                    {/* y=99: 35% from apex, w=229*0.35=80, x=176±40 */}
-                    <line className="pyr-tier pyr-tier-top" x1="136" y1="99" x2="216" y2="99" stroke="#222" strokeWidth="1" />
-                    {/* y=130: 51% from apex (divider position), w=229*0.51=117, x=176±58.5 */}
+                    {/* y=99: 35% from apex */}
+                    <line className="pyr-tier" x1="136" y1="99" x2="216" y2="99" stroke="#222" strokeWidth="1" />
+                    {/* y=130: 51% from apex (divider position) */}
                     <line className="pyr-tier" x1="117" y1="130" x2="235" y2="130" stroke="#222" strokeWidth="1" />
-                    {/* y=162: 67% from apex, w=229*0.67=153, x=176±76.5 */}
+                    {/* y=162: 67% from apex */}
                     <line className="pyr-tier" x1="99" y1="162" x2="253" y2="162" stroke="#222" strokeWidth="1" />
-                    {/* y=194: 83% from apex, w=229*0.83=190, x=176±95 */}
+                    {/* y=194: 83% from apex */}
                     <line className="pyr-tier" x1="81" y1="194" x2="271" y2="194" stroke="#222" strokeWidth="1" />
 
-                    {/* Horizontal black divider at tier 2/3 boundary (51% from apex) */}
-                    {/* Inset ~12px from canvas edges: x=12 to x=340 */}
+                    {/* Horizontal black divider at tier 2/3 boundary */}
                     <line className="pyr-divider" x1="12" y1="130" x2="340" y2="130" stroke="#222" strokeWidth="1" />
 
-                    {/* Tier labels - positioned for UXIS proportions */}
-                    {/* Top 2 tiers bolder (600), lower 3 normal (500) */}
+                    {/* Tier labels - Top 2 bolder */}
                     <g className="pyr-labels" textAnchor="middle" fill="#222">
                       <text className="pyr-label-top" x="176" y="72" fontSize="12" fontWeight="600">UI</text>
                       <text className="pyr-label-top" x="176" y="118" fontSize="12" fontWeight="600">API</text>
@@ -381,7 +376,7 @@ export default function AboutPage() {
                       <text x="176" y="214" fontSize="11" fontWeight="500">Infra</text>
                     </g>
 
-                    {/* Left annotation - top: trophy icon + text */}
+                    {/* Left annotation - top */}
                     <g className="pyr-ann pyr-ann-lt">
                       <g transform="translate(18, 42)">
                         <path d="M0 4 L8 0 L16 4 V6 H14 V14 H2 V6 H0 Z" fill="none" stroke="#222" strokeWidth="1.2" />
@@ -395,16 +390,16 @@ export default function AboutPage() {
                       </text>
                     </g>
 
-                    {/* Right annotation - top: larger text with hierarchy */}
+                    {/* Right annotation - top: moved left to prevent clipping */}
                     <g className="pyr-ann pyr-ann-rt">
-                      <text x="326" y="52" fontSize="10" textAnchor="middle" fill="#444">
-                        <tspan x="326" fontWeight="600">unified team</tspan>
-                        <tspan x="326" dy="12" fontWeight="400" fill="#666">handles all</tspan>
-                        <tspan x="326" dy="12" fontWeight="400" fill="#666">layers</tspan>
+                      <text x="310" y="52" fontSize="9" textAnchor="end" fill="#444">
+                        <tspan x="310" fontWeight="600">unified team</tspan>
+                        <tspan x="310" dy="11" fontWeight="400" fill="#666">handles all</tspan>
+                        <tspan x="310" dy="11" fontWeight="400" fill="#666">layers</tspan>
                       </text>
                     </g>
 
-                    {/* Left annotation - bottom: checkmark icon + text */}
+                    {/* Left annotation - bottom */}
                     <g className="pyr-ann pyr-ann-lb">
                       <g transform="translate(10, 158)">
                         <circle cx="8" cy="8" r="9" fill="none" stroke="#222" strokeWidth="1.2" />
@@ -417,12 +412,12 @@ export default function AboutPage() {
                       </text>
                     </g>
 
-                    {/* Right annotation - bottom: larger text with hierarchy */}
+                    {/* Right annotation - bottom: moved left to prevent clipping */}
                     <g className="pyr-ann pyr-ann-rb">
-                      <text x="326" y="168" fontSize="10" textAnchor="middle" fill="#444">
-                        <tspan x="326" fontWeight="600">one team</tspan>
-                        <tspan x="326" dy="12" fontWeight="400" fill="#666">means fewer</tspan>
-                        <tspan x="326" dy="12" fontWeight="400" fill="#666">gaps</tspan>
+                      <text x="310" y="168" fontSize="9" textAnchor="end" fill="#444">
+                        <tspan x="310" fontWeight="600">one team</tspan>
+                        <tspan x="310" dy="11" fontWeight="400" fill="#666">means fewer</tspan>
+                        <tspan x="310" dy="11" fontWeight="400" fill="#666">gaps</tspan>
                       </text>
                     </g>
                   </svg>
