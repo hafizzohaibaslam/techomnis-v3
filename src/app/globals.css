@@ -828,6 +828,8 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .split-l>.btns,.split-l>.btnw{order:4;margin:8.2rem 0 10.26rem;width:100%}
   .split .vcell svg.dia{width:145.4rem !important;height:auto !important;max-width:90vw;flex:none}
   .pyr-diagram{width:90.26vw;max-width:none;height:auto}
+  /* Shift pyramid diagram up ~8px at mobile to match UXIS vertical placement (97/117 vs 105/108) */
+  .pyr-vcell{margin-top:-2rem}
   .srow{height:auto;display:flex;flex-direction:column;align-items:stretch}
   .srow>div{padding:10.26rem 0 4.1rem}.srow .sright{padding:2.05rem 0 10.26rem}
   .srow .si{width:12.3rem;height:12.3rem;margin-bottom:3.08rem}

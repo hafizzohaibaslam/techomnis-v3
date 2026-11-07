@@ -390,34 +390,36 @@ export default function AboutPage() {
                       </text>
                     </g>
 
-                    {/* Right annotation - top: moved left to prevent clipping */}
+                    {/* Right annotation - top: clear of triangle, right-aligned */}
+                    {/* At y~55, right edge is at x~190, so start text at x=205 min */}
                     <g className="pyr-ann pyr-ann-rt">
-                      <text x="310" y="52" fontSize="9" textAnchor="end" fill="#444">
-                        <tspan x="310" fontWeight="600">unified team</tspan>
-                        <tspan x="310" dy="11" fontWeight="400" fill="#666">handles all</tspan>
-                        <tspan x="310" dy="11" fontWeight="400" fill="#666">layers</tspan>
+                      <text x="345" y="50" fontSize="9" textAnchor="end" fill="#222">
+                        <tspan x="345" fontWeight="600" fontSize="10">unified team</tspan>
+                        <tspan x="345" dy="12" fontWeight="400" fill="#555">handles all</tspan>
+                        <tspan x="345" dy="11" fontWeight="400" fill="#555">layers</tspan>
                       </text>
                     </g>
 
                     {/* Left annotation - bottom */}
                     <g className="pyr-ann pyr-ann-lb">
-                      <g transform="translate(10, 158)">
+                      <g transform="translate(10, 175)">
                         <circle cx="8" cy="8" r="9" fill="none" stroke="#222" strokeWidth="1.2" />
                         <path d="M4 8 L7 11 L12 5" fill="none" stroke="#222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
                       </g>
-                      <text x="26" y="194" fontSize="9" fill="#555">
+                      <text x="26" y="211" fontSize="9" fill="#555">
                         <tspan x="26" textAnchor="middle">No handoffs</tspan>
                         <tspan x="26" dy="11" textAnchor="middle">between</tspan>
                         <tspan x="26" dy="11" textAnchor="middle">vendors</tspan>
                       </text>
                     </g>
 
-                    {/* Right annotation - bottom: moved left to prevent clipping */}
+                    {/* Right annotation - bottom: positioned BELOW tier 4 (y=194) for clearance */}
+                    {/* At y~210, right edge at x~280, so text starting at 295 is safe */}
                     <g className="pyr-ann pyr-ann-rb">
-                      <text x="310" y="168" fontSize="9" textAnchor="end" fill="#444">
-                        <tspan x="310" fontWeight="600">one team</tspan>
-                        <tspan x="310" dy="11" fontWeight="400" fill="#666">means fewer</tspan>
-                        <tspan x="310" dy="11" fontWeight="400" fill="#666">gaps</tspan>
+                      <text x="345" y="200" fontSize="9" textAnchor="end" fill="#222">
+                        <tspan x="345" fontWeight="600" fontSize="10">one team</tspan>
+                        <tspan x="345" dy="12" fontWeight="400" fill="#555">means fewer</tspan>
+                        <tspan x="345" dy="11" fontWeight="400" fill="#555">gaps</tspan>
                       </text>
                     </g>
                   </svg>
