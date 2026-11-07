@@ -407,7 +407,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .clients-intro{padding:12rem 0 8rem;gap:4rem}
   .clients-intro p{max-width:none}
   .clients-logos{grid-template-columns:1fr 1fr}
-  .client-cell{min-height:28vw}
+  .client-cell{min-height:45rem}
   .client-cell .nm{font-size:6rem;line-height:6.6rem;letter-spacing:-.15rem}
   .client-cell .nm small{font-size:2.8rem;line-height:3.6rem}
   .client-logo .logo-img{max-width:24rem;max-height:10rem}
@@ -876,7 +876,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .titem,.titem.r{padding:10.26rem 0}
   .titem+.titem{border-top:1px solid var(--hair)}
   .ttop{gap:4rem}
-  .tphoto,.tphoto-img{width:30.77rem;height:30.77rem;font-size:10rem}
+  .tphoto,.tphoto-img{width:44.87rem;height:44.87rem;font-size:10rem}
   .tyears{gap:2.6rem}.tyears .num{font-size:10.26rem;line-height:11.28rem}.tyears p.t-reg{font-size:2.82rem;line-height:4.36rem;max-width:20rem}
   .tbadge{width:9rem;height:14rem;font-size:3.6rem;padding-top:3rem}
   .tabout{margin-top:8.2rem;max-width:none;gap:6.15rem}
@@ -886,10 +886,10 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .tabout .prof{gap:3.08rem}
   .tabout .prof .tags{max-width:none}
   .tsoc{gap:4rem}.tsoc a{width:12rem;height:12rem}.tsoc svg{width:6.6rem;height:6.6rem}
-  .map{height:auto;padding:12rem 0 8rem}
+  .map{height:auto;padding:12rem 0 8rem;overflow:hidden}
   .map h2{max-width:none}.map p.t-reg{max-width:none;margin-top:4rem}
-  .worldwrap{width:100%;margin-top:6rem}.worldwrap svg path{stroke:#b0b0b0}
-  .pin{flex-direction:column;gap:.3rem}.pin i{width:1.8rem;height:1.8rem;border-width:1px}.pin span{font-size:1.6rem;padding:.4rem .6rem;order:-1}
+  .worldwrap{width:164rem;max-width:none;margin:6rem auto 0;transform:translateX(-32rem)}.worldwrap svg path{stroke:#b0b0b0}
+  .pin{flex-direction:column;gap:.3rem}.pin i{width:6.15rem;height:6.15rem;border-width:1px}.pin span{font-size:3.59rem;padding:.8rem 1.2rem;order:-1;white-space:nowrap}
   .venn-sec{height:auto}
   .venn-sec .vcell{height:auto;padding:12rem 0}
   .venn-sec .venn{width:81.8rem;height:85.06rem}
