@@ -689,13 +689,13 @@ export default function ProcessPage() {
                 </div>
                 <div className="g2 prof">
                   <div className="profile ln lr lb">
-                    <div className="avatar-img" aria-label="Photo of Zohaib Aslam" style={{ backgroundColor: '#8B5CF6' }}>
+                    <div className="avatar-img" aria-label="Photo of Zohaib Aslam" style={{ backgroundColor: '#8B5CF6', position: 'relative' }}>
                       <Image
                         src="/images/team/zohaib-aslam.png"
                         alt="Zohaib Aslam"
-                        width={270}
-                        height={270}
-                        style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem', width: '100%', height: '100%' }}
+                        fill
+                        sizes="(max-width: 1023px) 30vw, 17rem"
+                        style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem' }}
                       />
                     </div>
                     <p className="nm">Zohaib Aslam</p>
@@ -728,13 +728,13 @@ export default function ProcessPage() {
                     </span>
                   </div>
                   <div className="profile ln lb">
-                    <div className="avatar-img" aria-label="Photo of Zohaib Murtaza" style={{ backgroundColor: '#1a1a1a' }}>
+                    <div className="avatar-img" aria-label="Photo of Zohaib Murtaza" style={{ backgroundColor: '#1a1a1a', position: 'relative' }}>
                       <Image
                         src="/images/team/zohaib-murtaza.webp"
                         alt="Zohaib Murtaza"
-                        width={270}
-                        height={270}
-                        style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem', width: '100%', height: '100%' }}
+                        fill
+                        sizes="(max-width: 1023px) 30vw, 17rem"
+                        style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem' }}
                       />
                     </div>
                     <p className="nm">Zohaib Murtaza</p>

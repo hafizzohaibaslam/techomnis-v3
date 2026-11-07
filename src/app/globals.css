@@ -787,7 +787,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .srow .si{width:12.3rem;height:12.3rem;margin-bottom:3.08rem}
   .srow h3{margin-bottom:3.08rem}
   .srow .sl{max-width:none}
-  .cell,.cell.tall{height:auto;min-height:87.2rem;padding:6.15rem 0;grid-column:1/-1}
+  .cell,.cell.tall{height:auto;min-height:0;padding:6rem 0;grid-column:1/-1}
   .cell .ch{gap:2.6rem}
   .cell .ch .tt{font-size:4.62rem;line-height:5.13rem}
   .cell .ch .tt.s{font-size:4.1rem;line-height:6.15rem}
@@ -840,7 +840,7 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .chartc{height:auto;min-height:0;padding:6rem 0}
   .ab-r .g2.g2keep{grid-template-columns:1fr}
   .ab-r .cell{--lr:0!important}
-  .qrow{height:auto;min-height:90rem;padding:8.2rem 0;gap:8rem}
+  .qrow{height:auto;min-height:0;padding:6rem 0;gap:4rem}
   .qrow .ch .tt{font-size:4.62rem;line-height:5.13rem}.qrow .cap3{font-size:3.08rem;line-height:4.1rem}
   .qbody{gap:4.1rem}.qbody p.t-bold{max-width:none}
   .case-menu .mi .lbl{display:none}

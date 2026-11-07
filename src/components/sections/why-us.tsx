@@ -12,14 +12,14 @@ function ProfileCard({ member }: { member: TeamMember }) {
         <div 
           className="avatar-img" 
           aria-label={`Photo of ${member.name}`}
-          style={{ backgroundColor: member.bgColor || '#EDEDEB' }}
+          style={{ backgroundColor: member.bgColor || '#EDEDEB', position: 'relative' }}
         >
           <Image
             src={member.image}
             alt={member.name}
-            width={270}
-            height={270}
-            style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem', width: '100%', height: '100%' }}
+            fill
+            sizes="(max-width: 1023px) 30vw, 17rem"
+            style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem' }}
           />
         </div>
       ) : (
