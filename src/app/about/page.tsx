@@ -390,13 +390,13 @@ export default function AboutPage() {
                       </text>
                     </g>
 
-                    {/* Right annotation - top: clear of triangle, right-aligned */}
-                    {/* At y~55, right edge is at x~190, so start text at x=205 min */}
+                    {/* Right annotation - top: strong headline + supporting text */}
                     <g className="pyr-ann pyr-ann-rt">
-                      <text x="345" y="50" fontSize="9" textAnchor="end" fill="#222">
-                        <tspan x="345" fontWeight="600" fontSize="10">unified team</tspan>
-                        <tspan x="345" dy="12" fontWeight="400" fill="#555">handles all</tspan>
-                        <tspan x="345" dy="11" fontWeight="400" fill="#555">layers</tspan>
+                      <text x="345" y="48" textAnchor="end">
+                        <tspan x="345" fontSize="11" fontWeight="700" fill="#222">unified</tspan>
+                        <tspan x="345" dy="13" fontSize="11" fontWeight="700" fill="#222">team</tspan>
+                        <tspan x="345" dy="11" fontSize="8" fontWeight="400" fill="#666">handles all</tspan>
+                        <tspan x="345" dy="10" fontSize="8" fontWeight="400" fill="#666">layers</tspan>
                       </text>
                     </g>
 
@@ -413,13 +413,14 @@ export default function AboutPage() {
                       </text>
                     </g>
 
-                    {/* Right annotation - bottom: positioned well BELOW tier 4 for clearance */}
-                    {/* At y=215, right edge at x~284, text at x=345 gives safe 20px+ margin */}
+                    {/* Right annotation - bottom: narrow lines for 10px+ clearance from triangle */}
+                    {/* "means fewer" broken into "means" / "fewer" for narrower width */}
                     <g className="pyr-ann pyr-ann-rb">
-                      <text x="345" y="215" fontSize="9" textAnchor="end" fill="#222">
-                        <tspan x="345" fontWeight="600" fontSize="10">one team</tspan>
-                        <tspan x="345" dy="12" fontWeight="400" fill="#555">means fewer</tspan>
-                        <tspan x="345" dy="11" fontWeight="400" fill="#555">gaps</tspan>
+                      <text x="345" y="198" textAnchor="end">
+                        <tspan x="345" fontSize="11" fontWeight="700" fill="#222">one</tspan>
+                        <tspan x="345" dy="13" fontSize="11" fontWeight="700" fill="#222">team</tspan>
+                        <tspan x="345" dy="11" fontSize="8" fontWeight="400" fill="#666">means</tspan>
+                        <tspan x="345" dy="10" fontSize="8" fontWeight="400" fill="#666">fewer gaps</tspan>
                       </text>
                     </g>
                   </svg>
