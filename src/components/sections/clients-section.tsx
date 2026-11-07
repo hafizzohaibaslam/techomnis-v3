@@ -212,10 +212,10 @@ export function ClientsSection({
                 </div>
                 <dl className="t-reg">
                   {card.stats.map((stat) => (
-                    <span key={stat.label}>
+                    <div key={stat.label} className="stat-row">
                       <dt>{stat.label}</dt>
                       <dd>{stat.value}</dd>
-                    </span>
+                    </div>
                   ))}
                 </dl>
               </div>
@@ -234,10 +234,10 @@ export function ClientsSection({
                 </div>
                 <dl className="t-reg">
                   {card.stats.map((stat) => (
-                    <span key={stat.label}>
+                    <div key={stat.label} className="stat-row">
                       <dt>{stat.label}</dt>
                       <dd>{stat.value}</dd>
-                    </span>
+                    </div>
                   ))}
                 </dl>
               </div>

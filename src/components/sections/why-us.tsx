@@ -9,13 +9,17 @@ function ProfileCard({ member }: { member: TeamMember }) {
   return (
     <div className="profile ln lr lb">
       {member.image ? (
-        <div className="avatar-img" aria-label={`Photo of ${member.name}`}>
+        <div 
+          className="avatar-img" 
+          aria-label={`Photo of ${member.name}`}
+          style={{ backgroundColor: member.bgColor || '#EDEDEB', position: 'relative' }}
+        >
           <Image
             src={member.image}
             alt={member.name}
-            width={80}
-            height={80}
-            style={{ objectFit: 'cover', borderRadius: '50%' }}
+            fill
+            sizes="(max-width: 1023px) 30vw, 17rem"
+            style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem' }}
           />
         </div>
       ) : (

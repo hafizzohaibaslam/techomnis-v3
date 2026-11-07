@@ -6,6 +6,7 @@ import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
+import { Button } from '@/components/ui/button'
 import { WorldMap } from '@/components/sections/world-map'
 import { ClientsSection } from '@/components/sections/clients-section'
 import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
@@ -117,15 +118,9 @@ export default function AboutPage() {
                   One senior team that ships the whole product, end to end.
                 </h1>
                 <div className="btnw">
-                  <a
-                    href="#team"
-                    className="btn dn"
-                    data-hover
-                    data-btn
-                    data-go="Leadership team"
-                  >
+                  <Button href="#team" className="dn" data-go="Leadership team">
                     Leadership team
-                  </a>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -141,13 +136,17 @@ export default function AboutPage() {
                   >
                     <div className="ttop">
                       {member.image ? (
-                        <div className="tphoto-img" aria-label={`Photo of ${member.name}`}>
+                        <div 
+                          className="tphoto-img" 
+                          aria-label={`Photo of ${member.name}`}
+                          style={{ backgroundColor: member.bgColor || '#EDEDEB', position: 'relative' }}
+                        >
                           <Image
                             src={member.image}
                             alt={member.name}
-                            width={120}
-                            height={120}
-                            style={{ objectFit: 'cover', borderRadius: '50%' }}
+                            fill
+                            sizes="(max-width: 1023px) 30vw, 17rem"
+                            style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem' }}
                           />
                         </div>
                       ) : (
@@ -336,38 +335,92 @@ export default function AboutPage() {
                     </TransitionLink>
                   </div>
                 </div>
-                <div className="center vcell">
-                  <span className="cx" aria-hidden="true"></span>
-                  <span className="cy" aria-hidden="true"></span>
+                <div className="pyr-wrap vcell pyr-vcell">
+                  {/* Central vertical guide - extends full OUTER canvas height via CSS */}
+                  <span className="pyr-guide-line" aria-hidden="true"></span>
                   <svg
-                    className="dia pyr"
-                    viewBox="0 0 420 360"
-                    style={{ width: '29.2rem', height: '25rem' }}
+                    className="pyr-diagram"
+                    viewBox="0 0 352 260"
                     role="img"
                     aria-label="One team across five layers: UI, API, LLM, data and infra"
+                    preserveAspectRatio="xMidYMid meet"
                   >
-                    <g fill="none" stroke="#8f8f8f" strokeWidth="1">
-                      <path d="M210 20 L400 340 H20 Z" />
-                      <path d="M162 101 H258" />
-                      <path d="M115 181 H305" />
-                      <path d="M86 230 H334" />
-                      <path d="M58 283 H362" />
+                    {/* Triangle: 229w × 197h, ratio 0.86, centered at x=176 */}
+                    {/* Draw as 3 separate lines to ensure all edges render completely */}
+                    {/* Left edge: apex to bottom-left */}
+                    <line className="pyr-edge pyr-edge-left" x1="176" y1="30" x2="61.5" y2="227" stroke="#222" strokeWidth="1" />
+                    {/* Right edge: apex to bottom-right */}
+                    <line className="pyr-edge pyr-edge-right" x1="176" y1="30" x2="290.5" y2="227" stroke="#222" strokeWidth="1" />
+                    {/* Base: bottom-left to bottom-right */}
+                    <line className="pyr-edge pyr-edge-base" x1="61.5" y1="227" x2="290.5" y2="227" stroke="#222" strokeWidth="1" />
+
+                    {/* 4 tier lines - UXIS proportions: top tier 35%, others ~16% each */}
+                    {/* y=99: 35% from apex */}
+                    <line className="pyr-tier" x1="136" y1="99" x2="216" y2="99" stroke="#222" strokeWidth="1" />
+                    {/* y=130: 51% from apex (divider position) */}
+                    <line className="pyr-tier" x1="117" y1="130" x2="235" y2="130" stroke="#222" strokeWidth="1" />
+                    {/* y=162: 67% from apex */}
+                    <line className="pyr-tier" x1="99" y1="162" x2="253" y2="162" stroke="#222" strokeWidth="1" />
+                    {/* y=194: 83% from apex */}
+                    <line className="pyr-tier" x1="81" y1="194" x2="271" y2="194" stroke="#222" strokeWidth="1" />
+
+                    {/* Horizontal black divider at tier 2/3 boundary */}
+                    <line className="pyr-divider" x1="12" y1="130" x2="340" y2="130" stroke="#222" strokeWidth="1" />
+
+                    {/* Tier labels - Top 2 bolder */}
+                    <g className="pyr-labels" textAnchor="middle" fill="#222">
+                      <text className="pyr-label-top" x="176" y="72" fontSize="12" fontWeight="600">UI</text>
+                      <text className="pyr-label-top" x="176" y="118" fontSize="12" fontWeight="600">API</text>
+                      <text x="176" y="150" fontSize="11" fontWeight="500">LLM</text>
+                      <text x="176" y="182" fontSize="11" fontWeight="500">Data</text>
+                      <text x="176" y="214" fontSize="11" fontWeight="500">Infra</text>
                     </g>
-                    <g fontSize="13" textAnchor="middle">
-                      <text x="210" y="80">
-                        UI
+
+                    {/* Left annotation - top */}
+                    <g className="pyr-ann pyr-ann-lt">
+                      <g transform="translate(18, 42)">
+                        <path d="M0 4 L8 0 L16 4 V6 H14 V14 H2 V6 H0 Z" fill="none" stroke="#222" strokeWidth="1.2" />
+                        <line x1="4" y1="10" x2="12" y2="10" stroke="#222" strokeWidth="1" />
+                        <line x1="4" y1="12" x2="12" y2="12" stroke="#222" strokeWidth="1" />
+                      </g>
+                      <text x="26" y="74" fontSize="9" fill="#555">
+                        <tspan x="26" textAnchor="middle">Full-stack</tspan>
+                        <tspan x="26" dy="11" textAnchor="middle">ownership</tspan>
+                        <tspan x="26" dy="11" textAnchor="middle">here</tspan>
                       </text>
-                      <text x="210" y="148">
-                        API
+                    </g>
+
+                    {/* Right annotation - top: strong headline + supporting text */}
+                    <g className="pyr-ann pyr-ann-rt">
+                      <text x="345" y="48" textAnchor="end">
+                        <tspan x="345" fontSize="11" fontWeight="700" fill="#222">unified</tspan>
+                        <tspan x="345" dy="13" fontSize="11" fontWeight="700" fill="#222">team</tspan>
+                        <tspan x="345" dy="11" fontSize="8" fontWeight="400" fill="#666">handles all</tspan>
+                        <tspan x="345" dy="10" fontSize="8" fontWeight="400" fill="#666">layers</tspan>
                       </text>
-                      <text x="210" y="211">
-                        LLM
+                    </g>
+
+                    {/* Left annotation - bottom: aligned with right annotation */}
+                    <g className="pyr-ann pyr-ann-lb">
+                      <g transform="translate(10, 188)">
+                        <circle cx="8" cy="8" r="9" fill="none" stroke="#222" strokeWidth="1.2" />
+                        <path d="M4 8 L7 11 L12 5" fill="none" stroke="#222" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+                      </g>
+                      <text x="26" y="224" fontSize="9" fill="#555">
+                        <tspan x="26" textAnchor="middle">No handoffs</tspan>
+                        <tspan x="26" dy="11" textAnchor="middle">between</tspan>
+                        <tspan x="26" dy="11" textAnchor="middle">vendors</tspan>
                       </text>
-                      <text x="210" y="262">
-                        Data
-                      </text>
-                      <text x="210" y="318">
-                        Infra
+                    </g>
+
+                    {/* Right annotation - bottom: narrow lines for 10px+ clearance from triangle */}
+                    {/* "means fewer" broken into "means" / "fewer" for narrower width */}
+                    <g className="pyr-ann pyr-ann-rb">
+                      <text x="345" y="198" textAnchor="end">
+                        <tspan x="345" fontSize="11" fontWeight="700" fill="#222">one</tspan>
+                        <tspan x="345" dy="13" fontSize="11" fontWeight="700" fill="#222">team</tspan>
+                        <tspan x="345" dy="11" fontSize="8" fontWeight="400" fill="#666">means</tspan>
+                        <tspan x="345" dy="10" fontSize="8" fontWeight="400" fill="#666">fewer gaps</tspan>
                       </text>
                     </g>
                   </svg>
