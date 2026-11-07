@@ -445,16 +445,16 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .why .g2.top::after{content:"";order:5;height:1px;background:var(--hair)}
   .profile{height:auto;padding:0;display:grid;grid-template-columns:30.77rem 1fr;column-gap:3.85rem;align-items:start;background:none}
   .profile>*{grid-column:2}
-  .profile .avatar,.profile .avatar-img{grid-column:1;grid-row:1/span 6;width:30.77rem;height:30.77rem;font-size:10rem}
+  .profile .avatar,.profile .avatar-img{grid-column:1;grid-row:1/span 6;width:30.77rem;height:30.77rem;font-size:10rem;overflow:hidden;position:relative}
   .profile .nm{font-size:5.13rem;line-height:6.15rem;margin-top:3.6rem}
   .profile .cap{margin-top:1.5rem}
   .profile .bio{margin-top:3.08rem;font-size:3.59rem;line-height:5.13rem}
   .profile .read{display:none}
   .profile .foot{margin-top:2.4rem}
-  .g4.cnt{grid-template-columns:1fr 1fr}
-  .counter-cell{height:auto;padding:8.2rem 0;justify-content:flex-start}.counter-cell .in{gap:2rem;min-width:0}
-  .counter-cell .num{font-size:10.26rem;line-height:11rem;letter-spacing:-.2rem}.counter-cell .num small{font-size:5.13rem}
-  .counter-cell .t-reg br{display:none}.counter-cell .t-reg{max-width:none;font-size:3.59rem;line-height:5.13rem}
+  .g4.cnt{grid-template-columns:1fr 1fr;gap:0 4vw}
+  .counter-cell{height:auto;padding:6rem 0;justify-content:flex-start}.counter-cell .in{gap:1.5rem;min-width:0}
+  .counter-cell .num{font-size:9rem;line-height:10rem;letter-spacing:-.18rem}.counter-cell .num small{font-size:4.5rem}
+  .counter-cell .t-reg br{display:none}.counter-cell .t-reg{max-width:none;font-size:3.2rem;line-height:4.5rem}
   .award{height:auto;padding:8.2rem 0;justify-content:flex-start;grid-column:1/-1!important;flex-wrap:wrap;gap:6rem}
   .award .in{gap:2rem}.award .big{font-size:8rem;line-height:8rem}
   /* footer */
@@ -834,10 +834,10 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
   .about-l .tags{max-width:none;margin-top:6.15rem}
   .tags.lg .tag{font-size:2.82rem;line-height:4.1rem;padding:2.56rem 3.85rem}
   .lead-dots .v b{font-size:6.15rem}
-  .ncell{height:auto;min-height:62rem;padding:8.2rem 0;justify-content:flex-start}
+  .ncell{height:auto;min-height:0;padding:6rem 0;justify-content:flex-start}
   .ncell p.t-reg{max-width:none}
-  .achieved{padding:10.26rem 0}
-  .chartc{height:auto;min-height:90rem;padding:8.2rem 0}
+  .achieved{padding:6rem 0}
+  .chartc{height:auto;min-height:0;padding:6rem 0}
   .ab-r .g2.g2keep{grid-template-columns:1fr}
   .ab-r .cell{--lr:0!important}
   .qrow{height:auto;min-height:90rem;padding:8.2rem 0;gap:8rem}
@@ -956,3 +956,12 @@ footer{height:100vh;min-height:44rem;display:flex;flex-direction:column}
 /* inner pages use the UXIS transition title size (82 / 48) */
 @media (max-width:1023px){.trans p{height:24rem;font-size:12.31rem;line-height:14.36rem;letter-spacing:-.25rem}}
 .inner .ph{white-space:normal;max-width:100%}
+
+/* narrow phones (<375px): stack stats, improve map labels */
+@media (max-width:374px){
+  .g4.cnt{grid-template-columns:1fr}
+  .counter-cell{padding:5rem 0}
+  .counter-cell .num{font-size:12rem;line-height:13rem}
+  .counter-cell .t-reg{font-size:3.59rem;line-height:5.13rem}
+  .pin span{font-size:2rem;padding:.5rem .7rem}
+}
