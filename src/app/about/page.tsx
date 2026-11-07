@@ -6,6 +6,7 @@ import { InnerHeader } from '@/components/layout/inner-header'
 import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { LinkedInIcon, UpworkIcon } from '@/components/ui/icons'
+import { Button } from '@/components/ui/button'
 import { WorldMap } from '@/components/sections/world-map'
 import { ClientsSection } from '@/components/sections/clients-section'
 import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
@@ -117,15 +118,9 @@ export default function AboutPage() {
                   One senior team that ships the whole product, end to end.
                 </h1>
                 <div className="btnw">
-                  <a
-                    href="#team"
-                    className="btn dn"
-                    data-hover
-                    data-btn
-                    data-go="Leadership team"
-                  >
+                  <Button href="#team" className="dn" data-go="Leadership team">
                     Leadership team
-                  </a>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -141,13 +136,17 @@ export default function AboutPage() {
                   >
                     <div className="ttop">
                       {member.image ? (
-                        <div className="tphoto-img" aria-label={`Photo of ${member.name}`}>
+                        <div 
+                          className="tphoto-img" 
+                          aria-label={`Photo of ${member.name}`}
+                          style={{ backgroundColor: member.bgColor || '#EDEDEB', position: 'relative' }}
+                        >
                           <Image
                             src={member.image}
                             alt={member.name}
-                            width={120}
-                            height={120}
-                            style={{ objectFit: 'cover', borderRadius: '50%' }}
+                            fill
+                            sizes="(max-width: 1023px) 30vw, 17rem"
+                            style={{ objectFit: 'cover', objectPosition: 'top', borderRadius: '0.5rem' }}
                           />
                         </div>
                       ) : (
