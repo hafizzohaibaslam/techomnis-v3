@@ -2,7 +2,7 @@
 
 import { useCallback, forwardRef, type ReactNode, type MouseEvent, type AnchorHTMLAttributes } from 'react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+import { useRouter, usePathname } from 'next/navigation'
 import gsap from 'gsap'
 
 const ROUTE_LABELS: Record<string, string> = {
@@ -35,6 +35,42 @@ function getMotionEnabled(): boolean {
   return saved ? saved === 'on' : !reduce
 }
 
+function runArriveAnimation() {
+  const trans = document.getElementById('trans')
+  const trw = trans?.querySelector('.trw') as HTMLElement | null
+  const transP = trans?.querySelector('p') as HTMLElement | null
+  const transT = document.getElementById('transT')
+  
+  if (!trans || !trw || !transP || !transT) return
+  
+  const pH = transP.offsetHeight
+  const E = {
+    tIn: (t: number) => {
+      const x1 = 0.645, y1 = 0.045, x2 = 0.355, y2 = 1
+      const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx
+      const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by
+      return ((ay * t + by) * t + cy) * t
+    },
+    tOut: (t: number) => {
+      const x1 = 0.215, y1 = 0.61, x2 = 0.355, y2 = 1
+      const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx
+      const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by
+      return ((ay * t + by) * t + cy) * t
+    }
+  }
+  
+  gsap.set(trans, { display: 'flex', visibility: 'visible', y: 0, yPercent: 0 })
+  gsap.set(trw, { y: 0, yPercent: 0 })
+  gsap.set(transT, { y: 0, yPercent: 0 })
+  document.documentElement.classList.remove('to-arrive')
+  
+  gsap.to(transT, { y: -pH, duration: 0.7, delay: 0.7, ease: (t: number) => E.tIn(t) })
+  gsap.to(trans, { yPercent: -100, duration: 0.8, delay: 0.9, ease: (t: number) => E.tOut(t) })
+  gsap.to(trw, { yPercent: 100, duration: 0.8, delay: 0.9, ease: (t: number) => E.tOut(t), onComplete: () => { 
+    gsap.set(trans, { display: 'none', visibility: 'hidden' })
+  } })
+}
+
 interface TransitionLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
   href: string
   children: ReactNode
@@ -44,6 +80,7 @@ interface TransitionLinkProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElemen
 export const TransitionLink = forwardRef<HTMLAnchorElement, TransitionLinkProps>(
   function TransitionLink({ href, children, label, onClick, ...props }, ref) {
     const router = useRouter()
+    const pathname = usePathname()
 
     const handleClick = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
       if (onClick) onClick(e)
@@ -77,6 +114,10 @@ export const TransitionLink = forwardRef<HTMLAnchorElement, TransitionLinkProps>
         return
       }
 
+      const targetPath = href.split('#')[0] || '/'
+      const currentPath = pathname || '/'
+      const isSameRoute = targetPath === currentPath
+      
       const transLabel = label || getLabelForPath(href)
       transT.textContent = transLabel + '.'
 
@@ -91,14 +132,19 @@ export const TransitionLink = forwardRef<HTMLAnchorElement, TransitionLinkProps>
       gsap.to(transT, { y: 0, duration: 0.9, delay: 0.6, ease: 'expo.out' })
 
       setTimeout(() => {
-        document.documentElement.classList.add('to-arrive')
         const hasHash = href.includes('#')
         if (!hasHash) {
           window.scrollTo(0, 0)
         }
-        router.push(href)
+        
+        if (isSameRoute) {
+          runArriveAnimation()
+        } else {
+          document.documentElement.classList.add('to-arrive')
+          router.push(href)
+        }
       }, 1600)
-    }, [href, label, onClick, router])
+    }, [href, label, onClick, router, pathname])
 
     return (
       <Link ref={ref} href={href} onClick={handleClick} {...props}>

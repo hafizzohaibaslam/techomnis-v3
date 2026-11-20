@@ -3,6 +3,7 @@ export interface TeamMember {
   name: string
   role: string
   image?: string
+  bgColor?: string
   metric: { value: string; label: string; placeholder?: boolean }
   bio: string[]
   skills: string[]
@@ -16,6 +17,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Zohaib Aslam',
     role: 'Founder',
     image: '/images/team/zohaib-aslam.png',
+    bgColor: '#8B5CF6',
     metric: { value: '5.0', label: 'Upwork rating' },
     bio: [
       'A full-stack AI engineer who leads product, architecture and AI systems at TechOmnis.',
@@ -37,6 +39,7 @@ export const teamMembers: TeamMember[] = [
     name: 'Zohaib Murtaza',
     role: 'Co-founder & CTO',
     image: '/images/team/zohaib-murtaza.webp',
+    bgColor: '#1a1a1a',
     metric: { value: '8+', label: 'years experience' },
     bio: [
       'Eight years shipping web products.',

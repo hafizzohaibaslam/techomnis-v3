@@ -161,7 +161,7 @@ function MediaLink({
         {children}
         <div className="dark"></div>
         <span ref={moreRef} className="more" aria-hidden="true">
-          Coming soon
+          <ArrowRight />
         </span>
       </div>
     )
@@ -173,7 +173,8 @@ function MediaLink({
       {children}
       <div className="dark"></div>
       <span ref={moreRef} className="more" aria-hidden="true">
-        Read more <ArrowRight className="h-[1.25rem] w-[1.25rem] fill-none stroke-white stroke-[1.6]" />
+        <span className="more-text">Read more</span>
+        <ArrowRight />
       </span>
     </TransitionLink>
   )

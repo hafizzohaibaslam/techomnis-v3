@@ -6,6 +6,7 @@ import { InnerFooter } from '@/components/layout/inner-footer'
 import { InnerNavigation } from '@/components/layout/inner-navigation'
 import { ClientsSection } from '@/components/sections/clients-section'
 import { BreadcrumbSchema } from '@/components/schema/breadcrumb'
+import { Button } from '@/components/ui/button'
 import { services, specialServices, buildItems } from '@/content/services'
 import { reviews, scoreCards } from '@/content/reviews'
 
@@ -142,9 +143,9 @@ export default function ServicesPage() {
                   We turn business requirements into production-ready software.
                 </h1>
                 <div className="btnw">
-                  <a href="#most" className="btn dn" data-hover data-btn data-go="Explore">
+                  <Button href="#most" className="dn" data-go="Explore">
                     Explore
-                  </a>
+                  </Button>
                 </div>
               </div>
             </div>
